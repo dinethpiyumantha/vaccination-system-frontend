@@ -7,16 +7,12 @@ const columns = [
   {
     title: "Serial No",
     dataIndex: "serialno",
-    // specify the condition of filtering result
-    // here is that finding the name started with `value`
     sorter: (a, b) => a.serialno.length - b.serialno.length,
     sortDirections: ["descend", "ascend"],
   },
   {
     title: "Name",
     dataIndex: "name",
-    // specify the condition of filtering result
-    // here is that finding the name started with `value`
     sorter: (a, b) => a.name.length - b.name.length,
     sortDirections: ["descend", "ascend"],
   },{

@@ -1,125 +1,250 @@
 <template>
+<!-- Person registration component -->
 <div>
   <h4 class="mb-4">Register a New Person</h4>
-  <a-form-model :model="form" :label-col="labelCol" :wrapper-col="wrapperCol">
-    <a-form-model-item label="Name">
-      <a-input v-model="form.name" :disabled="!updatable"/>
+
+  <!-- Registration form -->
+  <a-form-model ref="ruleForm" :model="form" :label-col="labelCol" :wrapper-col="wrapperCol" :rules="rules">
+    <!-- Name Input -->
+    <a-form-model-item label="Name" ref="name" prop="name">
+      <a-input v-model="form.name"/>
     </a-form-model-item>
-    <a-form-model-item label="National ID (NIC)">
-      <a-input v-model="form.nic" :disabled="!updatable"/>
+
+    <!-- NIC Input -->
+    <a-form-model-item label="National ID (NIC)" has-feedback ref="nic" prop="nic">
+      <a-input v-model="form.nic" :change="birthDayExtractorI()">
+        <a-tooltip slot="suffix" title="Can use valid national id card number (It can be 10 (with 'X' or 'V') or 12 digit number">
+          <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
+        </a-tooltip>
+      </a-input>
     </a-form-model-item>
-    <a-form-model-item label="Age">
-      <a-input v-model="form.nic" :disabled="!updatable"/>
+
+    <!-- Age Input -->
+    <a-form-model-item label="Age"  ref="age" prop="age">
+      <a-input v-model="form.age"/>
     </a-form-model-item>
-    <a-form-model-item label="Gender">
-      <a-select v-model="form.region" placeholder="Please select gender">
+
+    <!-- Gender Selection Input -->
+    <a-form-model-item label="Gender" ref="gender" prop="gender">
+      <a-select v-model="form.gender" placeholder="Please select gender">
         <a-select-option value="male">
-          Female
+          Male
         </a-select-option>
         <a-select-option value="female">
-          Male
+          Female
         </a-select-option>
       </a-select>
     </a-form-model-item>
-    <a-form-model-item label="Phone No">
-      <a-input v-model="form.nic" />
+
+    <!-- Phone Number Input -->
+    <a-form-model-item label="Phone No" has-feedback ref="phone" prop="phone">
+      <a-input v-model="form.phone">
+        <a-tooltip slot="suffix" title="Phone number can enter with contry code or without it">
+        <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
+      </a-tooltip>
+      </a-input>
     </a-form-model-item>
-    <a-form-model-item label="District">
-      <a-select v-model="form.region" placeholder="Please select district">
-        <a-select-option value="male">
-          Female
-        </a-select-option>
-        <a-select-option value="female">
-          Male
+
+    <!-- Address Input -->
+    <a-form-model-item label="Address"  ref="address" prop="address">
+      <a-input v-model="form.address" />
+    </a-form-model-item>
+
+    <!-- District Selection Input -->
+    <a-form-model-item label="District"  ref="district" prop="district">
+      <a-select v-model="form.district" placeholder="Please select district">
+        <a-select-option v-for="dis in districts" :key="dis">
+          {{ dis }}
         </a-select-option>
       </a-select>
     </a-form-model-item>
-    <a-form-model-item label="MOH area">
-      <a-select v-model="form.region" placeholder="Please select MOH area">
-        <a-select-option value="male">
-          Female
-        </a-select-option>
-        <a-select-option value="female">
-          Male
-        </a-select-option>
-      </a-select>
-    </a-form-model-item>
-    <a-form-model-item label="GN area">
-      <a-select v-model="form.region" placeholder="Please select GN area">
-        <a-select-option value="male">
-          Female
-        </a-select-option>
-        <a-select-option value="female">
-          Male
+
+    <!-- MOH Area Selection Input -->
+    <a-form-model-item label="MOH area"  ref="moh" prop="moh">
+      <a-select v-model="form.moh" placeholder="Please select MOH area">
+        <a-select-option v-for="moh in mohArea" :key="moh">
+          {{ moh }}
         </a-select-option>
       </a-select>
     </a-form-model-item>
+
+    <!-- GN Area Selection Input -->
+    <a-form-model-item label="GN area"  ref="gn" prop="gn">
+      <a-select v-model="form.gn" placeholder="Please select GN area">
+        <a-select-option v-for="gn in gnArea" :key="gn">
+          {{ gn }}
+        </a-select-option>
+      </a-select>
+    </a-form-model-item>
+
+    <!-- Serial No Input -->
     <a-form-model-item label="Serial No">
-      <a-input v-model="form.nic" placeholder="Searial no in the register" :disabled="true"/>
+      <a-input v-model="form.serialno" placeholder="Searial no in the register" :disabled="true"/>
     </a-form-model-item>
-    <a-form-model-item label="Activity type">
-      <a-checkbox-group v-model="form.type">
-        <a-checkbox value="1" name="type">
-          Online
-        </a-checkbox>
-        <a-checkbox value="2" name="type">
-          Promotion
-        </a-checkbox>
-        <a-checkbox value="3" name="type">
-          Offline
-        </a-checkbox>
-      </a-checkbox-group>
+
+    <!-- Important Details Input Text Area -->
+    <a-form-model-item label="Important">
+      <a-input v-model="form.important" type="textarea">
+        <a-tooltip slot="suffix" title="Extra information">
+          <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
+        </a-tooltip>
+      </a-input>
     </a-form-model-item>
-    <a-form-model-item label="Feedback">
-      <a-input v-model="form.desc" type="textarea" />
-    </a-form-model-item>
-    <a-form-model-item v-if="!updatable" :wrapper-col="{ span: 14, offset: 4 }">
-      <a-button type="primary" @click="updateChange()">
-        Edit
+
+    <!-- Buttons -->
+    <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
+      <a-button type="primary" @click="onSubmit()">
+        Register
       </a-button>
-      <a-button style="margin-left: 10px;">
-        Back
-      </a-button>
-    </a-form-model-item>
-    <a-form-model-item v-if="updatable" :wrapper-col="{ span: 14, offset: 4 }">
-      <a-button type="primary" @click="updateChange()">
-        Save
-      </a-button>
-      <a-button style="margin-left: 10px;" @click="updateChange()">
-        Cancel
-      </a-button>
-      <a-button style="margin-left: 10px;">
-        Back
+      <a-button style="margin-left: 10px;" @click="clearForm()">
+        Clear
       </a-button>
     </a-form-model-item>
   </a-form-model>
 </div>
 </template>
+
+
 <script>
+// Import local data files
+import LocalData from '../../assets/data.json';
+
+/**
+ * - all data attributes in the form attribute are use for post data
+ */
 export default {
   data() {
+    // Custom validation rules
+    let SLNICValidator = (rule, value, callback) => {
+      const regex = new RegExp("^([0-9]{9}[x|X|v|V]|[0-9]{12})$");
+      let result = regex.test(value);
+      if (!result) {
+        callback(new Error('Please valid NIC number again'));
+      } else {
+        callback();
+      }
+    };
+    let SLPhoneValidator = (rule, value, callback) => {
+      const regex = /^(?:0|94|\+94)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|912)(0|2|3|4|5|7|9)|7(0|1|2|4|5|6|7|8)\d)\d{6}$/;
+      let result = regex.test(value);
+      if (!result) {
+        callback(new Error('Please input valid phone number again'));
+      } else if (value === ''){
+        callback();
+      } else {
+        callback();
+      }
+    }
+    // Data attributes/models
     return {
       labelCol: { span: 4 },
       wrapperCol: { span: 14 },
       updatable: false,
+      districts : LocalData.data.districts,
+      mohArea: LocalData.data.moh,
+      gnArea: LocalData.data.gn,
       form: {
         name: '',
-        region: undefined,
-        date1: undefined,
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: '',
+        nic: '',
+        age: '',
+        gender: undefined,
+        phone: '',
+        address: '',
+        district: undefined,
+        moh: undefined,
+        gn: undefined,
+        serialno: '000',
+        important: ''
       },
+      rules: {
+        name: [{required: true, message: 'Please insert person name', trigger: 'blur',},],
+        nic: [{required: true, message: 'Please insert national ID card number', trigger: 'blur',},
+              {validator: SLNICValidator, trigger: 'change'}],
+        age: [{required: true, message: 'Please insert age (This will automatically calculate with NIC)', trigger: 'blur',},],
+        gender: [{required: true, message: 'Please select gender', trigger: 'blur',},],
+        phone: [{validator: SLPhoneValidator, trigger: 'change'}],
+        address: [{required: true, message: 'Please insert address', trigger: 'blur',},],
+        district: [{required: true, message: 'Please select district', trigger: 'blur',},],
+        moh: [{required: true, message: 'Please select MOH area', trigger: 'blur',},],
+        gn: [{required: true, message: 'Please select grama niladhari (GN) area', trigger: 'blur',},],
+      }
     };
   },
   methods: {
     onSubmit() {
-      console.log('submit!', this.form);
+      /**
+       * when click on submit, execute this function
+       */
+      
+      
+      this.$refs.ruleForm.validate(valid => {
+        if (valid) {
+          this.$http.post('http://localhost:8000/api/person/add', this.form).then(function (response) { 
+        this.openNotificationSuccess("Successfully Added !", "Entry added");
+        console.log(response);
+      }, (error) => {
+        this.openNotificationUnsuccess("Unsuccess !", "Entry added");
+        console.log(error);
+      });
+        } else {
+          this.openNotificationUnsuccess("Unsuccess !", "Entry added");
+          console.log('error submit!!');
+          return false;
+        }
+      });
+      // console.log('submit!', this.form);
     },
-    updateChange() {
-      this.updatable = !this.updatable;
+    openNotificationSuccess(message, description) {
+      /**
+       * Notification toast success
+       */
+      this.$notification.open({
+        message: message,
+        duration: 5,
+        icon: <a-icon type="like" theme="filled" style="color: #27ae60"/>,
+        description:
+          description,
+        onClick: () => {
+          console.log('Notification Clicked!');
+        },
+      });
+      this.clearForm();
+    },
+    openNotificationUnsuccess(message, description) {
+      /**
+       * Notification toast unsuccess
+       */
+      this.$notification.open({
+        message: message,
+        duration: 8,
+        icon: <a-icon type="dislike" theme="filled" style="color: #c0392b"/>,
+        description:
+          description,
+        onClick: () => {
+          console.log('Notification Clicked!');
+        },
+      });
+    },
+    clearForm() {
+      /**
+       * Clear form
+       */
+      Object.assign(this.$data, this.$options.data.call(this));
+    },
+    birthDayExtractorI() {
+      let temp = '';
+      if (this.form.nic.length == 10) {
+        temp = new Date().getFullYear() - ('19'+this.form.nic.slice(0, 2));
+      }
+      else if (this.form.nic.length == 12) {
+        temp = new Date().getFullYear() - this.form.nic.slice(0, 4);
+      }
+      
+        this.form.age = temp;
     }
   },
+  computed: {
+    
+  }
 };
 </script>
