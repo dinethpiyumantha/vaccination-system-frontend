@@ -7,7 +7,6 @@ import Reports from '../components/Reports.vue';
 
 import Persons from '../components/person-manage/PersonsView.vue';
 import AddPersons from '../components/person-manage/AddPersons.vue';
-import PersonById from '../components/person-manage/PersonById.vue';
 import UpdatePerson from '../components/person-manage/UpdatePerson.vue';
 
 export default new Router({
@@ -38,10 +37,6 @@ export default new Router({
         name: 'Update Persons',
         component: UpdatePerson
       },
-      {
-        path: '/person/:id',
-        name: 'Single Person',
-        component: PersonById
-      },
+      
     ]
 });
