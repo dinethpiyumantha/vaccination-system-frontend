@@ -114,7 +114,9 @@ import LocalData from '../../assets/data.json';
  */
 export default {
   data() {
-    // Custom validation rules
+    /**
+     * Custom validation rules
+     */
     let SLNICValidator = (rule, value, callback) => {
       const regex = new RegExp("^([0-9]{9}[x|X|v|V]|[0-9]{12})$");
       let result = regex.test(value);
@@ -135,6 +137,7 @@ export default {
         callback();
       }
     }
+
     // Data attributes/models
     return {
       labelCol: { span: 4 },
@@ -156,6 +159,9 @@ export default {
         serialno: '000',
         important: ''
       },
+      /**
+       * Validation rules assign to props
+       */
       rules: {
         name: [{required: true, message: 'Please insert person name', trigger: 'blur',},],
         nic: [{required: true, message: 'Please insert national ID card number', trigger: 'blur',},
@@ -173,10 +179,10 @@ export default {
   methods: {
     onSubmit() {
       /**
-       * when click on submit, execute this function
+       * post form data into the database
+       * first validate all the fields and post with API request,
+       * accoding to the response show notification
        */
-      
-      
       this.$refs.ruleForm.validate(valid => {
         if (valid) {
           this.$http.post('http://localhost:8000/api/person/add', this.form).then(function (response) { 
@@ -192,7 +198,6 @@ export default {
           return false;
         }
       });
-      // console.log('submit!', this.form);
     },
     openNotificationSuccess(message, description) {
       /**
@@ -232,6 +237,9 @@ export default {
       Object.assign(this.$data, this.$options.data.call(this));
     },
     birthDayExtractorI() {
+      /**
+       * Extract age from NIC
+       */
       let temp = '';
       if (this.form.nic.length == 10) {
         temp = new Date().getFullYear() - ('19'+this.form.nic.slice(0, 2));
