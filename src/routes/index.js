@@ -8,6 +8,7 @@ import Reports from '../components/Reports.vue';
 import Persons from '../components/person-manage/PersonsView.vue';
 import AddPersons from '../components/person-manage/AddPersons.vue';
 import PersonById from '../components/person-manage/PersonById.vue';
+import UpdatePerson from '../components/person-manage/UpdatePerson.vue';
 
 export default new Router({
     mode: 'history',
@@ -31,6 +32,11 @@ export default new Router({
         path: '/add-person',
         name: 'Add Persons',
         component: AddPersons
+      },
+      {
+        path: '/update-person/:id',
+        name: 'Update Persons',
+        component: UpdatePerson
       },
       {
         path: '/person/:id',

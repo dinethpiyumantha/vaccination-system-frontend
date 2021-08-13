@@ -26,7 +26,7 @@
 
     <!-- Gender Selection Input -->
     <a-form-model-item label="Gender" ref="gender" prop="gender">
-      <a-select v-model="form.gender" placeholder="Please select gender">
+      <a-select v-model="form.gender" placeholder="Please select gender" :change="serialNoGenerate()">
         <a-select-option value="male">
           Male
         </a-select-option>
@@ -156,7 +156,7 @@ export default {
         district: undefined,
         moh: undefined,
         gn: undefined,
-        serialno: '000',
+        serialno: 'N/A',
         important: ''
       },
       /**
@@ -240,16 +240,28 @@ export default {
       /**
        * Extract age from NIC
        */
-      let temp = '';
+      let tempAge = '';
       if (this.form.nic.length == 10) {
-        temp = new Date().getFullYear() - ('19'+this.form.nic.slice(0, 2));
+        tempAge = new Date().getFullYear() - ('19'+this.form.nic.slice(0, 2));
       }
       else if (this.form.nic.length == 12) {
-        temp = new Date().getFullYear() - this.form.nic.slice(0, 4);
+        tempAge = new Date().getFullYear() - this.form.nic.slice(0, 4);
       }
-      
-        this.form.age = temp;
-    }
+      this.form.age = tempAge;
+    },
+    serialNoGenerate() {
+      /**
+       * Extract age from NIC
+       */
+      let tempSerial = 'N/A';
+      if (this.form.nic.length == 10) {
+        tempSerial = 'P19'+this.form.nic.slice(0, 2) + this.form.gender.slice(0,1) + this.form.nic.slice(2, 5);
+      }
+      else if (this.form.nic.length == 12) {
+        tempSerial = 'P'+this.form.nic.slice(0, 4) + this.form.gender.slice(0,1) + this.form.nic.slice(0, 7);
+      }
+      this.form.serialno = tempSerial.toUpperCase();
+    },
   },
   computed: {
     

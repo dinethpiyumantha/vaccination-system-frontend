@@ -14,17 +14,14 @@
     </a-table>
     <!-- View Model -->
     <div>
-      <!-- <a-button type="primary" @click="showModal">
-      Open Modal with customized footer
-    </a-button>  -->
-      <a-modal v-model="visible" title="Title" on-ok="handleOk">
+      <a-modal v-model="visible" title="Person Details" on-ok="handleOk" :centered="true" width="700px">
         <template slot="footer">
           
           <a-button
             key="submit"
             type="primary"
             :loading="loading"
-            @click="handleOk"
+            @click="handleUpdate"
           >
             Edit
           </a-button>
@@ -32,7 +29,7 @@
             key="submit"
             type="danger"
             :loading="loading"
-            @click="handleOk"
+            @click="handleDelete"
           >
             Delete
           </a-button>
@@ -41,6 +38,7 @@
         
         <div class="row">
           <div class="col-8">
+            <div class="row"><div class="col-4"><b>Serial No</b></div><div class="col-8"><p>{{model.serialno}}</p></div></div>
             <div class="row"><div class="col-4"><b>Name</b></div><div class="col-8"><p>{{model.name}}</p></div></div>
             <div class="row"><div class="col-4"><b>National ID</b></div><div class="col-8"><p>{{model.nic}}</p></div></div>
             <div class="row"><div class="col-4"><b>Age</b></div><div class="col-8"><p>{{model.age}}</p></div></div>
@@ -66,6 +64,7 @@
 <script>
 // Import libraries
 import axios from "axios";
+import 'vue-resource';
 
 /**
  * Table Columns
@@ -136,6 +135,8 @@ function onChange(pagination, filters, sorter) {
   console.log("params", pagination, filters, sorter);
 }
 
+
+
 export default {
   data() {
     /**
@@ -182,11 +183,35 @@ export default {
       setTimeout(() => {
         this.visible = false;
         this.loading = false;
-      }, 3000);
+      }, 2000);
+      
+    },
+    handleDelete() {
+      /**
+       * Call to delete a person by 
+       * mouse event
+       */
+      this.loading = true;
+      setTimeout(() => {
+        this.visible = false;
+        this.loading = false;
+        this.showConfirm(); // for confirm delete operation, then delete
+      }, 500);
+
+    },
+    handleUpdate() {
+      
+      this.loading = true;
+      setTimeout(() => {
+      this.visible = false;
+      this.loading = false;
+      this.$router.push({ path: `/update-person/`+this.model.id});
+      }, 500);
     },
     handleCancel() {
       this.visible = false;
     },
+    
     customRow(record) {
       return {
         on: {
@@ -201,7 +226,61 @@ export default {
           }
         }
       };
-    }
+    },
+    
+    openNotificationSuccess(message, description) {
+      /**
+       * Notification toast success
+       */
+      this.$notification.open({
+        message: message,
+        duration: 5,
+        icon: <a-icon type="like" theme="filled" style="color: #27ae60"/>,
+        description:
+          description,
+        onClick: () => {
+          console.log('Notification Clicked!');
+        },
+      });
+    },
+    openNotificationUnsuccess(message, description) {
+      /**
+       * Notification toast unsuccess
+       */
+      this.$notification.open({
+        message: message,
+        duration: 8,
+        icon: <a-icon type="dislike" theme="filled" style="color: #c0392b"/>,
+        description:
+          description,
+        onClick: () => {
+          console.log('Notification Clicked!');
+        },
+      });
+    },
+    
+    showConfirm() {
+      this.$confirm({
+        title: 'Do you want to delete these items?' + this.model.serialno + '('+this.model.id+')',
+        content: 'When clicked the OK button, this dialog will be closed after 1 second',
+        onOk: () => {
+          this.$http.delete("http://127.0.0.1:8000/api/person/delete/" + this.model.id).then(
+            function(response) {
+              this.openNotificationSuccess('Successfully Deleted', 'Person'+ this.model.serialno +' record deleted.')
+              this.data.splice((this.data.findIndex((e) => e === this.model)), 1);
+              console.log(response);
+            }, (error) => {
+              this.openNotificationUnsuccess('Error', 'Person'+ this.model.serialno +' record cannot delete. Operation occured an error !');
+              console.log(error);
+            }
+          );
+          console.log('OK')
+        },
+        onCancel() {
+          console.log('Cancel')
+        },
+      });
+    },
   },
 };
 </script>
