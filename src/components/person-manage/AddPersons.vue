@@ -4,7 +4,7 @@
   <h4 class="mb-4">Register a New Person</h4>
 
   <!-- Registration form -->
-  <a-form-model ref="ruleForm" :model="form" :label-col="labelCol" :wrapper-col="wrapperCol" :rules="rules">
+  <a-form-model ref="ruleForm" :model="form" :label-col="labelCol" :wrapper-col="wrapperCol" :rules="rules" :onFieldsChange="whenFieldChanged()">
     <!-- Name Input -->
     <a-form-model-item label="Name" ref="name" prop="name">
       <a-input v-model="form.name"/>
@@ -12,21 +12,16 @@
 
     <!-- NIC Input -->
     <a-form-model-item label="National ID (NIC)" has-feedback ref="nic" prop="nic">
-      <a-input v-model="form.nic" :change="birthDayExtractorI()">
+      <a-input v-model="form.nic">
         <a-tooltip slot="suffix" title="Can use valid national id card number (It can be 10 (with 'X' or 'V') or 12 digit number">
           <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
         </a-tooltip>
       </a-input>
     </a-form-model-item>
 
-    <!-- Age Input -->
-    <a-form-model-item label="Age"  ref="age" prop="age">
-      <a-input v-model="form.age"/>
-    </a-form-model-item>
-
     <!-- Gender Selection Input -->
     <a-form-model-item label="Gender" ref="gender" prop="gender">
-      <a-select v-model="form.gender" placeholder="Please select gender" :change="serialNoGenerate()">
+      <a-select v-model="form.gender" placeholder="Please select gender">
         <a-select-option value="male">
           Male
         </a-select-option>
@@ -34,6 +29,11 @@
           Female
         </a-select-option>
       </a-select>
+    </a-form-model-item>
+
+    <!-- Age Input -->
+    <a-form-model-item label="Age"  ref="age" prop="age">
+      <a-input v-model="form.age"/>
     </a-form-model-item>
 
     <!-- Phone Number Input -->
@@ -199,6 +199,16 @@ export default {
         }
       });
     },
+    whenFieldChanged() {
+      if(this.form.nic == '' || this.form.gender === undefined) {
+        console.log('No NIC or Gender');
+      }
+      else {
+        this.birthDayExtractorI();
+        this.serialNoGenerate();
+        console.log('Have NIC or Gender');
+      }
+    },
     openNotificationSuccess(message, description) {
       /**
        * Notification toast success
@@ -251,7 +261,7 @@ export default {
     },
     serialNoGenerate() {
       /**
-       * Extract age from NIC
+       * Genarate a serial no
        */
       let tempSerial = 'N/A';
       if (this.form.nic.length == 10) {

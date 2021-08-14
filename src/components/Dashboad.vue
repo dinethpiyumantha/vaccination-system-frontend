@@ -26,6 +26,50 @@
           </a-card>
         </div>
       </div>
+      <div class="row mt-4">
+        <div class="col-4">
+          <a-card>
+            <a-statistic
+              title="Infected"
+              :value="0"
+              :precision="0"
+              suffix=""
+              :value-style="{ color: '#cf1322' }"
+              style="margin-right: 50px"
+            >
+              <template #prefix>
+                <a-icon type="arrow-up" />
+              </template>
+            </a-statistic>
+          </a-card>
+          <a-card style="margin-top: 20px;">
+            <a-statistic
+              title="Death"
+              :value="0"
+              :precision="0"
+              suffix=""
+              :value-style="{ color: '#cf1322'}"
+              style="margin-right: 50px; "
+            >
+              <template #prefix>
+                <a-icon type="arrow-up" />
+              </template>
+            </a-statistic>
+          </a-card>
+        </div>
+        <div class="col-8">
+          <a-result title="Great, we have done all the operations!">
+            <template #icon>
+              <a-icon type="smile" theme="twoTone" />
+            </template>
+            <template #extra>
+              <a-button type="primary">
+                Next
+              </a-button>
+            </template>
+          </a-result>
+        </div>
+      </div>
     </div>
     <div class="col-6">
       <div class="carousel">
