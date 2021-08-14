@@ -8,6 +8,7 @@ import Reports from '../components/Reports.vue';
 import Persons from '../components/person-manage/PersonsView.vue';
 import AddPersons from '../components/person-manage/AddPersons.vue';
 import UpdatePerson from '../components/person-manage/UpdatePerson.vue';
+import DeletedPersons from '../components/person-manage/PersonsViewDeleted.vue';
 
 export default new Router({
     mode: 'history',
@@ -26,6 +27,11 @@ export default new Router({
         path: '/persons',
         name: 'Persons',
         component: Persons
+      },
+      {
+        path: '/deleted-persons',
+        name: 'Deleted Persons',
+        component: DeletedPersons
       },
       {
         path: '/add-person',

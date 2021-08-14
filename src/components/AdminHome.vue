@@ -26,7 +26,11 @@
               Add New Person
             </router-link></a-menu-item
           >
-          <a-menu-item key="4"> Alex </a-menu-item>
+          <a-menu-item key="4">
+            <router-link to="/deleted-persons">
+              Deleted People
+            </router-link>
+          </a-menu-item>
         </a-sub-menu>
         <a-menu-item key="5">
           <a-icon type="desktop" />

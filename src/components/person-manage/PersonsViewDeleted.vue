@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Registered People</h3>
+    <h3>Deleted People</h3>
     <div class="row px-3 my-4">
       <a-input-search
         placeholder="Search a person"
@@ -85,7 +85,7 @@
       <a-modal v-model="visible" title="Person Details" on-ok="handleOk" :centered="true" width="700px">
         <template slot="footer">
           
-          <a-button
+          <!-- <a-button
             key="submit"
             type="primary"
             :loading="loading"
@@ -100,7 +100,7 @@
             @click="handleDelete"
           >
             Delete
-          </a-button>
+          </a-button> -->
           <a-button key="back" @click="handleCancel"> Close </a-button>
         </template>
         
@@ -119,9 +119,7 @@
             <div class="row"><div class="col-4"><b>Important</b></div><div class="col-8"><p>{{model.important}}</p></div></div>
           </div>
           <div class="col-4">
-            <div class="card p-2">
-              <h6>Vaccination</h6>
-            </div>
+            
           </div>
         </div>      
       </a-modal>
@@ -276,7 +274,7 @@ export default {
      * Get all persons from database
      * using API request
      */
-    axios.get("http://127.0.0.1:8000/api/person/all").then((response) => {
+    axios.get("http://127.0.0.1:8000/api/person/all/deleted").then((response) => {
       this.data = response.data.results;
       console.log(this.data);
     });
