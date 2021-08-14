@@ -74,30 +74,65 @@ const columns = [
   {
     title: "Serial No",
     dataIndex: "serialno",
-    sorter: (a, b) => a.serialno.length - b.serialno.length,
+    key: 'serialno',
+    sorter: (a, b) => {
+      let serialnoA = a.serialno.toUpperCase();
+      let serialnoB = b.serialno.toUpperCase();
+      if (serialnoA < serialnoB) {
+        return -1;
+      }
+      if (serialnoA > serialnoB) {
+        return 1;
+      }
+      return 0;
+    },
     sortDirections: ["descend", "ascend"],
   },
   {
     title: "Name",
     dataIndex: "name",
-    sorter: (a, b) => a.name.length - b.name.length,
+    key: 'name',
+    sorter: (a, b) => {
+      let nameA = a.name.toUpperCase();
+      let nameB = b.name.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    },
     sortDirections: ["descend", "ascend"],
   },
   {
     title: "NIC",
     dataIndex: "nic",
-    sorter: (a, b) => a.nic.length - b.nic.length,
+    key: 'nic',
+    sorter: (a, b) => {
+      let nicA = a.nic.toUpperCase();
+      let nicB = b.nic.toUpperCase();
+      if (nicA < nicB) {
+        return -1;
+      }
+      if (nicA > nicB) {
+        return 1;
+      }
+      return 0;
+    },
     sortDirections: ["descend", "ascend"],
   },
   {
     title: "Age",
     dataIndex: "age",
-    defaultSortOrder: "descend",
+    key: 'age',
     sorter: (a, b) => a.age - b.age,
+    sortDirections: ["descend", "ascend"],
   },
   {
     title: "Gender",
     dataIndex: "gender",
+    key: 'gender',
     filters: [
       { text: "Male", value: "male" },
       { text: "Female", value: "female" },
@@ -107,19 +142,18 @@ const columns = [
   {
     title: "Address",
     dataIndex: "address",
-    filters: [
-      {
-        text: "London",
-        value: "London",
-      },
-      {
-        text: "New York",
-        value: "New York",
-      },
-    ],
-    filterMultiple: false,
-    onFilter: (value, record) => record.address.indexOf(value) === 0,
-    sorter: (a, b) => a.address.length - b.address.length,
+    key: 'address',
+    sorter: (a, b) => {
+      let addressA = a.address.toUpperCase();
+      let addressB = b.address.toUpperCase();
+      if (addressA < addressB) {
+        return -1;
+      }
+      if (addressA > addressB) {
+        return 1;
+      }
+      return 0;
+    },
     sortDirections: ["descend", "ascend"],
   },
   {
