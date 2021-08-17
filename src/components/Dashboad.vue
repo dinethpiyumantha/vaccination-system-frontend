@@ -58,14 +58,16 @@
           </a-card>
         </div>
         <div class="col-8">
-          <a-result title="Great, we have done all the operations!">
+          <a-result title="Let's Vaccinate!">
             <template #icon>
               <a-icon type="smile" theme="twoTone" />
             </template>
             <template #extra>
-              <a-button type="primary">
-                Next
-              </a-button>
+              <router-link to="/vaccinate">
+                <a-button type="primary">
+                  Open
+                </a-button>
+              </router-link>
             </template>
           </a-result>
         </div>

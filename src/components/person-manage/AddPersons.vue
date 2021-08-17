@@ -1,107 +1,108 @@
 <template>
-<!-- Person registration component -->
-<div>
-  <h4 class="mb-4">Register a New Person</h4>
+  <!-- Person registration component -->
+  <div>
+    <h4 class="mb-4">Register a New Person</h4>
 
-  <!-- Registration form -->
-  <a-form-model ref="ruleForm" :model="form" :label-col="labelCol" :wrapper-col="wrapperCol" :rules="rules" :onFieldsChange="whenFieldChanged()">
-    <!-- Name Input -->
-    <a-form-model-item label="Name" ref="name" prop="name">
-      <a-input v-model="form.name"/>
-    </a-form-model-item>
+    <!-- Registration form -->
+    <a-form-model ref="ruleForm" :model="form" :label-col="labelCol" :wrapper-col="wrapperCol" :rules="rules" :onFieldsChange="whenFieldChanged()">
+      
+      <!-- Name Input -->
+      <a-form-model-item label="Name" ref="name" prop="name">
+        <a-input v-model="form.name"/>
+      </a-form-model-item>
 
-    <!-- NIC Input -->
-    <a-form-model-item label="National ID (NIC)" has-feedback ref="nic" prop="nic">
-      <a-input v-model="form.nic">
-        <a-tooltip slot="suffix" title="Can use valid national id card number (It can be 10 (with 'X' or 'V') or 12 digit number">
+      <!-- NIC Input -->
+      <a-form-model-item label="National ID (NIC)" has-feedback ref="nic" prop="nic">
+        <a-input v-model="form.nic">
+          <a-tooltip slot="suffix" title="Can use valid national id card number (It can be 10 (with 'X' or 'V') or 12 digit number">
+            <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
+          </a-tooltip>
+        </a-input>
+      </a-form-model-item>
+
+      <!-- Gender Selection Input -->
+      <a-form-model-item label="Gender" ref="gender" prop="gender">
+        <a-select v-model="form.gender" placeholder="Please select gender">
+          <a-select-option value="male">
+            Male
+          </a-select-option>
+          <a-select-option value="female">
+            Female
+          </a-select-option>
+        </a-select>
+      </a-form-model-item>
+
+      <!-- Age Input -->
+      <a-form-model-item label="Age"  ref="age" prop="age">
+        <a-input v-model="form.age"/>
+      </a-form-model-item>
+
+      <!-- Phone Number Input -->
+      <a-form-model-item label="Phone No" has-feedback ref="phone" prop="phone">
+        <a-input v-model="form.phone">
+          <a-tooltip slot="suffix" title="Phone number can enter with contry code or without it">
           <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
         </a-tooltip>
-      </a-input>
-    </a-form-model-item>
+        </a-input>
+      </a-form-model-item>
 
-    <!-- Gender Selection Input -->
-    <a-form-model-item label="Gender" ref="gender" prop="gender">
-      <a-select v-model="form.gender" placeholder="Please select gender">
-        <a-select-option value="male">
-          Male
-        </a-select-option>
-        <a-select-option value="female">
-          Female
-        </a-select-option>
-      </a-select>
-    </a-form-model-item>
+      <!-- Address Input -->
+      <a-form-model-item label="Address"  ref="address" prop="address">
+        <a-input v-model="form.address" />
+      </a-form-model-item>
 
-    <!-- Age Input -->
-    <a-form-model-item label="Age"  ref="age" prop="age">
-      <a-input v-model="form.age"/>
-    </a-form-model-item>
+      <!-- District Selection Input -->
+      <a-form-model-item label="District"  ref="district" prop="district">
+        <a-select v-model="form.district" placeholder="Please select district">
+          <a-select-option v-for="dis in districts" :key="dis">
+            {{ dis }}
+          </a-select-option>
+        </a-select>
+      </a-form-model-item>
 
-    <!-- Phone Number Input -->
-    <a-form-model-item label="Phone No" has-feedback ref="phone" prop="phone">
-      <a-input v-model="form.phone">
-        <a-tooltip slot="suffix" title="Phone number can enter with contry code or without it">
-        <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
-      </a-tooltip>
-      </a-input>
-    </a-form-model-item>
+      <!-- MOH Area Selection Input -->
+      <a-form-model-item label="MOH area"  ref="moh" prop="moh">
+        <a-select v-model="form.moh" placeholder="Please select MOH area">
+          <a-select-option v-for="moh in mohArea" :key="moh">
+            {{ moh }}
+          </a-select-option>
+        </a-select>
+      </a-form-model-item>
 
-    <!-- Address Input -->
-    <a-form-model-item label="Address"  ref="address" prop="address">
-      <a-input v-model="form.address" />
-    </a-form-model-item>
+      <!-- GN Area Selection Input -->
+      <a-form-model-item label="GN area"  ref="gn" prop="gn">
+        <a-select v-model="form.gn" placeholder="Please select GN area">
+          <a-select-option v-for="gn in gnArea" :key="gn">
+            {{ gn }}
+          </a-select-option>
+        </a-select>
+      </a-form-model-item>
 
-    <!-- District Selection Input -->
-    <a-form-model-item label="District"  ref="district" prop="district">
-      <a-select v-model="form.district" placeholder="Please select district">
-        <a-select-option v-for="dis in districts" :key="dis">
-          {{ dis }}
-        </a-select-option>
-      </a-select>
-    </a-form-model-item>
+      <!-- Serial No Input -->
+      <a-form-model-item label="Serial No">
+        <a-input v-model="form.serialno" placeholder="Searial no in the register" :disabled="true"/>
+      </a-form-model-item>
 
-    <!-- MOH Area Selection Input -->
-    <a-form-model-item label="MOH area"  ref="moh" prop="moh">
-      <a-select v-model="form.moh" placeholder="Please select MOH area">
-        <a-select-option v-for="moh in mohArea" :key="moh">
-          {{ moh }}
-        </a-select-option>
-      </a-select>
-    </a-form-model-item>
+      <!-- Important Details Input Text Area -->
+      <a-form-model-item label="Important">
+        <a-input v-model="form.important" type="textarea">
+          <a-tooltip slot="suffix" title="Extra information">
+            <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
+          </a-tooltip>
+        </a-input>
+      </a-form-model-item>
 
-    <!-- GN Area Selection Input -->
-    <a-form-model-item label="GN area"  ref="gn" prop="gn">
-      <a-select v-model="form.gn" placeholder="Please select GN area">
-        <a-select-option v-for="gn in gnArea" :key="gn">
-          {{ gn }}
-        </a-select-option>
-      </a-select>
-    </a-form-model-item>
-
-    <!-- Serial No Input -->
-    <a-form-model-item label="Serial No">
-      <a-input v-model="form.serialno" placeholder="Searial no in the register" :disabled="true"/>
-    </a-form-model-item>
-
-    <!-- Important Details Input Text Area -->
-    <a-form-model-item label="Important">
-      <a-input v-model="form.important" type="textarea">
-        <a-tooltip slot="suffix" title="Extra information">
-          <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
-        </a-tooltip>
-      </a-input>
-    </a-form-model-item>
-
-    <!-- Buttons -->
-    <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
-      <a-button type="primary" @click="onSubmit()">
-        Register
-      </a-button>
-      <a-button style="margin-left: 10px;" @click="clearForm()">
-        Clear
-      </a-button>
-    </a-form-model-item>
-  </a-form-model>
-</div>
+      <!-- Buttons -->
+      <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
+        <a-button type="primary" @click="onSubmit()">
+          Register
+        </a-button>
+        <a-button style="margin-left: 10px;" @click="clearForm()">
+          Clear
+        </a-button>
+      </a-form-model-item>
+    </a-form-model>
+  </div>
 </template>
 
 

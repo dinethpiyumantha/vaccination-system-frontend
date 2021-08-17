@@ -1,6 +1,8 @@
 <template>
   <a-layout id="components-layout-demo-side" style="min-height: 100vh">
     <a-layout-sider v-model="collapsed" collapsible>
+
+      <!-- Logo -->
       <img
         src="../assets/logo-white.png"
         class="logo"
@@ -8,53 +10,101 @@
         height="50px"
         style="background: none"
       />
+
+      <!-- Name -->
       <span class="text-light" v-if="!collapsed">C19 System</span>
+
+      <!-- Side Menu -->
       <a-menu theme="dark" :default-selected-keys="['1']" mode="inline">
+
+        <!-- Home -->
         <a-menu-item key="1">
           <router-link to="/">
             <a-icon type="home" />
             <span>Home</span>
           </router-link>
         </a-menu-item>
+
+        <!-- People -->
         <a-sub-menu key="sub0">
-          <span slot="title"><a-icon type="user" /><span>People</span></span>
-          <a-menu-item key="2"
-            ><router-link to="/persons"> View All </router-link></a-menu-item
-          >
-          <a-menu-item key="3"
-            ><router-link to="/add-person">
-              Add New Person
-            </router-link></a-menu-item
-          >
+          <span slot="title">
+            <a-icon type="team" />
+            <span>People</span>
+          </span>
+          <!-- View All -->
+          <a-menu-item key="2">
+            <router-link to="/persons"> View All People</router-link>
+          </a-menu-item>
+          <!-- Add New Person -->
+          <a-menu-item key="3">
+            <router-link to="/add-person">Add New Person</router-link>
+          </a-menu-item>
+          <!-- Deleted People -->
           <a-menu-item key="4">
-            <router-link to="/deleted-persons">
-              Deleted People
-            </router-link>
+            <router-link to="/deleted-persons">Deleted People</router-link>
           </a-menu-item>
         </a-sub-menu>
-        <a-menu-item key="5">
-          <a-icon type="desktop" />
-          <span>Vaccines</span>
-        </a-menu-item>
+
+        <!-- Vaccines -->
         <a-sub-menu key="sub1">
-          <span slot="title"><a-icon type="user" /><span>Doctors</span></span>
-          <a-menu-item key="6"> Tom </a-menu-item>
-          <a-menu-item key="7"> Bill </a-menu-item>
-          <a-menu-item key="8"> Alex </a-menu-item>
+          <span slot="title">
+            <a-icon type="medicine-box" />
+            <span>Vaccines</span>
+          </span>
+          <!-- View All Vaccines -->
+          <a-menu-item key="5">
+            <router-link to="/persons"> View All Vaccines</router-link>
+          </a-menu-item>
+          <!-- Add New Vaccine -->
+          <a-menu-item key="6">
+            <router-link to="/add-person">Add New Vaccine</router-link>
+          </a-menu-item>
         </a-sub-menu>
+
+        <!-- Doctors -->
         <a-sub-menu key="sub2">
-          <span slot="title"><a-icon type="team" /><span>Nurses</span></span>
-          <a-menu-item key="9"> Team 1 </a-menu-item>
-          <a-menu-item key="10"> Team 2 </a-menu-item>
+          <span slot="title">
+            <a-icon type="user" />
+            <span>Doctors</span>
+          </span>
+          <!-- View All Doctors -->
+          <a-menu-item key="7">
+            <router-link to="/persons"> View All Doctors</router-link>
+          </a-menu-item>
+          <!-- Add New Doctor -->
+          <a-menu-item key="8">
+            <router-link to="/add-person">Add New Doctor</router-link>
+          </a-menu-item>
         </a-sub-menu>
+
+
+        <!-- Nurses -->
+        <a-sub-menu key="sub3">
+          <span slot="title">
+            <a-icon type="user" />
+            <span>Nurses</span>
+          </span>
+          <!-- View All Nurses -->
+          <a-menu-item key="9">
+            <router-link to="/persons"> View All Nurses</router-link>
+          </a-menu-item>
+          <!-- Add New Nurse -->
+          <a-menu-item key="10">
+            <router-link to="/add-person">Add New Nurse</router-link>
+          </a-menu-item>
+        </a-sub-menu>
+
+        <!-- Reports -->
         <a-menu-item key="11">
           <router-link to="/reports">
             <a-icon type="file" />
             <span>Reports</span>
           </router-link>
         </a-menu-item>
+
       </a-menu>
     </a-layout-sider>
+
     <a-layout>
       <a-layout-header style="background: #fff;" class="px-3">
         <a-popover title="Title">
@@ -81,12 +131,17 @@
         <div
           :style="{ padding: '24px', background: '#fff', minHeight: '70vh' }"
         >
-          <router-view />
+        <!-- Components changing -->
+          <router-view /> 
         </div>
       </a-layout-content>
       <a-layout-footer style="text-align: center">
         Vaccination System © {{ new Date().getFullYear() }} Created by Team
         DevAlgo
+
+        <div>
+          <router-link to="/vaccine">Vaccines All</router-link>
+        </div>
       </a-layout-footer>
     </a-layout>
   </a-layout>
