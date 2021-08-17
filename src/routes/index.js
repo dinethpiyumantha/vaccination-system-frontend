@@ -3,11 +3,13 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import Dashboad from '../components/Dashboad.vue';
-import Reports from '../components/Reports.vue';
+import Reports from '../components/reports/Reports.vue';
 
 import Persons from '../components/person-manage/PersonsView.vue';
 import AddPersons from '../components/person-manage/AddPersons.vue';
-import PersonById from '../components/person-manage/PersonById.vue';
+import UpdatePerson from '../components/person-manage/UpdatePerson.vue';
+import DeletedPersons from '../components/person-manage/PersonsViewDeleted.vue';
+import Vaccinate from '../components/person-manage/Vaccinate.vue';
 
 export default new Router({
     mode: 'history',
@@ -28,14 +30,24 @@ export default new Router({
         component: Persons
       },
       {
+        path: '/deleted-persons',
+        name: 'Deleted Persons',
+        component: DeletedPersons
+      },
+      {
         path: '/add-person',
         name: 'Add Persons',
         component: AddPersons
       },
       {
-        path: '/person/:id',
-        name: 'Single Person',
-        component: PersonById
+        path: '/update-person/:id',
+        name: 'Update Persons',
+        component: UpdatePerson
       },
+      {
+        path: '/vaccinate',
+        name: 'Vaccinate',
+        component: Vaccinate,
+      }
     ]
 });

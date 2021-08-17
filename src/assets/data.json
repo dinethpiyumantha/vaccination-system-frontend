@@ -1,0 +1,45 @@
+{
+    "data": {
+        "districts": [
+            "Jaffna",
+            "Kilinochchi",
+            "Mannar",
+            "Mullaitivu",
+            "Vavuniya",
+            "Puttalam",
+            "Kurunegala",
+            "Gampaha",
+            "Colombo",
+            "Kalutara",
+            "Anuradhapura",
+            "Polonnaruwa",
+            "Matale",
+            "Kandy",
+            "Nuwara Eliya",
+            "Kegalle",
+            "Ratnapura",
+            "Trincomalee",
+            "Batticaloa",
+            "Ampara",
+            "Badulla",
+            "Monaragala",
+            "Hambantota",
+            "Matara",
+            "Galle"
+        ],
+        "moh": [
+            "Ampara",
+            "Dehiattakandiya",
+            "Uhana",
+            "Mahaoya",
+            "Padiyathalawa",
+            "Lahugala",
+            "Damana"
+        ],
+        "gn": [
+            "madagalla",
+            "polpithigama",
+            "kubukulawa"
+        ]
+    }
+}
