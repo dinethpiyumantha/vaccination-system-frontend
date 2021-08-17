@@ -12,9 +12,9 @@
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, placeat quibusdam commodi itaque eaque id qui aliquam autem. Veritatis est illo corporis voluptatem. Praesentium, suscipit.</p>
                         <div class="row px-3">
                         <a-button type="primary" icon="download" @click="getPersonReport" :size="large" :loading="loading"> Generate Full Report </a-button>
-                    </div>
                         </div>
-                    </div>
+                            </div>
+                        </div>
                 </a-card>
             </div>
             <div class="col-6">
