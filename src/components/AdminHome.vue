@@ -86,7 +86,7 @@
           </span>
           <!-- View All Nurses -->
           <a-menu-item key="9">
-            <router-link to="/persons"> View All Nurses</router-link>
+            <router-link to="/nurses"> View All Nurses</router-link>
           </a-menu-item>
           <!-- Add New Nurse -->
           <a-menu-item key="10">
@@ -139,9 +139,6 @@
         Vaccination System © {{ new Date().getFullYear() }} Created by Team
         DevAlgo
 
-        <div>
-          <router-link to="/vaccine">Vaccines All</router-link>
-        </div>
       </a-layout-footer>
     </a-layout>
   </a-layout>
