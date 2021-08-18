@@ -53,7 +53,7 @@
           </span>
           <!-- View All Vaccines -->
           <a-menu-item key="5">
-            <router-link to="/persons"> View All Vaccines</router-link>
+            <router-link to="/vaccine"> View All Vaccines</router-link>
           </a-menu-item>
           <!-- Add New Vaccine -->
           <a-menu-item key="6">
@@ -139,9 +139,7 @@
         Vaccination System © {{ new Date().getFullYear() }} Created by Team
         DevAlgo
 
-        <div>
-          <router-link to="/vaccine">Vaccines All</router-link>
-        </div>
+    
       </a-layout-footer>
     </a-layout>
   </a-layout>
