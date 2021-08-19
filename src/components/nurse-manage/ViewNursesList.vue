@@ -237,6 +237,11 @@
                     }
                 }
             },
+
+            //search function
+            onSearch(value){
+                console.log(value);
+            },
             //openNotificationSuccess() ???
 
             //openNotificationUnsuccess() ???

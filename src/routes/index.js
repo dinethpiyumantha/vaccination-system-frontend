@@ -13,7 +13,8 @@ import Vaccinate from '../components/person-manage/Vaccinate.vue';
 
 //import components related to Nurse-management
 import NursesList from '../components/nurse-manage/ViewNursesList';
-// import AddNurse from '../components/nurse-manage/AddNurse';
+import AddNurse from '../components/nurse-manage/AddNurse'; // import AddNurse from '../components/nurse-manage/AddNurse';
+
 
 export default new Router({
     mode: 'history',
@@ -53,11 +54,17 @@ export default new Router({
         name: 'Vaccinate',
         component: Vaccinate,
       },
+
       //routes of nurse-manage
       {
         path: '/nurses', //router name that needs to be appeared in the URL when user click on nursesList view component
         name: 'allNurses', //this name is useful in breadcrumbs(breadcrumb- a secondary navigation system that shows user's location in a website/webapp)
         component: NursesList,
-      }
+      },
+      {
+        path: '/add-nurse',
+        name: 'addNewNurse',
+        component: AddNurse,
+      },
     ] 
 });
