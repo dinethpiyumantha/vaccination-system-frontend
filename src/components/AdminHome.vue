@@ -90,7 +90,7 @@
           </a-menu-item>
           <!-- Add New Nurse -->
           <a-menu-item key="10">
-            <router-link to="/add-person">Add New Nurse</router-link>
+            <router-link to="/add-nurse">Add New Nurse</router-link>
           </a-menu-item>
         </a-sub-menu>
 
