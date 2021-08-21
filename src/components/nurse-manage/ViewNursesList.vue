@@ -81,11 +81,24 @@
     </a-table>
     <!--when 1 row selected-> Model view including it's title-->
     <div>
-        <a-modal v-model="visible" title="Nurse-xxxx" on-ok="handleOk">
+        <a-modal v-model="visible" :title="'Nurse - '+ model.name" on-ok="handleOk">
             <!--model view content-->
+            <div class="row"><div class="col-4"><b>Nurse_ID: </b></div><div class="col-8"><p>{{model.nurse_no}}</p></div></div>
             <div class="row"><div class="col-4"><b>Name: </b></div><div class="col-8"><p>{{model.name}}</p></div></div>
-            <hr>
+            <div class="row"><div class="col-4"><b>joined_date: </b></div><div class="col-8"><p>{{model.joined_date}}</p></div></div>
+            <div class="row"><div class="col-4"><b>National ID(NIC): </b></div><div class="col-8"><p>{{model.NIC}}</p></div></div>
+            <div class="row"><div class="col-4"><b>Age: </b></div><div class="col-8"><p>{{model.age}}</p></div></div>
             <div class="row"><div class="col-4"><b>Gender: </b></div><div class="col-8"><p>{{model.gender}}</p></div></div>
+            <div class="row"><div class="col-4"><b>Phone No: </b></div><div class="col-8"><p>{{model.phone_no}}</p></div></div>
+            <div class="row"><div class="col-4"><b>E-mail: </b></div><div class="col-8"><p>{{model.email}}</p></div></div>
+            <div class="row"><div class="col-4"><b>Nurse_type: </b></div><div class="col-8"><p>{{model.nurse_type}}</p></div></div>
+            <div class="row"><div class="col-4"><b>Working Hospital: </b></div><div class="col-8"><p>{{model.working_hospital}}</p></div></div>
+            <div class="row"><div class="col-4"><b>Permanent Address: </b></div><div class="col-8"><p>{{model.permanent_address}}</p></div></div>
+            <hr>
+            <div class="row"><div class="col-4"><b>Shift: </b></div><div class="col-8"><p>{{model.Shift}}</p></div></div>
+            <div class="row"><div class="col-4"><b>From: </b></div><div class="col-8"><p>{{model.From}}</p></div></div>
+            <div class="row"><div class="col-4"><b>To: </b></div><div class="col-8"><p>{{model.To}}</p></div></div>
+            <div class="row"><div class="col-4"><b>Special Note: </b></div><div class="col-8"><p>{{model.specialNote}}</p></div></div>
        
             <!--model view footer-->  
             <template slot="footer">
@@ -111,6 +124,23 @@
     //get all column fields with their Sort & filter options into one Const Array variable (Title: frontend columnName, dataIndex: DB columnName)
     const columns = [
         {
+            title: "Nurse_ID",
+            dataIndex: "nurse_no",
+            key: 'nurse_no',
+            sorter: (a, b) => {
+            let nurseNoA = a.nurse_no.toUpperCase();
+            let nurseNoB = b.nurse_no.toUpperCase();
+            if (nurseNoA < nurseNoB) {
+                return -1;
+            }
+            if (nurseNoA > nurseNoB) {
+                return 1;
+            }
+            return 0;
+            },
+            sortDirections: ["descend", "ascend"],
+        },
+        {
             title: 'Name',
             dataIndex: 'name', //column names in our DB table should be given in dataIndexes
             // sorter: true,  //??
@@ -129,6 +159,12 @@
             sortDirections: ["descend", "ascend"],
         },
         {
+            title: 'Age',
+            dataIndex: 'age',
+            sorter: (a,b) => a.age - b.age,
+            sortDirections: ["descend", "ascend"],
+        },
+        {
             title: 'Gender',
             dataIndex: 'gender',
             filters: [
@@ -136,6 +172,33 @@
                 { text: 'Female', value: 'female' },
             ],
             onFilter: (value, recordObj) => recordObj.gender.indexOf(value) == 0, //this is a must
+        },
+        {
+            title: 'Contact No',
+            dataIndex: 'phone_no',
+        },
+        {
+            title: 'Nurse_type',
+            dataIndex: 'nurse_type',
+        },
+        {
+            title: 'Shift',
+            dataIndex: 'Shift',
+        },
+        // {
+        //     title: 'From',
+        //     dataIndex: 'From',
+        // },
+        // {
+        //     title: 'To',
+        //     dataIndex: 'To',
+        // },
+        {
+            title: "",
+            key: "id",
+            fixed: "right",
+            width: 100,
+            scopedSlots: { customRender: "action" },
         },
     ];
 
