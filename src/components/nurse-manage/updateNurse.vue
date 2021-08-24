@@ -70,7 +70,7 @@
             <strong>
             <div class="row"><div class="cardTimes"><span class="col-5">Morning Shift:</span><span class="col-7">7.00 am - 1.00 pm</span></div></div><br>
             <div class="row"><div class="cardTimes"><span class="col-5">Evening Shift:</span><span class="col-7">1.00 pm - 7.00 pm</span></div></div><br>
-            <div class="row"><div class="cardTimes"><span class="col-5">Night Shift:</span><span class="col-7 ml-4">7.00 pm - 7.00 pm</span></div></div><br>
+            <div class="row"><div class="cardTimes"><span class="col-5">Night Shift:</span><span class="col-7 ml-4">7.00 pm - 7.00 am</span></div></div><br>
             </strong>
           </div><br>
 
