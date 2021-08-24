@@ -168,8 +168,8 @@
             title: 'Gender',
             dataIndex: 'gender',
             filters: [
-                { text: 'Male', value: 'male' },
-                { text: 'Female', value: 'female' },
+                { text: 'Male', value: 'Male' },
+                { text: 'Female', value: 'Female' },
             ],
             onFilter: (value, recordObj) => recordObj.gender.indexOf(value) == 0, //this is a must
         },
