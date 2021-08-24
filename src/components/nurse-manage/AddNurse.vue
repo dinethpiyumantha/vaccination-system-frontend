@@ -17,11 +17,11 @@
             <a-input v-model="nurseForm.name" type="text" autocomplete="off" />
           </a-form-model-item>
 
-          <a-form-model-item label="Joined Date">
+          <a-form-model-item has-feedback label="Joined Date" prop="joined_date">
             <a-date-picker v-model="nurseForm.joined_date" style="width: 100%"></a-date-picker>
           </a-form-model-item>
 
-          <a-form-model-item label="National ID(NIC)" has-feedback>
+          <a-form-model-item label="National ID(NIC)" has-feedback prop="NIC">
             <a-input v-model="nurseForm.NIC" placeholder="xxxxxxxxxV"></a-input>
           </a-form-model-item>
 
@@ -29,22 +29,22 @@
             <a-input v-model.number="nurseForm.age" placeholder="Age" />
           </a-form-model-item>
 
-          <a-form-model-item label="Gender">
-            <a-select v-model="nurseForm.gender" placeholder="select gender">
+          <a-form-model-item label="Gender" prop="gender" has-feedback>
+            <a-select v-model="nurseForm.gender" placeholder="select gender" >
               <a-select-option value="Female">Female</a-select-option>
               <a-select-option value="Male">Male</a-select-option>
             </a-select>
           </a-form-model-item>
 
-          <a-form-model-item label="Phone No">
+          <a-form-model-item label="Phone No" prop="phone_no" has-feedback>
             <a-input v-model = "nurseForm.phone_no" placeholder=" XXXXXXXXXX" ></a-input>
           </a-form-model-item>
 
-          <a-form-model-item label="E-mail">
+          <a-form-model-item label="E-mail" prop="email" has-feedback>
             <a-input v-model = "nurseForm.email" placeholder="abc@gmail.com"></a-input>
           </a-form-model-item>
 
-          <a-form-model-item label="Nurse_type">
+          <a-form-model-item label="Nurse_type" prop="nurse_type" has-feedback>
             <a-select v-model="nurseForm.nurse_type">
               <a-select-option value="Trainee">Trainee</a-select-option>
               <a-select-option value="Full-time">Full-time</a-select-option>
@@ -53,11 +53,11 @@
             </a-select>
           </a-form-model-item>
 
-          <a-form-model-item label="Working Hospital">
+          <a-form-model-item label="Working Hospital" prop="working_hospital" has-feedback>
             <a-input v-model="nurseForm.working_hospital" placeholder="Ex: National Hospital, Colombo"></a-input>
           </a-form-model-item>
 
-          <a-form-model-item label="Residencial Address">
+          <a-form-model-item label="Residencial Address" prop="permanent_address" has-feedback>
             <a-input v-model="nurseForm.permanent_address" type="textarea" placeholder="Type Residencial address here"></a-input>
           </a-form-model-item>
         </div>
@@ -74,7 +74,7 @@
             </strong>
           </div><br>
 
-          <a-form-item label="Shift" has-feedback validate-status="error" :label-col="rightLabelCol" :wrapperCol="rightWrapCol">
+          <a-form-model-item label="Shift" prop="Shift" has-feedback :label-col="rightLabelCol" :wrapperCol="rightWrapCol">
             <a-select v-model="nurseForm.Shift" placeholder="select shift">
               <a-select-option value="General">
                 General
@@ -89,19 +89,19 @@
                 Night shift
               </a-select-option>
             </a-select>
-          </a-form-item>
+          </a-form-model-item>
 
-          <a-form-item label="From" has-feedback validate-status="warning" :label-col="rightLabelCol" :wrapperCol="rightWrapCol">
+          <a-form-model-item label="From" prop="From" has-feedback validate-status="warning" :label-col="rightLabelCol" :wrapperCol="rightWrapCol">
             <a-date-picker v-model="nurseForm.From" style="width: 100%" />
-          </a-form-item>
+          </a-form-model-item>
 
-          <a-form-item label="To" has-feedback validate-status="warning" :label-col="rightLabelCol" :wrapperCol="rightWrapCol">
+          <a-form-model-item label="To" prop="To" has-feedback validate-status="warning" :label-col="rightLabelCol" :wrapperCol="rightWrapCol">
             <a-date-picker v-model="nurseForm.To" style="width: 100%" />
-          </a-form-item>
+          </a-form-model-item>
 
-          <a-form-item label="Special Note" :label-col="rightLabelCol" :wrapperCol="rightWrapCol">
+          <a-form-model-item label="Special Note" :label-col="rightLabelCol" :wrapperCol="rightWrapCol">
             <a-input v-model="nurseForm.specialNote" type="textarea" placeholder="Type special notes about the schedule"></a-input>
-          </a-form-item>
+          </a-form-model-item>
           
           <!--form buttons-->
           <a-form-model-item :wrapper-col="{ span: 14, offset: 3 }">
@@ -124,6 +124,7 @@
 
 export default {
   data() {
+    //checkAge() function to validate Age input
     let checkPending;
     let checkAge = (rule, value, callback) => {
       clearTimeout(checkPending);
@@ -142,25 +143,29 @@ export default {
         }
       }, 1000);
     };
-    // let validatePass = (rule, value, callback) => {
-    //   if (value === '') {
-    //     callback(new Error('Please input the Nurse_ID'));
+    // //function to validate NIC
+    // let NICValidator = (rule, value, callback) => {
+    //   const regex = new RegExp("^([0-9]{9}[x|X|v|V]|[0-9]{12})$");
+    //   let result = regex.test(value);
+    //   if(result){
+    //     callback();
+    //   }else{
+    //     callback(new Error('Please enter valid NIC number'));
+    //   }
+    // };
+    // //function to validate phone no
+    // let SLPhoneValidator = (rule, value, callback) => {
+    //   const regex = /^(?:0|94|\+94)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|912)(0|2|3|4|5|7|9)|7(0|1|2|4|5|6|7|8)\d)\d{6}$/;
+    //   let result = regex.test(value);
+    //   if (!result) {
+    //     callback(new Error('Please input valid phone number again'));
+    //   } else if (value === ''){
+    //     callback();
     //   } else {
-    //     if (this.nurseForm.name !== '') {
-    //       this.$refs.nurseForm.validateField('name');
-    //     }
     //     callback();
     //   }
     // };
-    // let validatePass2 = (rule, value, callback) => {
-    //   if (value === '') {
-    //     callback(new Error('Please input the Name'));
-    //   } else if (value !== this.nurseForm.nurse_no) {
-    //     callback(new Error("Two inputs don't match!"));
-    //   } else {
-    //     callback();
-    //   }
-    // };
+
     return {
       labelCol: { span: 7},
       wrapperCol: { span: 12},
@@ -184,9 +189,20 @@ export default {
             specialNote:'',
       },
       rules: {
-        nurse_no: [{ trigger: 'change' }],
+        nurse_no: [{ required: true, trigger: 'change' }],
         name: [{required: true, trigger: 'change' }],
         age: [{required: true, validator: checkAge, trigger: 'change' }],
+        joined_date: [{required: true, trigger: 'change' }],
+        NIC: [{required: true,  trigger: 'change' }],
+        gender: [{required: true, trigger: 'change' }],
+        phone_no: [{required: true,  trigger: 'change' }],
+        nurse_type: [{required: true, trigger: 'change' }],
+        working_hospital: [{required: true, trigger: 'change' }],
+        permanent_address: [{required: true, trigger: 'change' }],
+        Shift: [{required: true, trigger: 'change' }],
+        To: [{required: true, trigger: 'change' }],
+        From: [{required: true, trigger: 'change' }],
+
       },
       // layout: {
       //   labelCol: { span: 4 },
@@ -200,11 +216,13 @@ export default {
         if (valid) {
           // alert('submit!');
           //POST form data into DB
-          this.$http.post('http://localhost:8001/api/nurses/add', this.nurseForm).then(function (response){
+          this.$http.post('http://127.0.0.1:8001/api/nurses/add', this.nurseForm).then(function (response){
             this.openNotificationSuccess("Nurse added successfully!", "Entry added");
             console.log(response);
-          }
-          );
+          }, (error)=> {
+            this.openNotificationUnsuccess("insert unsuccessful");//server error
+            console.log(error);
+          });
         } else {//else means form validation is unsuccessful
           this.openNotificationUnsuccess("validation unsuccessful");
           console.log('error submit!!');

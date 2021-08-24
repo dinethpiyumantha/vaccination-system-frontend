@@ -279,8 +279,24 @@
                 2000);
             },
             //handleUpdate in modal window method
+            handleUpdate(){
+                this.loading = true;
+                setTimeout(() => {
+                    this.visible = false;
+                    this.loading = false;
+                    this.$router.push({path: '/update-nurse/'+this.model.id});
+                }, 500);
+            },
 
             //handleDelete in modal window method
+            handleDelete(){
+                this.loading = true;
+                setTimeout(() => {
+                    this.visible =false;
+                    this.loading = false;
+                    this.showDeleteConfirm(); //to popup a confirmation box prior to deletion
+                }, 500);
+            },
 
             //handleCancel in modal window method
             handleCancel(){
@@ -305,11 +321,68 @@
             onSearch(value){
                 console.log(value);
             },
-            //openNotificationSuccess() ???
-
-            //openNotificationUnsuccess() ???
+            //openNotificationSuccess() //for Delete function
+            openNotificationSuccess(message, description) {
+                /**
+                 * Notification toast success
+                 */
+                this.$notification.open({
+                    message: message,
+                    duration: 5,
+                    icon: <a-icon type="like" theme="filled" style="color: #27ae60"/>,
+                    description:description,
+                    onClick: () => {
+                    console.log('Notification Clicked!');
+                    },
+                });
+                // this.clearForm();
+            },
+            //openNotificationUnsuccess()
+            openNotificationUnsuccess(message, description) {
+                /**
+                 * Notification toast unsuccess
+                 */
+                this.$notification.open({
+                    message: message,
+                    duration: 8,
+                    icon: <a-icon type="dislike" theme="filled" style="color: #c0392b"/>,
+                    description:description,
+                    onClick: () => {
+                        console.log('Notification Clicked!');
+                    },
+                });
+            },
 
             //showConfirm() method to confirm deletion of a row
+            showDeleteConfirm() {
+                this.$confirm({
+                    title: 'Are you sure to delete nurse - '+ this.model.nurse_no+'\n'+'('+ this.model.name+ ')'+ '?',
+                    content: "Click 'No' if you don't really want to delete this nurse",
+                    okText: 'Yes',
+                    okType: 'danger',
+                    cancelText: 'No',
+                    onOk: () => {
+                        this.$http.delete("http://127.0.0.1:8001/api/nurses/delete/" +this.model.id).then(
+                            function(response){
+                                //popup successful msg
+                                this.openNotificationSuccess('Successfully Deleted', 'Nurse'+ this.model.nurse_no +' record deleted.')
+                                this.data.splice((this.data.findIndex((e) => e === this.model)), 1);
+                                console.log(response);
+                                this.$router.push({path: '/'});
+                                this.$router.push({path: '/nurses'});
+                                //alert("nurse deleted");
+                            }, (error) => {
+                                this.openNotificationUnsuccess('Error', 'Nurse'+ this.model.nurse_no +' record cannot delete. Operation occured an error !');
+                                console.log(error);
+                                alert("delete unsuccesfful");
+                            }
+                        );
+                    },
+                    onCancel() {
+                    console.log('Cancel');
+                    },
+                });
+            },
         }
 
     }

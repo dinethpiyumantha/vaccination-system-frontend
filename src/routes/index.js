@@ -14,7 +14,7 @@ import Vaccinate from '../components/person-manage/Vaccinate.vue';
 //import components related to Nurse-management
 import NursesList from '../components/nurse-manage/ViewNursesList';
 import AddNurse from '../components/nurse-manage/AddNurse'; // import AddNurse from '../components/nurse-manage/AddNurse';
-
+import UpdateNurse from '../components/nurse-manage/UpdateNurse';
 
 export default new Router({
     mode: 'history',
@@ -63,8 +63,13 @@ export default new Router({
       },
       {
         path: '/add-nurse',
-        name: 'addNewNurse',
+        name: 'Add New Nurse',
         component: AddNurse,
       },
+      {
+        path: '/update-nurse/:id',
+        name: 'Update Nurse', 
+        component: UpdateNurse,
+      }
     ] 
 });
