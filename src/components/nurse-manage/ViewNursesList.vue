@@ -365,12 +365,11 @@
                         this.$http.delete("http://127.0.0.1:8001/api/nurses/delete/" +this.model.id).then(
                             function(response){
                                 //popup successful msg
-                                this.openNotificationSuccess('Successfully Deleted', 'Nurse'+ this.model.nurse_no +' record deleted.')
+                                this.openNotificationSuccess('Successfully Deleted', 'Nurse - '+ this.model.nurse_no +' deleted.');
+                                setTimeout("location.reload(true);", 1000); //this will reload the page
                                 this.data.splice((this.data.findIndex((e) => e === this.model)), 1);
-                                console.log(response);
-                                this.$router.push({path: '/'});
-                                this.$router.push({path: '/nurses'});
-                                //alert("nurse deleted");
+                                console.log(response);                             
+                                alert("nurse deleted");
                             }, (error) => {
                                 this.openNotificationUnsuccess('Error', 'Nurse'+ this.model.nurse_no +' record cannot delete. Operation occured an error !');
                                 console.log(error);
