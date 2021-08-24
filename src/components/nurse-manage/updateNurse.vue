@@ -144,28 +144,28 @@ export default {
       }, 1000);
     };
 
-    // //function to validate NIC
-    // let NICValidator = (rule, value, callback) => {
-    //   const regex = new RegExp("^([0-9]{9}[x|X|v|V]|[0-9]{12})$");
-    //   let result = regex.test(value);
-    //   if(result){
-    //     callback();
-    //   }else{
-    //     callback(new Error('Please enter valid NIC number'));
-    //   }
-    // };
-    // //function to validate phone no
-    // let SLPhoneValidator = (rule, value, callback) => {
-    //   const regex = /^(?:0|94|\+94)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|912)(0|2|3|4|5|7|9)|7(0|1|2|4|5|6|7|8)\d)\d{6}$/;
-    //   let result = regex.test(value);
-    //   if (!result) {
-    //     callback(new Error('Please input valid phone number again'));
-    //   } else if (value === ''){
-    //     callback();
-    //   } else {
-    //     callback();
-    //   }
-    // };
+    //function to validate NIC
+    let NICValidator = (rule, value, callback) => {
+      const regex = new RegExp("^([0-9]{9}[x|X|v|V]|[0-9]{12})$");
+      let result = regex.test(value);
+      if(result){
+        callback();
+      }else{
+        callback(new Error('Please enter valid NIC number'));
+      }
+    };
+    //function to validate phone no
+    let SLPhoneValidator = (rule, value, callback) => {
+      const regex = /^(?:0|94|\+94)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|912)(0|2|3|4|5|7|9)|7(0|1|2|4|5|6|7|8)\d)\d{6}$/;
+      let result = regex.test(value);
+      if (!result) {
+        callback(new Error('Please input valid phone number again'));
+      } else if (value === ''){
+        callback();
+      } else {
+        callback();
+      }
+    };
 
     return {
       disabled: false,
@@ -195,9 +195,9 @@ export default {
         name: [{required: true, trigger: 'change' }],
         age: [{required: true, validator: checkAge, trigger: 'change' }],
         joined_date: [{required: true, trigger: 'change' }],
-        NIC: [{required: true,  trigger: 'change' }],
+        NIC: [{required: true, validator: NICValidator, trigger: 'change' }],
         gender: [{required: true, trigger: 'change' }],
-        phone_no: [{required: true,  trigger: 'change' }],
+        phone_no: [{required: true, validator: SLPhoneValidator, trigger: 'change' }],
         nurse_type: [{required: true, trigger: 'change' }],
         working_hospital: [{required: true, trigger: 'change' }],
         permanent_address: [{required: true, trigger: 'change' }],
