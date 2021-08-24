@@ -8,6 +8,17 @@ Covid-19 Vaccination Management System is the project that we decided to develop
 
 
 ***
+
+| Developer     | Responsible Function           |
+| ------------- |:-------------:| -----:|
+| Dineth      | Person Management System |
+| Sandani      | Doctor Management System |
+| Venura      | Vaccine Management System |
+| Imashi      | Nurse Management System |
+
+***
+
+
 ## Project setup
 ```
 npm install
