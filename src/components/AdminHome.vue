@@ -125,8 +125,12 @@
       </a-layout-header>
       <a-layout-content style="margin: 0">
         <a-breadcrumb style="background: #fff; padding: 10px 24px">
-          <a-breadcrumb-item>User</a-breadcrumb-item>
-          <a-breadcrumb-item>Bill</a-breadcrumb-item>
+          
+          <a-breadcrumb-item v-for="(item, index) in items" :key="index">
+            <router-link :to="item.path">
+              {{item.name}}
+            </router-link>
+          </a-breadcrumb-item>
         </a-breadcrumb>
         <div
           :style="{ padding: '24px', background: '#fff', minHeight: '70vh' }"
@@ -153,8 +157,20 @@ export default {
   data() {
     return {
       collapsed: false,
+      items: []
     };
   },
+  watch: {
+    $route() {
+      this.getRoute();
+    }
+  },
+  methods: {
+    getRoute() {
+      this.items = this.$route.matched;
+      console.log(this.$route);
+    }
+  }
 };
 </script>
 

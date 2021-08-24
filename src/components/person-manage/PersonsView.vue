@@ -2,11 +2,16 @@
   <div>
     <h3>Registered People</h3>
     <div class="row px-3 my-4">
+      <!-- Search input and Filter dropdowns -->
+      <!-- Search -->
       <a-input-search
         placeholder="Search a person"
         style="width: 320px; margin: 0 10px 0 0"
+        v-model="search"
         @search="onSearch"
       />
+
+      <!-- Filter by district -->
       <a-select
         show-search
         placeholder="Select a district"
@@ -15,11 +20,10 @@
         :filter-option="filterOption"
         @focus="handleFocus"
         @blur="handleBlur"
-        @change="handleChange"
+        v-model="district"
       >
-        <a-select-option value="jack"> Jack </a-select-option>
-        <a-select-option value="lucy"> Lucy </a-select-option>
-        <a-select-option value="tom"> Tom </a-select-option>
+        <a-select-option value=""> - Not Selected - </a-select-option>
+        <a-select-option v-for="district in districts" :key="district" :value="district"> {{district.toLowerCase()}} </a-select-option>
       </a-select>
 
       <a-select
@@ -28,13 +32,10 @@
         option-filter-prop="children"
         style="width: 200px; margin: 0 10px 0 0"
         :filter-option="filterOption"
-        @focus="handleFocus"
-        @blur="handleBlur"
-        @change="handleChange"
+        v-model="mohA"
       >
-        <a-select-option value="jack"> Jack </a-select-option>
-        <a-select-option value="lucy"> Lucy </a-select-option>
-        <a-select-option value="tom"> Tom </a-select-option>
+        <a-select-option value=""> - Not Selected - </a-select-option>
+        <a-select-option v-for="area in mohArea" :key="area" :value="area"> {{area.toLowerCase()}} </a-select-option>
       </a-select>
 
       <a-select
@@ -43,18 +44,16 @@
         option-filter-prop="children"
         style="width: 200px; margin: 0 10px 0 0"
         :filter-option="filterOption"
-        @focus="handleFocus"
-        @blur="handleBlur"
-        @change="handleChange"
+        v-model="gnA"
       >
-        <a-select-option value="jack"> Jack </a-select-option>
-        <a-select-option value="lucy"> Lucy </a-select-option>
-        <a-select-option value="tom"> Tom </a-select-option>
+        <a-select-option value=""> - Not Selected - </a-select-option>
+        <a-select-option v-for="area in gnArea" :key="area" :value="area"> {{area.toLowerCase()}} </a-select-option>
       </a-select>
 
+      <!-- Filter b vaccine -->
       <a-select
         show-search
-        placeholder="By vacciene"
+        placeholder="By vaccine"
         option-filter-prop="children"
         style="width: 150px; margin: 0 10px 0 0"
         :filter-option="filterOption"
@@ -71,7 +70,7 @@
     <!-- Table View -->
     <a-table
       :columns="columns"
-      :data-source="data"
+      :data-source="searchResult"
       @change="onChange"
       style="padding: 0px"
       :customRow="customRow"
@@ -82,7 +81,7 @@
     </a-table>
     <!-- View Model -->
     <div>
-      <a-modal v-model="visible" title="Person Details" on-ok="handleOk" :centered="true" width="700px">
+      <a-modal v-model="visible" :title="'Person Details'" on-ok="handleOk" :centered="true" width="700px">
         <template slot="footer">
           
           <a-button
@@ -249,6 +248,7 @@ export default {
      * Data attributes
      */
     return {
+      hello: 'Hello',
       data: [],
       columns,
       loading: false,
@@ -256,6 +256,10 @@ export default {
       districts : LocalData.data.districts,
       mohArea: LocalData.data.moh,
       gnArea: LocalData.data.gn,
+      search: '',
+      district: '',
+      mohA: '',
+      gnA: '',
       model: {
         name: '',
         nic: '',
@@ -370,16 +374,16 @@ export default {
     
     showConfirm() {
       this.$confirm({
-        title: 'Do you want to delete these items?' + this.model.serialno + '('+this.model.id+')',
-        content: 'When clicked the OK button, this dialog will be closed after 1 second',
+        title: 'Are you sure?',
+        content: 'Do you really want to delete this record ('+this.model.serialno+')? This process cannot be undone.',
         onOk: () => {
-          this.$http.delete("http://127.0.0.1:8000/api/person/delete/" + this.model.id).then(
+          this.$http.delete("http://127.0.0.1:8000/api/person/delete" + this.model.id).then(
             function(response) {
-              this.openNotificationSuccess('Successfully Deleted', 'Person'+ this.model.serialno +' record deleted.')
+              this.openNotificationSuccess('Successfull !', 'Person '+ this.model.serialno +' record deleted successfully.')
               this.data.splice((this.data.findIndex((e) => e === this.model)), 1);
               console.log(response);
             }, (error) => {
-              this.openNotificationUnsuccess('Error', 'Person'+ this.model.serialno +' record cannot delete. Operation occured an error !');
+              this.openNotificationUnsuccess("Server Error !", "Cannot delete this record. Please try again. Error : " + error.status + " " + error.statusText);
               console.log(error);
             }
           );
@@ -391,5 +395,12 @@ export default {
       });
     },
   },
+  computed: {
+    searchResult: function() {
+      return this.data.filter((item)=> {
+          return (item.name.toLowerCase().match(this.search.toLowerCase()) || item.nic.toLowerCase().match(this.search.toLowerCase()) || item.serialno.toLowerCase().match(this.search.toLowerCase())) && item.district.toLowerCase().match(this.district.toLowerCase()) && item.moh.toLowerCase().match(this.mohA.toLowerCase()) && item.gn.toLowerCase().match(this.gnA.toLowerCase());
+      });
+    },
+  }
 };
 </script>
