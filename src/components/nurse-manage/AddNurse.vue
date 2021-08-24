@@ -206,7 +206,7 @@ export default {
         NIC: [{required: true, validator: NICValidator, trigger: 'change' }],
         gender: [{required: true, trigger: 'change' }],
         phone_no: [{required: true, validator: SLPhoneValidator, trigger: 'change' }],
-        email: [{required:false, validator: emailValidator, trigger: 'change'}],
+        email: [{required: true, validator: emailValidator, trigger: 'change'}],
         nurse_type: [{required: true, trigger: 'change' }],
         working_hospital: [{required: true, trigger: 'change' }],
         permanent_address: [{required: true, trigger: 'change' }],
