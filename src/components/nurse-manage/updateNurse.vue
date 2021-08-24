@@ -166,6 +166,16 @@ export default {
         callback();
       }
     };
+    //function to validate E-mail
+    let emailValidator = (rule, value, callback) => {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      let result = regex.test(value);
+      if(result){
+        callback();
+      }else{
+        callback(new Error('Please enter valid E-mail address'));
+      }
+    };
 
     return {
       disabled: false,
@@ -198,6 +208,7 @@ export default {
         NIC: [{required: true, validator: NICValidator, trigger: 'change' }],
         gender: [{required: true, trigger: 'change' }],
         phone_no: [{required: true, validator: SLPhoneValidator, trigger: 'change' }],
+        email: [{required:false, validator: emailValidator, trigger: 'change'}],
         nurse_type: [{required: true, trigger: 'change' }],
         working_hospital: [{required: true, trigger: 'change' }],
         permanent_address: [{required: true, trigger: 'change' }],
