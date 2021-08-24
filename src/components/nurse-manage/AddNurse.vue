@@ -231,11 +231,11 @@ export default {
             this.openNotificationSuccess("Nurse added successfully!", "Entry added");
             console.log(response);
           }, (error)=> {
-            this.openNotificationUnsuccess("insert unsuccessful");//server error
+            this.openNotificationUnsuccess("insert unsuccessful" , "There can be another nurse with the same Nurse_no.");//server error
             console.log(error);
           });
         } else {//else means form validation is unsuccessful
-          this.openNotificationUnsuccess("validation unsuccessful");
+          this.openNotificationUnsuccess("validation unsuccessful", "");
           console.log('error submit!!');
           return false;
         }

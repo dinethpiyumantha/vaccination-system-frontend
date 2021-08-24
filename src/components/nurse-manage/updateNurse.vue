@@ -239,7 +239,7 @@ export default {
                 console.log(response);
                 this.$router.push({path: '/nurses'});
               }, (error) =>{
-                    this.openNotificationUnsuccess("Update unsuccessfull!", "Entry couldn't updated"); //server error
+                    this.openNotificationUnsuccess("Update unsuccessfull!", "There can be another nurse with the same Nurse_no."); //server error
                     console.log(error);
               });
             } else {//else means form validation is unsuccessful
