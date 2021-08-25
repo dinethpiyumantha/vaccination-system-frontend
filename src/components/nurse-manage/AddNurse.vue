@@ -230,6 +230,7 @@ export default {
           this.$http.post('http://127.0.0.1:8001/api/nurses/add', this.nurseForm).then(function (response){
             this.openNotificationSuccess("Nurse added successfully!", "Entry added");
             console.log(response);
+            this.resetForm();
           }, (error)=> {
             this.openNotificationUnsuccess("insert unsuccessful" , "There can be another nurse with the same Nurse_no.");//server error
             console.log(error);

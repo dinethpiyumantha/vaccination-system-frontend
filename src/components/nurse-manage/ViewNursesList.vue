@@ -28,10 +28,10 @@
             @blur="handleBlur"
             @change="handleChange"
         >
-            <a-select-option value="trainee">Trainee</a-select-option>
-            <a-select-option value="fullTime">Full-time</a-select-option>
-            <a-select-option value="seniorNurse">Senior_Nurse</a-select-option>
-            <a-select-option value="volunteering">Volunteering</a-select-option>
+            <a-select-option value="Trainee">Trainee</a-select-option>
+            <a-select-option value="Full-time">Full-time</a-select-option>
+            <a-select-option value="Senior_Nurse">Senior_Nurse</a-select-option>
+            <a-select-option value="Volunteering">Volunteering</a-select-option>
         </a-select>
 
         <a-select
@@ -93,7 +93,7 @@
             <div class="row"><div class="col-4"><b>E-mail: </b></div><div class="col-8"><p>{{model.email}}</p></div></div>
             <div class="row"><div class="col-4"><b>Nurse_type: </b></div><div class="col-8"><p>{{model.nurse_type}}</p></div></div>
             <div class="row"><div class="col-4"><b>Working Hospital: </b></div><div class="col-8"><p>{{model.working_hospital}}</p></div></div>
-            <div class="row"><div class="col-4"><b>Permanent Address: </b></div><div class="col-8"><p>{{model.permanent_address}}</p></div></div>
+            <div class="row"><div class="col-4"><b>Residencial Address: </b></div><div class="col-8"><p>{{model.permanent_address}}</p></div></div>
             <hr>
             <div class="row"><div class="col-4"><b>Shift: </b></div><div class="col-8"><p>{{model.Shift}}</p></div></div>
             <div class="row"><div class="col-4"><b>From: </b></div><div class="col-8"><p>{{model.From}}</p></div></div>
