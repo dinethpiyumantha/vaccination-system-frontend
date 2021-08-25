@@ -79,7 +79,7 @@
               <a-select-option value="General">
                 General
               </a-select-option>
-              <a-select-option value="Morining-shift">
+              <a-select-option value="Morning-shift">
                 Morning shift
               </a-select-option>
               <a-select-option value="Evening-shift">

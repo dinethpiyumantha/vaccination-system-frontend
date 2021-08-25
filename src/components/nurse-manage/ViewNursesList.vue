@@ -18,35 +18,44 @@
             @search="onSearch" 
         />
         <!--filter dropdowns-->
-        <a-select
-            show-search
-            placeholder="By Nurse_type"
-            option-filter-prop="children"
-            style="width: 270px; padding-right: 20px;"
-            :filter-option="filterOption"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            v-model="nurse_type"
-        >
-            <!--use the below code to make filter function work-->
-            <a-select-option value="">By Nurse_type</a-select-option>
-            <a-select-option v-for="nurse_type in nurse_types" :key="nurse_type" :value="nurse_type"> {{nurse_type.toLowerCase()}} </a-select-option>
-        </a-select>
+        <a-tooltip placement="top" class="components-a-tooltip-demo-placement">
+            <template slot="title">
+                <span>Filter by Nurse_type</span>
+            </template>          
+            <a-select
+                show-search
+                placeholder="By Nurse_type"
+                option-filter-prop="children"
+                style="width: 270px; padding-right: 20px;"
+                :filter-option="filterOption"
+                @focus="handleFocus"
+                @blur="handleBlur"
+                v-model="nurse_type"
+            >
+                <!--use the below code to make filter function work-->
+                <a-select-option value="">- Not selected - </a-select-option>
+                <a-select-option v-for="nurse_type in nurse_types" :key="nurse_type" :value="nurse_type"> {{nurse_type.toLowerCase()}} </a-select-option>
+            </a-select>
+        </a-tooltip>
 
-        <a-select
-            show-search
-            placeholder="By Shift_type"
-            option-filter-prop="children"
-            style="width: 270px; padding-right: 20px;"
-            :filter-option="filterOption"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            v-model="Shift"
-        >
-            <a-select-option value=""> By Shift_type</a-select-option>
-            <a-select-option v-for="Shift in Shifts" :key="Shift" :value="Shift"> {{Shift.toLowerCase()}} </a-select-option>
-
-        </a-select>
+        <a-tooltip placement="top" class="components-a-tooltip-demo-placement">
+            <template slot="title">
+                <span>Filter by Shift type</span>
+            </template>          
+            <a-select
+                show-search
+                placeholder="By Shift_type"
+                option-filter-prop="children"
+                style="width: 270px; padding-right: 20px;"
+                :filter-option="filterOption"
+                @focus="handleFocus"
+                @blur="handleBlur"
+                v-model="Shift"
+            >
+                <a-select-option value="">- Not Selected - </a-select-option>
+                <a-select-option v-for="Shift in Shifts" :key="Shift" :value="Shift"> {{Shift.toLowerCase()}} </a-select-option>
+            </a-select>
+        </a-tooltip>
 
         <!-- <a-select
             show-search
@@ -211,14 +220,15 @@
                 //return nurseData[] array which contains backend data
                 nurseData: [],
 
+                buttonWidth: 70,
                 pagination: { },
                 loading: false, //this is a must 
                 visible: false, //this is a must
                 //return column variable
                 columns,
                 //make arrays to show in filter dropdowns
-                nurse_types: ["Trainee", "Full-time", "Senior-nurse", "Volunteering"],
-                Shifts: ["General","Morining-shift","Evening_shift","night_shift"],
+                nurse_types: ["Trainee", "Full-time", "Senior_Nurse", "Volunteering"],
+                Shifts: ["General","Morning-shift","Evening-shift","Night-shift"],
                 genders: ["Female", "Male"],
                 //return the values to v-model attributes that we've set in Search, Filter functions
                 search: '',
@@ -402,6 +412,13 @@
     }
 </script>
 
-<style>
-
+<style scoped>
+    /*styles for Tool tip*/
+    .components-a-tooltip-demo-placement .ant-btn {
+        width: 70px;
+        text-align: center;
+        padding: 0;
+        margin-right: 8px;
+        margin-bottom: 8px;
+    }
 </style>
