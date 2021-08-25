@@ -12,7 +12,7 @@
     <div class="row px-3 my-4">
         <!--search bar-->
         <a-input-search 
-            placeholder="Search a nurse" 
+            placeholder="Search nurse by name" 
             style="width: 400px; margin: 0 10px 0 0"
             v-model="search" 
             @search="onSearch" 
@@ -22,14 +22,14 @@
             show-search
             placeholder="By Nurse_type"
             option-filter-prop="children"
-            style="width: 220px; padding-right: 20px;"
+            style="width: 270px; padding-right: 20px;"
             :filter-option="filterOption"
             @focus="handleFocus"
             @blur="handleBlur"
             v-model="nurse_type"
         >
             <!--use the below code to make filter function work-->
-            <a-select-option value=""> By Nurse_type </a-select-option>
+            <a-select-option value="">By Nurse_type</a-select-option>
             <a-select-option v-for="nurse_type in nurse_types" :key="nurse_type" :value="nurse_type"> {{nurse_type.toLowerCase()}} </a-select-option>
         </a-select>
 
@@ -37,19 +37,18 @@
             show-search
             placeholder="By Shift_type"
             option-filter-prop="children"
-            style="width: 220px; padding-right: 20px;"
+            style="width: 270px; padding-right: 20px;"
             :filter-option="filterOption"
             @focus="handleFocus"
             @blur="handleBlur"
-            @change="handleChange"
+            v-model="Shift"
         >
-            <a-select-option value="general">General</a-select-option>
-            <a-select-option value="night">Morning-shift</a-select-option>
-            <a-select-option value="evening">Evening-shift</a-select-option>
-            <a-select-option value="morining">Night-shift</a-select-option>
+            <a-select-option value=""> By Shift_type</a-select-option>
+            <a-select-option v-for="Shift in Shifts" :key="Shift" :value="Shift"> {{Shift.toLowerCase()}} </a-select-option>
+
         </a-select>
 
-        <a-select
+        <!-- <a-select
             show-search
             placeholder="By Gender"
             option-filter-prop="children"
@@ -57,11 +56,11 @@
             :filter-option="filterOption"
             @focus="handleFocus"
             @blur="handleBlur"
-            @change="handleChange"
+            v-model="gender"
         >
-            <a-select-option value="male">Male</a-select-option>
-            <a-select-option value="female">Female</a-select-option>
-        </a-select>
+            <a-select-option value=""> By Gender</a-select-option>
+            <a-select-option v-for="gender in genders" :key="gender" :value="gender"> {{gender.toLowerCase()}} </a-select-option>
+        </a-select> -->
     </div>
 
     <!--table structure-->
@@ -217,10 +216,15 @@
                 visible: false, //this is a must
                 //return column variable
                 columns,
-                //return the values to v-model attributes that we've set in Search, Filter functions
+                //make arrays to show in filter dropdowns
                 nurse_types: ["Trainee", "Full-time", "Senior-nurse", "Volunteering"],
+                Shifts: ["General","Morining-shift","Evening_shift","night_shift"],
+                genders: ["Female", "Male"],
+                //return the values to v-model attributes that we've set in Search, Filter functions
                 search: '',
-                nurse_type: '', 
+                gender: '', 
+                nurse_type: '', //user selecting option of Filter dropdown will be assigned to this attribute
+                Shift: '',
                 //return model object(which contains all DB retrieved data as an obj)
                 model: { 
                     nurse_no: '',
@@ -389,7 +393,8 @@
         computed: {
                 searchResult: function(){
                     return this.nurseData.filter((item) => {
-                        return (item.nurse_type.toLowerCase().match(this.nurse_type.toLowerCase())) && (item.name.toLowerCase().match(this.search.toLowerCase()));
+                        //dropdown selcted value or the searched value will be matched with the respective data in DB table
+                        return (item.gender.toLowerCase().match(this.gender.toLowerCase())) &&(item.Shift.toLowerCase().match(this.Shift.toLowerCase())) && (item.nurse_type.toLowerCase().match(this.nurse_type.toLowerCase())) && (item.name.toLowerCase().match(this.search.toLowerCase()));
                     });
                 }
             }
