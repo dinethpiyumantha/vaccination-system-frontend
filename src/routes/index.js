@@ -58,7 +58,7 @@ export default new Router({
       //routes of nurse-manage
       {
         path: '/nurses', //router name that needs to be appeared in the URL when user click on nursesList view component
-        name: 'allNurses', //this name is useful in breadcrumbs(breadcrumb- a secondary navigation system that shows user's location in a website/webapp)
+        name: 'All Nurses', //this name is useful in breadcrumbs(breadcrumb- a secondary navigation system that shows user's location in a website/webapp)
         component: NursesList,
       },
       {
