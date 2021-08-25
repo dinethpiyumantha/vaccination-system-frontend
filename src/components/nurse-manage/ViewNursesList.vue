@@ -14,7 +14,7 @@
         <a-input-search 
             placeholder="Search a nurse" 
             style="width: 400px; margin: 0 10px 0 0"
-            enter-button
+            v-model="search" 
             @search="onSearch" 
         />
         <!--filter dropdowns-->
@@ -26,12 +26,11 @@
             :filter-option="filterOption"
             @focus="handleFocus"
             @blur="handleBlur"
-            @change="handleChange"
+            v-model="nurse_type"
         >
-            <a-select-option value="Trainee">Trainee</a-select-option>
-            <a-select-option value="Full-time">Full-time</a-select-option>
-            <a-select-option value="Senior_Nurse">Senior_Nurse</a-select-option>
-            <a-select-option value="Volunteering">Volunteering</a-select-option>
+            <!--use the below code to make filter function work-->
+            <a-select-option value=""> By Nurse_type </a-select-option>
+            <a-select-option v-for="nurse_type in nurse_types" :key="nurse_type" :value="nurse_type"> {{nurse_type.toLowerCase()}} </a-select-option>
         </a-select>
 
         <a-select
@@ -68,7 +67,7 @@
     <!--table structure-->
     <a-table
         :columns="columns"
-        :data-source="nurseData"
+        :data-source="searchResult"
         :loading="loading"
         @change="handleTableChange"
         style="padding: 0px"
@@ -218,6 +217,10 @@
                 visible: false, //this is a must
                 //return column variable
                 columns,
+                //return the values to v-model attributes that we've set in Search, Filter functions
+                nurse_types: ["Trainee", "Full-time", "Senior-nurse", "Volunteering"],
+                search: '',
+                nurse_type: '', 
                 //return model object(which contains all DB retrieved data as an obj)
                 model: { 
                     nurse_no: '',
@@ -366,10 +369,9 @@
                             function(response){
                                 //popup successful msg
                                 this.openNotificationSuccess('Successfully Deleted', 'Nurse - '+ this.model.nurse_no +' deleted.');
-                                setTimeout("location.reload(true);", 1000); //this will reload the page
-                                this.data.splice((this.data.findIndex((e) => e === this.model)), 1);
+                                // setTimeout("location.reload(true);", 1000); //this will reload the page
+                                this.nurseData.splice((this.nurseData.findIndex((e) => e === this.model)), 1);
                                 console.log(response);                             
-                                alert("nurse deleted");
                             }, (error) => {
                                 this.openNotificationUnsuccess('Error', 'Nurse'+ this.model.nurse_no +' record cannot delete. Operation occured an error !');
                                 console.log(error);
@@ -382,7 +384,15 @@
                     },
                 });
             },
-        }
+            
+        },
+        computed: {
+                searchResult: function(){
+                    return this.nurseData.filter((item) => {
+                        return (item.nurse_type.toLowerCase().match(this.nurse_type.toLowerCase())) && (item.name.toLowerCase().match(this.search.toLowerCase()));
+                    });
+                }
+            }
 
     }
 </script>
