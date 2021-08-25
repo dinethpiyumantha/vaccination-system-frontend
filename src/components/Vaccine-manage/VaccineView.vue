@@ -1,7 +1,19 @@
 <template>
    <div>
    <h1>All Vaccines</h1>
+   
+    <div class="row px-3 my-4">
+      <!-- Search input and Filter dropdowns -->
+      <!-- Search -->
+      <a-input-search
+        placeholder="Search a vaccine"
+        style="width: 320px; margin: 0 10px 0 0"
+        v-model="search"
+        @search="onSearch"
+      />
 
+     
+</div>
       <a-table
         :columns="columns"
         :data-source="data"
@@ -18,7 +30,7 @@
 
        <!-- Model -->
     <div>
-      <a-modal v-model="visible" title="Vaccine Details" on-ok="handleOk" :centered="true" width="700px">
+      <a-modal v-model="visible" :title="model.stockno+' - '+model.name + ' Vaccines\' Details'" on-ok="handleOk" :centered="true" width="700px">
         <template slot="footer">
           
            <a-button
@@ -41,7 +53,7 @@
         </template>
 
         <div>
-          <p><b>Vaccine Stock ID :  </b>{{model.id}}</p>
+          <p><b>Vaccine Stock ID :  </b>{{model.stockno}}</p>
           <p><b>Vaccine Name :  </b>{{model.name}}</p>
           <p><b>Made-In :  </b>{{model.country}}</p>
           <p><b>Agent :  </b>{{model.agent}}</p>
@@ -68,13 +80,25 @@
 
 // Import libraries
 import axios from "axios";
+import 'vue-resource';
+
 
 
 const columns = [
   {
     title:'Vaccine Stock ID',
-    dataIndex:'id',
-    sorter: (a, b) => a.id - b.id,
+    dataIndex:'stockno',
+   sorter: (a, b) => {
+      let StockA= a.stockno.toUpperCase();
+      let StockB = b.stockno.toUpperCase();
+      if (StockA < StockB) {
+        return -1;
+      }
+      if (StockA > StockB) {
+        return 1;
+      }
+      return 0;
+    },
     sortDirections: ["descend", "ascend"],
   },
 
@@ -106,6 +130,8 @@ const columns = [
       { text: "France", value: "France" },
       { text: "India", value: "India" },
       { text: "Pakistan", value: "Pakistan" },
+      { text: "Russia", value: "Russia" },
+       { text: "Germany", value: "Germany" },
      
     ],
     onFilter: (value, record) => record.country.indexOf(value) === 0,
@@ -115,30 +141,52 @@ const columns = [
   {
     title:'Stored Lab',
      dataIndex:'lab',
-    sorter: (a, b) => {
-      let labA = a.name.toUpperCase();
-      let labB = b.name.toUpperCase();
-      if (labA < labB) {
+   filters: [
+      { text: "State Pharmaceuticals Corporation of Sri Lanka", value: "State Pharmaceuticals Corporation of Sri Lanka" },
+      { text: "Battramulla National Covid Vaccine laboratory", value: "Battramulla National Covid Vaccine laboratory" },
+      { text: "Sri Lanka Ayurvedic Department", value: "Sri Lanka Ayurvedic Department" },
+     
+    ],
+    onFilter: (value, record) => record.lab.indexOf(value) === 0,
+  },
+
+ 
+  {
+    title:'Arrival Date',
+     dataIndex:'arr_date',
+
+     sorter: (a, b) => {
+      let dateA = a.arr_date;
+      let dateB = b.arr_date;
+      if (dateA < dateB) {
         return -1;
       }
-      if (labA > labB) {
+      if (dateA > dateB) {
         return 1;
       }
       return 0;
     },
     sortDirections: ["descend", "ascend"],
-  },
-
- 
-  {
-    title:'Arriaval Date',
-     dataIndex:'arr_date',
-   
+  
   },
 
    {
-    title:'Expiary Date',
+    title:'Expiry Date',
      dataIndex:'exp',
+
+      sorter: (a, b) => {
+      let dateA = a.exp;
+      let dateB = b.exp;
+      if (dateA < dateB) {
+        return -1;
+      }
+      if (dateA > dateB) {
+        return 1;
+      }
+      return 0;
+    },
+    sortDirections: ["descend", "ascend"],
+  
    
     
   },
@@ -146,7 +194,7 @@ const columns = [
    {
     title:'Quantity',
      dataIndex:'quantity',
-     sorter: (a, b) => a.id - b.id,
+     sorter: (a, b) => a.quantity - b.quantity,
     sortDirections: ["descend", "ascend"],
   },
   
@@ -173,7 +221,9 @@ export default {
         columns,
         loading: false,
         visible: false,
-        model:{}
+        model:{
+          search: '',
+        }
     }
   },
 
@@ -209,7 +259,7 @@ export default {
                 }
               };
             },
-  }
+  },
 
 }
 </script>

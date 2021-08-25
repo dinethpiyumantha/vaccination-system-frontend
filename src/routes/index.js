@@ -12,6 +12,7 @@ import DeletedPersons from '../components/person-manage/PersonsViewDeleted.vue';
 import Vaccinate from '../components/person-manage/Vaccinate.vue';
 
 import VaccineView from '../components/Vaccine-manage/VaccineView.vue';
+import AddVaccines from '../components/Vaccine-manage/AddVaccines.vue';
 
 export default new Router({
     mode: 'history',
@@ -51,11 +52,18 @@ export default new Router({
         name: 'Vaccinate',
         component: Vaccinate,
       },
+      
 
       {
         path: '/vaccine',
         name: 'vaccine',
         component: VaccineView,
+      },
+
+      {
+        path: '/add-vaccine',
+        name: 'Add Vaccines',
+        component: AddVaccines,
       }
  
     ]

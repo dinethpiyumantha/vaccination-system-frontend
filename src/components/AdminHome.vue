@@ -57,7 +57,7 @@
           </a-menu-item>
           <!-- Add New Vaccine -->
           <a-menu-item key="6">
-            <router-link to="/add-person">Add New Vaccine</router-link>
+            <router-link to="/add-vaccine">Add New Vaccine</router-link>
           </a-menu-item>
         </a-sub-menu>
 
