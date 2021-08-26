@@ -16,6 +16,9 @@ import NursesList from '../components/nurse-manage/ViewNursesList';
 import AddNurse from '../components/nurse-manage/AddNurse'; // import AddNurse from '../components/nurse-manage/AddNurse';
 import UpdateNurse from '../components/nurse-manage/UpdateNurse';
 
+//import login component
+import Login from '../components/Login'; 
+
 export default new Router({
     mode: 'history',
     routes: [
@@ -70,6 +73,13 @@ export default new Router({
         path: '/update-nurse/:id',
         name: 'Update Nurse', 
         component: UpdateNurse,
-      }
+      }, 
+      
+      //route for Login
+      {
+        path: '/login',
+        name: 'Administrator Login',
+        component: Login,
+      },
     ] 
 });

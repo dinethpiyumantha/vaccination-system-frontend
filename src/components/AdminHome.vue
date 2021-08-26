@@ -142,6 +142,13 @@
         Vaccination System © {{ new Date().getFullYear() }} Created by Team
         DevAlgo
 
+        <!--login button at the top of the carousel-->
+        <div >
+          <router-link to="/login">
+            SignIn
+          </router-link>
+        </div>
+  
       </a-layout-footer>
     </a-layout>
   </a-layout>
@@ -153,7 +160,7 @@ export default {
   data() {
     return {
       collapsed: false,
-      items: []
+      items: [],
     };
   },
   watch: {
@@ -165,7 +172,7 @@ export default {
     getRoute() {
       this.items = this.$route.matched;
       console.log(this.$route);
-    }
+    },
   }
 };
 </script>
@@ -175,5 +182,9 @@ export default {
   height: 32px;
   background: rgba(255, 255, 255, 0.2);
   margin: 16px;
+}
+
+.loginBtn{
+  border: none;
 }
 </style>
