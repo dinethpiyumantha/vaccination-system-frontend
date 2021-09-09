@@ -284,15 +284,15 @@ export default {
 <style>
 
   .timeCard{
-    max-width: 380px;
+    max-width: 350px;
     min-width: 350px;
-    margin-left: 100px;
+    margin-left: 30px;
     background-color: #d5d4d8;
     border-radius: 8px;
     color: gray;
   }
   .cardTitle{
-    margin-left: 130px;
+    margin-left: 110px;
     font-family: Helvetica;
   }
   /* h5{
@@ -300,7 +300,7 @@ export default {
     opacity: 0.9;
   } */
   .cardTimes{
-    margin-left: 50px;
+    margin-left: 30px;
     opacity: 0.9;
   }
   span{

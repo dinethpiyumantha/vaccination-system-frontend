@@ -1,5 +1,5 @@
 <template>
-    <div style="margin-left: 665px; margin-right: 665px; background-color: #F8F8F8;">
+    <div style="margin-left: 490px; margin-right: 458px; background-color: #F8F8F8;">
         <a-form layout="inline" style="padding: 20px;" :form="form" @submit="handleSubmit">
 
             <div style="background-color: #585858;  width: 300px;">
