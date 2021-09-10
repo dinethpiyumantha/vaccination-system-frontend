@@ -122,7 +122,7 @@ export default {
       const regex = new RegExp("^([0-9]{9}[x|X|v|V]|[0-9]{12})$");
       let result = regex.test(value);
       if (!result) {
-        callback(new Error('Please valid NIC number again'));
+        callback(new Error('Please enter valid NIC number again'));
       } else {
         callback();
       }
@@ -165,8 +165,10 @@ export default {
        */
       rules: {
         name: [{required: true, message: 'Please insert person name', trigger: 'blur',},],
-        nic: [{required: true, message: 'Please insert national ID card number', trigger: 'blur',},
-              {validator: SLNICValidator, trigger: 'change'}],
+        nic: [
+              {required: true, message: 'Please insert national ID card number', trigger: 'blur',},
+              {validator: SLNICValidator, trigger: 'change'}
+            ],
         age: [{required: true, message: 'Please insert age (This will automatically calculate with NIC)', trigger: 'blur',},],
         gender: [{required: true, message: 'Please select gender', trigger: 'blur',},],
         phone: [{validator: SLPhoneValidator, trigger: 'change'}],
@@ -186,15 +188,15 @@ export default {
        */
       this.$refs.ruleForm.validate(valid => {
         if (valid) {
-          this.$http.post('http://localhost:8000/api/person/add', this.form).then(function (response) { 
-        this.openNotificationSuccess("Successfully Added !", "Entry added");
-        console.log(response);
-      }, (error) => {
-        this.openNotificationUnsuccess("Unsuccess !", "Entry added");
-        console.log(error);
-      });
+            this.$http.post('http://localhost:8000/api/person/add', this.form).then(function (response) { 
+            this.openNotificationSuccess("Successfull !", "Serial No : "+ this.form.serialno +" Entry added successfully");
+            console.log(response);
+          }, (error) => {
+            this.openNotificationUnsuccess("Server Error !", error.status + " " + error.statusText);
+            console.log(error);
+          });
         } else {
-          this.openNotificationUnsuccess("Unsuccess !", "Entry added");
+        this.openNotificationUnsuccess("Unsuccess !", "Please fill all required fields with valid details..");
           console.log('error submit!!');
           return false;
         }

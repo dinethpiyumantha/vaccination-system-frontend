@@ -192,21 +192,21 @@ export default {
        */
 
       this.$confirm({
-        title: 'Do you really want to update these items?',
-        content: 'When clicked the OK button, this dialog will be closed after 1 second',
+        title: 'Are you sure?',
+        content: 'Do you really want to update these item?',
         onOk: () => {
           this.$refs.ruleForm.validate(valid => {
             if (valid) {
               this.$http.put('http://localhost:8000/api/person/update/'+this.$route.params.id, this.form).then(function (response) { 
-                this.openNotificationSuccess("Successfully Added !", "Entry added");
+                this.openNotificationSuccess("Successfull !", "Serial No : "+ this.form.serialno +" Record updated successfully.");
                 this.$router.push({ path: `/persons`});
                 console.log(response);
               }, (error) => {
-                this.openNotificationUnsuccess("Unsuccess !", "Entry updated");
+                this.openNotificationUnsuccess("Server Error !", error.status + " " + error.statusText);
                 console.log(error);
               });
             } else {
-              this.openNotificationUnsuccess("Unsuccess !", "Entry not updated");
+              this.openNotificationUnsuccess("Unsuccess !", "Please fill all required fields with valid details..");
               console.log('error submit!');
               return false;
             }

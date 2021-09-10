@@ -5,6 +5,7 @@
       <a-input-search
         placeholder="Search a person"
         style="width: 320px; margin: 0 10px 0 0"
+        v-model="search"
         @search="onSearch"
       />
       <a-select
@@ -15,11 +16,10 @@
         :filter-option="filterOption"
         @focus="handleFocus"
         @blur="handleBlur"
-        @change="handleChange"
+        v-model="district"
       >
-        <a-select-option value="jack"> Jack </a-select-option>
-        <a-select-option value="lucy"> Lucy </a-select-option>
-        <a-select-option value="tom"> Tom </a-select-option>
+        <a-select-option value=""> - Not Selected - </a-select-option>
+        <a-select-option v-for="district in districts" :key="district" :value="district"> {{district.toLowerCase()}} </a-select-option>
       </a-select>
 
       <a-select
@@ -28,13 +28,10 @@
         option-filter-prop="children"
         style="width: 200px; margin: 0 10px 0 0"
         :filter-option="filterOption"
-        @focus="handleFocus"
-        @blur="handleBlur"
-        @change="handleChange"
+        v-model="mohA"
       >
-        <a-select-option value="jack"> Jack </a-select-option>
-        <a-select-option value="lucy"> Lucy </a-select-option>
-        <a-select-option value="tom"> Tom </a-select-option>
+        <a-select-option value=""> - Not Selected - </a-select-option>
+        <a-select-option v-for="area in mohArea" :key="area" :value="area"> {{area.toLowerCase()}} </a-select-option>
       </a-select>
 
       <a-select
@@ -43,13 +40,10 @@
         option-filter-prop="children"
         style="width: 200px; margin: 0 10px 0 0"
         :filter-option="filterOption"
-        @focus="handleFocus"
-        @blur="handleBlur"
-        @change="handleChange"
+        v-model="gnA"
       >
-        <a-select-option value="jack"> Jack </a-select-option>
-        <a-select-option value="lucy"> Lucy </a-select-option>
-        <a-select-option value="tom"> Tom </a-select-option>
+        <a-select-option value=""> - Not Selected - </a-select-option>
+        <a-select-option v-for="area in gnArea" :key="area" :value="area"> {{area.toLowerCase()}} </a-select-option>
       </a-select>
 
       <a-select
@@ -58,9 +52,6 @@
         option-filter-prop="children"
         style="width: 150px; margin: 0 10px 0 0"
         :filter-option="filterOption"
-        @focus="handleFocus"
-        @blur="handleBlur"
-        @change="handleChange"
       >
         <a-select-option value="jack" > Jack </a-select-option>
         <a-select-option value="lucy"> Lucy </a-select-option>
@@ -71,7 +62,7 @@
     <!-- Table View -->
     <a-table
       :columns="columns"
-      :data-source="data"
+      :data-source="searchResult"
       @change="onChange"
       style="padding: 0px"
       :customRow="customRow"
@@ -254,6 +245,10 @@ export default {
       districts : LocalData.data.districts,
       mohArea: LocalData.data.moh,
       gnArea: LocalData.data.gn,
+      search: '',
+      district: '',
+      mohA: '',
+      gnA: '',
       model: {
         name: '',
         nic: '',
@@ -389,5 +384,12 @@ export default {
       });
     },
   },
+  computed: {
+    searchResult: function() {
+      return this.data.filter((item)=> {
+          return (item.name.toLowerCase().match(this.search.toLowerCase()) || item.nic.toLowerCase().match(this.search.toLowerCase()) || item.serialno.toLowerCase().match(this.search.toLowerCase())) && item.district.toLowerCase().match(this.district.toLowerCase()) && item.moh.toLowerCase().match(this.mohA.toLowerCase()) && item.gn.toLowerCase().match(this.gnA.toLowerCase());
+      });
+    },
+  }
 };
 </script>
