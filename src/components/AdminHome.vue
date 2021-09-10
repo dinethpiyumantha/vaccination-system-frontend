@@ -67,14 +67,10 @@
             <a-icon type="user" />
             <span>Doctors</span>
           </span>
-          <!-- View All Doctors -->
-          <a-menu-item key="7">
-            <router-link to="/persons"> View All Doctors</router-link>
-          </a-menu-item>
-          <!-- Add New Doctor -->
-          <a-menu-item key="8">
-            <router-link to="/add-person">Add New Doctor</router-link>
-          </a-menu-item>
+          <a-menu-item key="7"> <router-link to="/add-doctors"> Add doctors </router-link></a-menu-item>
+          <a-menu-item key="8"> <router-link to="/view-doctors"> View doctors </router-link></a-menu-item>
+          <a-menu-item key="9"> <router-link to="/report-doctors"> doctors' reports </router-link></a-menu-item>
+           <a-menu-item key="10"> <router-link to="/appointment-doctors"> Changing appointment </router-link></a-menu-item>
         </a-sub-menu>
 
 
@@ -85,17 +81,17 @@
             <span>Nurses</span>
           </span>
           <!-- View All Nurses -->
-          <a-menu-item key="9">
+          <a-menu-item key="11">
             <router-link to="/persons"> View All Nurses</router-link>
           </a-menu-item>
           <!-- Add New Nurse -->
-          <a-menu-item key="10">
+          <a-menu-item key="12">
             <router-link to="/add-person">Add New Nurse</router-link>
           </a-menu-item>
         </a-sub-menu>
 
         <!-- Reports -->
-        <a-menu-item key="11">
+        <a-menu-item key="13">
           <router-link to="/reports">
             <a-icon type="file" />
             <span>Reports</span>
