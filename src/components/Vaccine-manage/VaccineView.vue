@@ -244,6 +244,16 @@ export default {
           console.log(e);
         },
 
+          handleUpdate() {
+      
+      this.loading = true;
+      setTimeout(() => {
+      this.visible = false;
+      this.loading = false;
+      this.$router.push({ path: `/update-vaccine/`+this.model.id});
+      }, 500);
+    },
+
         customRow(record) {
           return {
                 on: {

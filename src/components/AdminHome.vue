@@ -122,12 +122,19 @@
             <a-icon type="setting" />
           </a-button>
         </a-popover>
-      </a-layout-header>
+     </a-layout-header>
       <a-layout-content style="margin: 0">
-        <a-breadcrumb style="background: #fff; padding: 10px 24px">
-          <a-breadcrumb-item>User</a-breadcrumb-item>
-          <a-breadcrumb-item>Bill</a-breadcrumb-item>
+        
+         <a-breadcrumb style="background: #fff; padding: 10px 24px">
+          
+          <a-breadcrumb-item v-for="(item, index) in items" :key="index">
+            <router-link :to="item.path">
+              {{item.name}}
+            </router-link>
+          </a-breadcrumb-item>
         </a-breadcrumb>
+
+
         <div
           :style="{ padding: '24px', background: '#fff', minHeight: '70vh' }"
         >
@@ -138,6 +145,8 @@
       <a-layout-footer style="text-align: center">
         Vaccination System © {{ new Date().getFullYear() }} Created by Team
         DevAlgo
+
+        <br> <router-link to="/SignUp">Sign Up</router-link> <br>
 
     
       </a-layout-footer>
@@ -151,8 +160,20 @@ export default {
   data() {
     return {
       collapsed: false,
+      items: []
     };
   },
+  watch: {
+    $route() {
+      this.getRoute();
+    }
+  },
+  methods: {
+    getRoute() {
+      this.items = this.$route.matched;
+      console.log(this.$route);
+    }
+  }
 };
 </script>
 
