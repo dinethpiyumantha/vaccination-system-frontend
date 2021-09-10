@@ -1,0 +1,28 @@
+{
+    "data": {
+        "country": [
+        "UK",
+        "USA",
+        "China",
+        "France",
+        "Russia",
+        "Germany",
+        "India",
+        "Pakistan"
+        ],
+        "agent":[
+            "Sri Lanka Medical Counsil",
+            "Medico (PVT) ltd.",
+            "Sri Lanka Hela Aurvedic Department",
+            "Sri Lanka Medical Deliverers (pvt) ltd."
+        ],
+
+        "lab":[
+            "State Pharmaceuticals Corporation of Sri Lanka",
+            "Battramulla National Covid Vaccine laboratory",
+            "Sri Lanka Ayurvedic Department"
+        ]
+
+
+    }
+}

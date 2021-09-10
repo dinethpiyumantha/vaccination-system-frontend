@@ -53,11 +53,11 @@
           </span>
           <!-- View All Vaccines -->
           <a-menu-item key="5">
-            <router-link to="/persons"> View All Vaccines</router-link>
+            <router-link to="/vaccine"> View All Vaccines</router-link>
           </a-menu-item>
           <!-- Add New Vaccine -->
           <a-menu-item key="6">
-            <router-link to="/add-person">Add New Vaccine</router-link>
+            <router-link to="/add-vaccine">Add New Vaccine</router-link>
           </a-menu-item>
         </a-sub-menu>
 
@@ -122,12 +122,19 @@
             <a-icon type="setting" />
           </a-button>
         </a-popover>
-      </a-layout-header>
+     </a-layout-header>
       <a-layout-content style="margin: 0">
-        <a-breadcrumb style="background: #fff; padding: 10px 24px">
-          <a-breadcrumb-item>User</a-breadcrumb-item>
-          <a-breadcrumb-item>Bill</a-breadcrumb-item>
+        
+         <a-breadcrumb style="background: #fff; padding: 10px 24px">
+          
+          <a-breadcrumb-item v-for="(item, index) in items" :key="index">
+            <router-link :to="item.path">
+              {{item.name}}
+            </router-link>
+          </a-breadcrumb-item>
         </a-breadcrumb>
+
+
         <div
           :style="{ padding: '24px', background: '#fff', minHeight: '70vh' }"
         >
@@ -139,9 +146,9 @@
         Vaccination System © {{ new Date().getFullYear() }} Created by Team
         DevAlgo
 
-        <div>
-          <router-link to="/vaccine">Vaccines All</router-link>
-        </div>
+        <br> <router-link to="/SignUp">Sign Up</router-link> <br>
+
+    
       </a-layout-footer>
     </a-layout>
   </a-layout>
@@ -153,8 +160,20 @@ export default {
   data() {
     return {
       collapsed: false,
+      items: []
     };
   },
+  watch: {
+    $route() {
+      this.getRoute();
+    }
+  },
+  methods: {
+    getRoute() {
+      this.items = this.$route.matched;
+      console.log(this.$route);
+    }
+  }
 };
 </script>
 
