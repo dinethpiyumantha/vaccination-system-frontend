@@ -12,6 +12,13 @@ import UpdatePerson from '../components/person-manage/UpdatePerson.vue';
 import DeletedPersons from '../components/person-manage/PersonsViewDeleted.vue';
 import Vaccinate from '../components/person-manage/Vaccinate.vue';
 
+//import components related to Nurse-management
+import NursesList from '../components/nurse-manage/ViewNursesList';
+import AddNurse from '../components/nurse-manage/AddNurse'; // import AddNurse from '../components/nurse-manage/AddNurse';
+import UpdateNurse from '../components/nurse-manage/UpdateNurse';
+
+//import login component
+import Login from '../components/Login'; 
 import VaccineView from '../components/Vaccine-manage/VaccineView.vue';
 import AddVaccines from '../components/Vaccine-manage/AddVaccines.vue';
 import UpdateVaccine from '../components/Vaccine-manage/UpdateVaccine.vue';
@@ -54,7 +61,30 @@ export default new Router({
         name: 'Vaccinate',
         component: Vaccinate,
       },
+
+      //routes of nurse-manage
+      {
+        path: '/nurses', //router name that needs to be appeared in the URL when user click on nursesList view component
+        name: 'All Nurses', //this name is useful in breadcrumbs(breadcrumb- a secondary navigation system that shows user's location in a website/webapp)
+        component: NursesList,
+      },
+      {
+        path: '/add-nurse',
+        name: 'Add New Nurse',
+        component: AddNurse,
+      },
+      {
+        path: '/update-nurse/:id',
+        name: 'Update Nurse', 
+        component: UpdateNurse,
+      }, 
       
+      //route for Login
+      {
+        path: '/login',
+        name: 'Administrator Login',
+        component: Login,
+      },
 
       {
         path: '/vaccine',
@@ -67,19 +97,15 @@ export default new Router({
         name: 'Add Vaccines',
         component: AddVaccines,
       },
-
       {
         path: '/update-vaccine/:id',
         name: 'Update Vaccines',
         component: UpdateVaccine,
       },
-
-
       {
         path: '/Signup',
         name: 'Signup',
         component: Signup
       },
- 
     ]
 });

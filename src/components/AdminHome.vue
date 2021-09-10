@@ -86,11 +86,11 @@
           </span>
           <!-- View All Nurses -->
           <a-menu-item key="9">
-            <router-link to="/persons"> View All Nurses</router-link>
+            <router-link to="/nurses"> View All Nurses</router-link>
           </a-menu-item>
           <!-- Add New Nurse -->
           <a-menu-item key="10">
-            <router-link to="/add-person">Add New Nurse</router-link>
+            <router-link to="/add-nurse">Add New Nurse</router-link>
           </a-menu-item>
         </a-sub-menu>
 
@@ -146,9 +146,16 @@
         Vaccination System © {{ new Date().getFullYear() }} Created by Team
         DevAlgo
 
+        <!--login button at the top of the carousel-->
+        <div >
+          <router-link to="/login">
+            SignIn
+          </router-link>
+        </div>
+        
+       
         <br> <router-link to="/SignUp">Sign Up</router-link> <br>
 
-    
       </a-layout-footer>
     </a-layout>
   </a-layout>
@@ -160,7 +167,7 @@ export default {
   data() {
     return {
       collapsed: false,
-      items: []
+      items: [],
     };
   },
   watch: {
@@ -172,7 +179,7 @@ export default {
     getRoute() {
       this.items = this.$route.matched;
       console.log(this.$route);
-    }
+    },
   }
 };
 </script>
@@ -182,5 +189,9 @@ export default {
   height: 32px;
   background: rgba(255, 255, 255, 0.2);
   margin: 16px;
+}
+
+.loginBtn{
+  border: none;
 }
 </style>
