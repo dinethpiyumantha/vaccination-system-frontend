@@ -1,0 +1,690 @@
+050160010 Ampara 45513 22.6 Active
+050160020 Dehiattakandiya 62073 22.6 Active
+050160030 Uhana 60666 22.6 Active
+050160040 Mahaoya 21564 22.6 Active
+050160050 Padiyathalawa 18956 22.6 Active
+050160060 Lahugala 9265 22.6 Active
+050160070 Damana 40067 22.6 Active
+070200010 Anuradhapura (cnp) 86299 19.3 Active
+070200020 Kahatagasdigiliya 41825 19.3 Active
+070200030 Kekirawa(palugaswewa) 77044 19.3 Active
+070200040 Medawachchiya 48569 19.3 Active
+070200050 Padaviya 23822 19.3 Active
+070200060 Thambuttegama 43650 19.3 Active
+070200070 Galnewa 36107 19.3 Active
+070200080 Nochchiyagama 51678 19.3 Active
+070200090 Anuradhapura (nnp/npe) 94202 19.3 Active
+070200100 Mihintale 36516 19.3 Active
+070200110 Rajanganaya 34637 19.3 Active
+070200120 Horowpathana 38234 19.3 Active
+070200130 Palagala 35031 19.3 Active
+070200140 Kebethigollewa 23087 19.3 Active
+070200150 Galenbindunuwewa 48368 19.3 Active
+070200160 Ipalogama 40142 19.3 Active
+070200170 Thalawa 59930 19.3 Active
+070200180 Thirappane 32063 19.3 Active
+070200190 Rambewa 38233 19.3 Active
+080220010 Badulla 77357 18.7 Active
+080220020 Bandarawela 67396 18.7 Active
+080220030 Girandurukotte 37586 18.7 Active
+080220040 Hali ela 93342 18.7 Active
+080220050 Haputale 50186 18.7 Active
+080220060 Mahiyanganaya 40456 18.7 Active
+080220070 Meegahakivula 20303 18.7 Active
+080220080 Passara 50280 18.7 Active
+080220090 Rideemaliyadda 53238 18.7 Active
+080220100 Uva paranagama 81667 18.7 Active
+080220110 Welimada 103947 18.7 Active
+080220120 Ella 46322 18.7 Active
+080220130 Soranatota 23284 18.7 Active
+080220140 Haldummulla 38839 18.7 Active
+080220150 Kandaketiya 24002 18.7 Active
+080220160 Lunugala 32183 18.7 Active
+050150010 Batticaloa 88235 20 Active
+050150020 Chenkalady 64541 20 Active
+050150030 Kalavanchikudy 62253 20 Active
+050150040 Valachchenai 23916 20 Active
+050150050 Kattnakudy 41270 20 Active
+050150060 Eravur 37725 20 Active
+050150070 Padippalai 25306 20 Active
+050150080 Vavunativu 29121 20 Active
+050150090 Vakarai 22068 20 Active
+050150100 Vellavely 36976 20 Active
+050150110 Oddamavadai 22713 20 Active
+050150120 Koralipattu (Central) - KPC 26302 20 Active
+050150130 Araipattai 31368 20 Active
+050150140 Kiran 26730 20 Active
+010010010 Dehiwala 89651 16.1 Active
+010010020 Piliyandala 188384 16.1 Active
+010010030 Homagama 129046 16.1 Active
+010010040 Kaduwela 173693 16.1 Active
+010010050 Kolonnawa 195042 16.1 Active
+010010060 Pitakotte 65936 16.1 Active
+010010070 Maharagama 156164 16.1 Active
+010010080 Moratuwa 170906 16.1 Active
+010010090 Nugegoda 86897 16.1 Active
+010010100 Padukka 66557 16.1 Active
+010010110 Boralesgamuwa 59904 16.1 Active
+010010120 Hanwella/avissawella 115975 16.1 Active
+010010130 SMO Narahenpita(EPI) 0 0 Active
+010010150 Kahathuduwa 112312 16.1 Active
+010010140 Battaramulla 83911 16.1 Active
+010010160 Ratmalana 97085 16.1 Active
+010011010 MC Colombo 567272 16.1 Active
+030070010 Akmeemana 79375 17.1 Active
+030070020 Ambalangoda 58268 17.1 Active
+030070030 Baddegama 76805 17.1 Active
+030070040 Balapitiya 68965 17.1 Active
+030070050 Bope(poddala) 67012 17.1 Active
+030070060 Elpitiya 66126 17.1 Active
+030070070 Habaraduwa 63719 17.1 Active
+030070080 Hikkaduwa 62216 17.1 Active
+030070090 Tawalama(hiniduma) 33296 17.1 Active
+030070100 Yakkalamulla 46947 17.1 Active
+030070110 Induruwa(bentota) 51034 17.1 Active
+030070120 Karandeniya 63971 17.1 Active
+030070130 MC Galle 88135 17.1 Active
+030070140 Udugama (Nagoda) 54865 17.1 Active
+030070150 Niyagama 36328 17.1 Active
+030070160 Neluwa 29287 17.1 Active
+030070170 Imaduwa 45872 17.1 Active
+030070180 Gonapinuwala 22253 17.1 Active
+030070190 Divitura/welivitiya 29885 17.1 Active
+030070200 Rathgama 41817 17.1 Active
+010020010 Attanagalla 182513 14.6 Active
+010020020 Biyagama 190707 14.6 Active
+010020030 Divulapitiya 146831 14.6 Active
+010020040 Gampaha 200487 14.6 Active
+010020050 Ja-Ela 140219 14.6 Active
+010020060 Katana 113289 14.6 Active
+010020070 Kelaniya 138892 14.6 Active
+010020080 Dompe 156288 14.6 Active
+010020090 Mahara 211494 14.6 Active
+010020100 MC Negombo 144599 14.6 Active
+010020110 Minuwangoda 182072 14.6 Active
+010020120 Meerigama 167544 14.6 Active
+010020130 Ragama 79596 14.6 Active
+010020140 Wattala 163682 14.6 Active
+010020150 Seeduwa 125377 14.6 Active
+010020160 BOI Katunayake - Active
+030080010 Ambalantota 76000 20.7 Active
+030080020 Angunakolapelessa 50481 20.7 Active
+030080030 Beliatta 58824 20.7 Active
+030080040 Hambantota 59639 20.7 Active
+030080050 Katuwana 48482 20.7 Active
+030080060 Tangalle 75281 20.7 Active
+030080070 Tissamaharamaya 71609 20.7 Active
+030080080 Walasmulla 44218 20.7 Active
+030080090 Lunugamvehera 32760 20.7 Active
+030080100 Sooriyawewa 44999 20.7 Active
+030080110 Weeraketiya 43327 20.7 Active
+030080120 Okewela 19785 20.7 Active
+040100010 Chavakachcheri 66146 17.3 Active
+040100020 Kayts 20008 17.3 Active
+040100030 Kopay 75018 17.3 Active
+040100040 Mc jaffna 83287 17.3 Active
+040100050 Point pedro 61626 17.3 Active
+040100060 Telippalai 30247 17.3 Active
+040100070 Nallur 38321 17.3 Active
+040100080 Uduvil 54087 17.3 Active
+040100090 Chankanai 47446 17.3 Active
+040100100 Sandilipay 53467 17.3 Active
+040100110 Karaveddy 46746 17.3 Active
+040100120 Velanai 20831 17.3 Active
+050161010 Akkaraipattu 40831 22.6 Active
+050161020 Kalmunai north ( td) 30931 22.6 Active
+050161030 Thirukkovil 26220 22.6 Active
+050161040 Samanthurai 63081 22.6 Active
+050161050 Nintavur 27409 22.6 Active
+050161060 Kalmunai south (md) 46334 22.6 Active
+050161070 Karaitivu 17469 22.6 Active
+050161080 Alayadivembu 23330 22.6 Active
+050161090 Addalaichenai 43894 22.6 Active
+050161100 Pottuvil 36174 22.6 Active
+050161110 Sainthamaruththu 26454 22.6 Active
+050161120 Irakkamam 14962 22.6 Active
+050161130 Navithanvely 19438 22.6 Active
+010030010 Agalawatta 37284 15.8 Active
+010030020 Bandaragama 111363 15.8 Active
+010030030 Bulathsinhala 65770 15.8 Active
+010030040 Horana 115378 15.8 Active
+010030050 Matugama 82967 15.8 Active
+010030060 Panadura 244028 15.8 Active
+010030070 Walallavita 55497 15.8 Active
+010030080 Madurawala 88284 15.8 Active
+010030090 Ingiriya 54864 15.8 Active
+010030100 Palindanuwara/baduraliya 51526 15.8 Active
+010030110 Dodangoda 42942 15.8 Active
+010030120 Wadduwa 111994 15.8 Active
+020040010 Akurana 64987 19.6 Active
+020040020 Galagedara(thumpane) 38447 19.6 Active
+020040030 Gampola (Udapalatha) 93926 19.6 Active
+020040040 Gangawatakorale(university park)65538 19.6 Active
+020040050 Harispattuwa (Werellagama) 90525 19.6 Active
+020040060 Hasalaka (Minipe) 53180 19 Active
+020040070 Doluwa(hindagala project) 50926 19.6 Active
+020040080 Kundasale 62054 19.6 Active
+020040090 Kurunduwatta (Ganga Ihala) 56566 19.6 Active
+020040100 MC Kandy 100734 19.6 Active
+020040110 Medadumbara (Meda-Mahanuwara) 62604 19.6 Active
+020040120 Panwila 29636 19.6 Active
+020040130 Poojapitiya 59418 19.6 Active
+020040140 Pasbage(nawalapitiya) 61405 19.6 Active
+020040150 Thalatuoya (Pathahewaheta) 59687 19.6 Active
+020040160 Udadumbara 23065 19.6 Active
+020040170 Udunuwara 66014 19.6 Active
+020040180 Wattegama (Pathadumbara) 87092 19.6 Active
+020040190 Yatinuwara 108340 19.6 Active
+020040200 Hataraliyadda 30762 19.6 Active
+020040210 Galaha 31052 19.6 Active
+020040220 Menikhinna 68947 19.6 Active
+020040230 Bambaradeniya 47663 19.6 Active
+020040240 SMO Kandy(EPI) 19 19.6 Active
+090250010 Aranayake 69694 16.3 Active
+090250020 Dehiowita 82757 16.3 Active
+090250030 Deraniyagala 46995 16.3 Active
+090250040 Galigamuwa 75761 16.3 Active
+090250050 Kegalle 92485 16.3 Active
+090250060 Mawanella 114038 16.3 Active
+090250070 Rambukkana 84312 16.3 Active
+090250080 Ruwanwella 65037 16.3 Active
+090250090 Warakapola 115154 16.3 Active
+090250100 Yatiyantota 62050 16.3 Active
+090250110 Bulathkohupitiya 47843 16.3 Active
+040110010 Kilinochchi 65146 25.5 Active
+040110020 Poonakary 21551 25.5 Active
+040110030 Kandavalai 24511 25.5 Active
+040110040 Palai 9068 25.5 Active
+060180010 Bingiriya 63442 17 Active
+060180020 Galgamuwa 82512 17 Active
+060180030 Ibbagamuwa 86700 17 Active
+060180040 Kuliyapitiya 78895 17 Active
+060180050 Kurunegala 57025 17 Active
+060180060 Maho 58334 17 Active
+060180070 Mawathagama 66216 17 Active
+060180080 Narammala 57301 17 Active
+060180090 Nikaweratiya 41154 17 Active
+060180100 Panduwasnuwara 17 17 Active
+060180110 Pannala 126475 17 Active
+060180120 Polgahawela 66452 17 Active
+060180130 Polpithigama 76892 17 Active
+060180140 Rideegama 90156 17 Active
+060180150 Wariyapola 62588 17 Active
+060180160 Udubaddawa 53198 17 Active
+060180170 Giribawa 32062 17 Active
+060180180 Kotavehera 44024 17 Active
+060180190 Ganewatta 40842 17 Active
+060180200 Alawwa 64881 17 Active
+060180210 MC Kurunegala 25272 17 Active
+060180220 Kuliyapitiya-east(katupotha) 55101 17 Active
+060180230 Ambanpola 23371 17 Active
+060180240 Kobeigane 36602 17 Active
+060180250 Bamunakotuwa 36875 17 Active
+060180260 Weerambugedara 34981 17 Active
+060180270 Mallawapitiya 53691 17 Active
+040120010 Mannar 53144 19.5 Active
+040120020 Nananthan(murunkan) 18465 19.5 Active
+040120030 Madhu 7961 19.5 Active
+040120040 Manthalai west (adampan) 15244 19.5 Active
+040120050 Musali 8355 19.5 Active
+020050010 Dambulla 49970 19.4 Active
+020050020 Galewela 72187 19.4 Active
+020050030 Laggala(pallegama) 12516 19.4 Active
+020050040 Matale 41964 19.4 Active
+020050050 Naula 31814 19.4 Active
+020050060 Pallepola 30534 19.4 Active
+020050070 Rattota 52970 19.4 Active
+020050080 Ukuwela 69376 19.4 Active
+020050090 Yatawatta 31157 19.4 Active
+020050100 Ambanganga korale 16119 19.4 Active
+020050110 Mc matale 35711 19.4 Active
+020050120 Wilgamuwa 30337 19.4 Active
+020050130 MC Dambulla 24610 19.4 Active
+030090010 Akuressa 54198 16.2 Active
+030090020 Kotapola 65046 16.2 Active
+030090030 Devinuwara 49387 16.2 Active
+030090040 Dikwella 55980 16.2 Active
+030090050 Hakmana 32389 16.2 Active
+030090060 Kamburupitiya 42005 16.2 Active
+030090070 Morawaka 52321 16.2 Active
+030090080 Malimboda 35756 16.2 Active
+030090090 PS Matara 45244 16.2 Active
+030090100 Mulatiyana 51409 16.2 Active
+030090110 Pasgoda 60638 16.2 Active
+030090120 Thihagoda 34365 16.2 Active
+030090130 Welipitiya 53038 16.2 Active
+030090140 Weligama 74654 16.2 Active
+030090150 Mc matara 73134 16.2 Active
+030090160 Aturaliya 33121 16.2 Active
+030090170 Kirinda(puhulwella) 20727 16.2 Active
+080230010 Badalkumbura 41782 19.6 Active
+080230020 Bibile 41820 19.6 Active
+080230030 Moneragala 51895 19.6 Active
+080230040 Siyambalanduwa 56234 19.6 Active
+080230050 Thanamalwila 27729 19.6 Active
+080230060 Wellawaya 62687 19.6 Active
+080230070 Madulla 32608 19.6 Active
+080230080 Medagama 36949 19.6 Active
+080230090 Buttala 55388 19.6 Active
+080230100 Kataragama 19001 19.6 Active
+080230110 Sevanagala 43682 19.6 Active
+040140010 Mullaitivu(manitempattu) 29371 11.9 Active
+040140020 Thunukkai(mallavi) 16970 11.9 Active
+040140030 Oddusudan 15925 11.9 Active
+040140040 Puthukudiyiruppu 24382 11.9 Active
+040140050 Welioya 7068 11.9 Active
+010031010 Beruwala (NIHS) 168244 15.8 Active
+010031020 Kalutara (NIHS) 126882 15.8 Active
+020060010 Ambagamuwa (Ginigathhena) 83913 20.5 Active
+020060020 Nuwara Eliya 55809 20.5 Active
+020060030 Hanguranketha (Rikillagaskada) 61610 20.5 Active
+020060040 Walapane 45785 20.5 Active
+020060050 Kotmale 64162 20.5 Active
+020060060 Maskeliya 72421 20.5 Active
+020060070 Lindula(thalawakele) 75435 20.5 Active
+020060080 Maturata 30241 20.5 Active
+020060090 Ragala 61765 20.5 Active
+020060100 Nawatispane 40605 20.5 Active
+020060110 Kotagala 58698 20.5 Active
+020060120 Bogawanthalawa 56488 20.5 Active
+020060130 MC Nuwara Eliya 30079 20.5 Active
+070210010 Dimbulagala 81655 18.6 Active
+070210020 Elahera 44899 18.6 Active
+070210030 Hingurakgoda 65735 18.6 Active
+070210040 Lankapura 36972 18.6 Active
+070210050 Medirigiriya 67444 18.6 Active
+070210060 Thamankaduwa 85248 18.6 Active
+070210070 Welikanda 34462 18.6 Active
+060190010 Anamaduwa 50035 21.1 Active
+060190020 Arachchikattuwa 42171 21.1 Active
+060190030 Chilaw 114212 21.1 Active
+060190040 Dankotuwa 62196 21.1 Active
+060190050 Kalpitiya 89042 21.1 Active
+060190060 Karuwalagaswewa 39138 21.1 Active
+060190070 Marawila - Inactive
+060190080 Puttalam 102938 21.1 Active
+060190090 Mundel 63458 21.1 Active
+060190100 Wennappuwa 70446 21.1 Active
+060190110 Mahawewa 52411 21.1 Active
+060190120 Nattandiya 64286 21.1 Active
+060190130 Pallama 33948 21.1 Active
+090240010 Balangoda 84061 18.5 Active
+090240020 Eheliyagoda 73479 18.5 Active
+090240030 Embilipitiya 139069 18.5 Active
+090240040 Godakawela 78784 18.5 Active
+090240050 Kalawana 52902 18.5 Active
+090240060 Kuruwita 98902 18.5 Active
+090240070 Nivithigala 62265 18.5 Active
+090240080 Pelmadulla 92810 18.5 Active
+090240090 PS Ratnapura 75391 18.5 Active
+090240100 Imbulpe 61483 18.5 Active
+090240110 Kolonna 47440 18.5 Active
+090240120 Opanayake 27256 18.5 Active
+090240130 Ayagama 31860 18.5 Active
+090240140 Elapatha 38937 18.5 Active
+090240150 Kiriella 33714 18.5 Active
+090240160 Kahawatte 44667 18.5 Active
+090240170 MC Ratnapura 47807 18.5 Active
+090240180 Weligepola 31953 18.5 Active
+050170010 Trincomalee 49141 20.8 Active
+050170020 Kantale 48810 20.8 Active
+050170030 Kinniya 67107 20.8 Active
+050170040 Padavisripura 12364 20.8 Active
+050170050 Mutur 58758 20.8 Active
+050170060 Seruwila 14125 20.8 Active
+050170070 Thamapalakamam 29577 20.8 Active
+050170080 Gomarankadawala 15938 20.8 Active
+050170090 Kuchchavely 34525 20.8 Active
+050170100 Eachchilampatthu 11816 20.8 Active
+050170110 Uppuveli 51961 20.8 Active
+050170120 Trincomale(naval base) 20 20.8 Active
+040130010 Vavuniya 121802 20.3 Active
+040130020 Vavuniya south 13591 20.3 Active
+040130030 Cheddikulam 30945 20.3 Active
+040130040 Vavuniya north 11975 20.3 Active
+
+/////////
+050160010 Ampara
+050160020 Dehiattakandiya
+050160030 Uhana
+050160040 Mahaoya
+050160050 Padiyathalawa
+050160060 Lahugala
+050160070 Damana
+070200010 Anuradhapura (cnp)
+070200020 Kahatagasdigiliya
+070200030 Kekirawa(palugaswewa)
+070200040 Medawachchiya
+070200050 Padaviya
+070200060 Thambuttegama
+070200070 Galnewa
+070200080 Nochchiyagama
+070200090 Anuradhapura (nnp/npe)
+070200100 Mihintale
+070200110 Rajanganaya
+070200120 Horowpathana
+070200130 Palagala
+070200140 Kebethigollewa
+070200150 Galenbindunuwewa
+070200160 Ipalogama
+070200170 Thalawa
+070200180 Thirappane
+070200190 Rambewa
+080220010 Badulla
+080220020 Bandarawela
+080220030 Girandurukotte
+080220040 Hali ela
+080220050 Haputale
+080220060 Mahiyanganaya
+080220070 Meegahakivula
+080220080 Passara
+080220090 Rideemaliyadda 53238 18.7 Active
+080220100 Uva paranagama 81667 18.7 Active
+080220110 Welimada 103947 18.7 Active
+080220120 Ella 46322 18.7 Active
+080220130 Soranatota 23284 18.7 Active
+080220140 Haldummulla 38839 18.7 Active
+080220150 Kandaketiya 24002 18.7 Active
+080220160 Lunugala 32183 18.7 Active
+050150010 Batticaloa 88235 20 Active
+050150020 Chenkalady 64541 20 Active
+050150030 Kalavanchikudy 62253 20 Active
+050150040 Valachchenai 23916 20 Active
+050150050 Kattnakudy 41270 20 Active
+050150060 Eravur 37725 20 Active
+050150070 Padippalai 25306 20 Active
+050150080 Vavunativu 29121 20 Active
+050150090 Vakarai 22068 20 Active
+050150100 Vellavely 36976 20 Active
+050150110 Oddamavadai 22713 20 Active
+050150120 Koralipattu (Central) - KPC 26302 20 Active
+050150130 Araipattai 31368 20 Active
+050150140 Kiran 26730 20 Active
+010010010 Dehiwala 89651 16.1 Active
+010010020 Piliyandala 188384 16.1 Active
+010010030 Homagama 129046 16.1 Active
+010010040 Kaduwela 173693 16.1 Active
+010010050 Kolonnawa 195042 16.1 Active
+010010060 Pitakotte 65936 16.1 Active
+010010070 Maharagama 156164 16.1 Active
+010010080 Moratuwa 170906 16.1 Active
+010010090 Nugegoda 86897 16.1 Active
+010010100 Padukka 66557 16.1 Active
+010010110 Boralesgamuwa 59904 16.1 Active
+010010120 Hanwella/avissawella 115975 16.1 Active
+010010130 SMO Narahenpita(EPI) 0 0 Active
+010010150 Kahathuduwa 112312 16.1 Active
+010010140 Battaramulla 83911 16.1 Active
+010010160 Ratmalana 97085 16.1 Active
+010011010 MC Colombo 567272 16.1 Active
+030070010 Akmeemana 79375 17.1 Active
+030070020 Ambalangoda 58268 17.1 Active
+030070030 Baddegama 76805 17.1 Active
+030070040 Balapitiya 68965 17.1 Active
+030070050 Bope(poddala) 67012 17.1 Active
+030070060 Elpitiya 66126 17.1 Active
+030070070 Habaraduwa 63719 17.1 Active
+030070080 Hikkaduwa 62216 17.1 Active
+030070090 Tawalama(hiniduma) 33296 17.1 Active
+030070100 Yakkalamulla 46947 17.1 Active
+030070110 Induruwa(bentota) 51034 17.1 Active
+030070120 Karandeniya 63971 17.1 Active
+030070130 MC Galle 88135 17.1 Active
+030070140 Udugama (Nagoda) 54865 17.1 Active
+030070150 Niyagama 36328 17.1 Active
+030070160 Neluwa 29287 17.1 Active
+030070170 Imaduwa 45872 17.1 Active
+030070180 Gonapinuwala 22253 17.1 Active
+030070190 Divitura/welivitiya 29885 17.1 Active
+030070200 Rathgama 41817 17.1 Active
+010020010 Attanagalla 182513 14.6 Active
+010020020 Biyagama 190707 14.6 Active
+010020030 Divulapitiya 146831 14.6 Active
+010020040 Gampaha 200487 14.6 Active
+010020050 Ja-Ela 140219 14.6 Active
+010020060 Katana 113289 14.6 Active
+010020070 Kelaniya 138892 14.6 Active
+010020080 Dompe 156288 14.6 Active
+010020090 Mahara 211494 14.6 Active
+010020100 MC Negombo 144599 14.6 Active
+010020110 Minuwangoda 182072 14.6 Active
+010020120 Meerigama 167544 14.6 Active
+010020130 Ragama 79596 14.6 Active
+010020140 Wattala 163682 14.6 Active
+010020150 Seeduwa 125377 14.6 Active
+010020160 BOI Katunayake - Active
+030080010 Ambalantota 76000 20.7 Active
+030080020 Angunakolapelessa 50481 20.7 Active
+030080030 Beliatta 58824 20.7 Active
+030080040 Hambantota 59639 20.7 Active
+030080050 Katuwana 48482 20.7 Active
+030080060 Tangalle 75281 20.7 Active
+030080070 Tissamaharamaya 71609 20.7 Active
+030080080 Walasmulla 44218 20.7 Active
+030080090 Lunugamvehera 32760 20.7 Active
+030080100 Sooriyawewa 44999 20.7 Active
+030080110 Weeraketiya 43327 20.7 Active
+030080120 Okewela 19785 20.7 Active
+040100010 Chavakachcheri 66146 17.3 Active
+040100020 Kayts 20008 17.3 Active
+040100030 Kopay 75018 17.3 Active
+040100040 Mc jaffna 83287 17.3 Active
+040100050 Point pedro 61626 17.3 Active
+040100060 Telippalai 30247 17.3 Active
+040100070 Nallur 38321 17.3 Active
+040100080 Uduvil 54087 17.3 Active
+040100090 Chankanai 47446 17.3 Active
+040100100 Sandilipay 53467 17.3 Active
+040100110 Karaveddy 46746 17.3 Active
+040100120 Velanai 20831 17.3 Active
+050161010 Akkaraipattu 40831 22.6 Active
+050161020 Kalmunai north ( td) 30931 22.6 Active
+050161030 Thirukkovil 26220 22.6 Active
+050161040 Samanthurai 63081 22.6 Active
+050161050 Nintavur 27409 22.6 Active
+050161060 Kalmunai south (md) 46334 22.6 Active
+050161070 Karaitivu 17469 22.6 Active
+050161080 Alayadivembu 23330 22.6 Active
+050161090 Addalaichenai 43894 22.6 Active
+050161100 Pottuvil 36174 22.6 Active
+050161110 Sainthamaruththu 26454 22.6 Active
+050161120 Irakkamam 14962 22.6 Active
+050161130 Navithanvely 19438 22.6 Active
+010030010 Agalawatta 37284 15.8 Active
+010030020 Bandaragama 111363 15.8 Active
+010030030 Bulathsinhala 65770 15.8 Active
+010030040 Horana 115378 15.8 Active
+010030050 Matugama 82967 15.8 Active
+010030060 Panadura 244028 15.8 Active
+010030070 Walallavita 55497 15.8 Active
+010030080 Madurawala 88284 15.8 Active
+010030090 Ingiriya 54864 15.8 Active
+010030100 Palindanuwara/baduraliya 51526 15.8 Active
+010030110 Dodangoda 42942 15.8 Active
+010030120 Wadduwa 111994 15.8 Active
+020040010 Akurana 64987 19.6 Active
+020040020 Galagedara(thumpane) 38447 19.6 Active
+020040030 Gampola (Udapalatha) 93926 19.6 Active
+020040040 Gangawatakorale(university park)65538 19.6 Active
+020040050 Harispattuwa (Werellagama) 90525 19.6 Active
+020040060 Hasalaka (Minipe) 53180 19 Active
+020040070 Doluwa(hindagala project) 50926 19.6 Active
+020040080 Kundasale 62054 19.6 Active
+020040090 Kurunduwatta (Ganga Ihala) 56566 19.6 Active
+020040100 MC Kandy 100734 19.6 Active
+020040110 Medadumbara (Meda-Mahanuwara) 62604 19.6 Active
+020040120 Panwila 29636 19.6 Active
+020040130 Poojapitiya 59418 19.6 Active
+020040140 Pasbage(nawalapitiya) 61405 19.6 Active
+020040150 Thalatuoya (Pathahewaheta) 59687 19.6 Active
+020040160 Udadumbara 23065 19.6 Active
+020040170 Udunuwara 66014 19.6 Active
+020040180 Wattegama (Pathadumbara) 87092 19.6 Active
+020040190 Yatinuwara 108340 19.6 Active
+020040200 Hataraliyadda 30762 19.6 Active
+020040210 Galaha 31052 19.6 Active
+020040220 Menikhinna 68947 19.6 Active
+020040230 Bambaradeniya 47663 19.6 Active
+020040240 SMO Kandy(EPI) 19 19.6 Active
+090250010 Aranayake 69694 16.3 Active
+090250020 Dehiowita 82757 16.3 Active
+090250030 Deraniyagala 46995 16.3 Active
+090250040 Galigamuwa 75761 16.3 Active
+090250050 Kegalle 92485 16.3 Active
+090250060 Mawanella 114038 16.3 Active
+090250070 Rambukkana 84312 16.3 Active
+090250080 Ruwanwella 65037 16.3 Active
+090250090 Warakapola 115154 16.3 Active
+090250100 Yatiyantota 62050 16.3 Active
+090250110 Bulathkohupitiya 47843 16.3 Active
+040110010 Kilinochchi 65146 25.5 Active
+040110020 Poonakary 21551 25.5 Active
+040110030 Kandavalai 24511 25.5 Active
+040110040 Palai 9068 25.5 Active
+060180010 Bingiriya 63442 17 Active
+060180020 Galgamuwa 82512 17 Active
+060180030 Ibbagamuwa 86700 17 Active
+060180040 Kuliyapitiya 78895 17 Active
+060180050 Kurunegala 57025 17 Active
+060180060 Maho 58334 17 Active
+060180070 Mawathagama 66216 17 Active
+060180080 Narammala 57301 17 Active
+060180090 Nikaweratiya 41154 17 Active
+060180100 Panduwasnuwara 17 17 Active
+060180110 Pannala 126475 17 Active
+060180120 Polgahawela 66452 17 Active
+060180130 Polpithigama 76892 17 Active
+060180140 Rideegama 90156 17 Active
+060180150 Wariyapola 62588 17 Active
+060180160 Udubaddawa 53198 17 Active
+060180170 Giribawa 32062 17 Active
+060180180 Kotavehera 44024 17 Active
+060180190 Ganewatta 40842 17 Active
+060180200 Alawwa 64881 17 Active
+060180210 MC Kurunegala 25272 17 Active
+060180220 Kuliyapitiya-east(katupotha) 55101 17 Active
+060180230 Ambanpola 23371 17 Active
+060180240 Kobeigane 36602 17 Active
+060180250 Bamunakotuwa 36875 17 Active
+060180260 Weerambugedara 34981 17 Active
+060180270 Mallawapitiya 53691 17 Active
+040120010 Mannar 53144 19.5 Active
+040120020 Nananthan(murunkan) 18465 19.5 Active
+040120030 Madhu 7961 19.5 Active
+040120040 Manthalai west (adampan) 15244 19.5 Active
+040120050 Musali 8355 19.5 Active
+020050010 Dambulla 49970 19.4 Active
+020050020 Galewela 72187 19.4 Active
+020050030 Laggala(pallegama) 12516 19.4 Active
+020050040 Matale 41964 19.4 Active
+020050050 Naula 31814 19.4 Active
+020050060 Pallepola 30534 19.4 Active
+020050070 Rattota 52970 19.4 Active
+020050080 Ukuwela 69376 19.4 Active
+020050090 Yatawatta 31157 19.4 Active
+020050100 Ambanganga korale 16119 19.4 Active
+020050110 Mc matale 35711 19.4 Active
+020050120 Wilgamuwa 30337 19.4 Active
+020050130 MC Dambulla 24610 19.4 Active
+030090010 Akuressa 54198 16.2 Active
+030090020 Kotapola 65046 16.2 Active
+030090030 Devinuwara 49387 16.2 Active
+030090040 Dikwella 55980 16.2 Active
+030090050 Hakmana 32389 16.2 Active
+030090060 Kamburupitiya 42005 16.2 Active
+030090070 Morawaka 52321 16.2 Active
+030090080 Malimboda 35756 16.2 Active
+030090090 PS Matara 45244 16.2 Active
+030090100 Mulatiyana 51409 16.2 Active
+030090110 Pasgoda 60638 16.2 Active
+030090120 Thihagoda 34365 16.2 Active
+030090130 Welipitiya 53038 16.2 Active
+030090140 Weligama 74654 16.2 Active
+030090150 Mc matara 73134 16.2 Active
+030090160 Aturaliya 33121 16.2 Active
+030090170 Kirinda(puhulwella) 20727 16.2 Active
+080230010 Badalkumbura 41782 19.6 Active
+080230020 Bibile 41820 19.6 Active
+080230030 Moneragala 51895 19.6 Active
+080230040 Siyambalanduwa 56234 19.6 Active
+080230050 Thanamalwila 27729 19.6 Active
+080230060 Wellawaya 62687 19.6 Active
+080230070 Madulla 32608 19.6 Active
+080230080 Medagama 36949 19.6 Active
+080230090 Buttala 55388 19.6 Active
+080230100 Kataragama 19001 19.6 Active
+080230110 Sevanagala 43682 19.6 Active
+040140010 Mullaitivu(manitempattu) 29371 11.9 Active
+040140020 Thunukkai(mallavi) 16970 11.9 Active
+040140030 Oddusudan 15925 11.9 Active
+040140040 Puthukudiyiruppu 24382 11.9 Active
+040140050 Welioya 7068 11.9 Active
+010031010 Beruwala (NIHS) 168244 15.8 Active
+010031020 Kalutara (NIHS) 126882 15.8 Active
+020060010 Ambagamuwa (Ginigathhena) 83913 20.5 Active
+020060020 Nuwara Eliya 55809 20.5 Active
+020060030 Hanguranketha (Rikillagaskada) 61610 20.5 Active
+020060040 Walapane 45785 20.5 Active
+020060050 Kotmale 64162 20.5 Active
+020060060 Maskeliya 72421 20.5 Active
+020060070 Lindula(thalawakele) 75435 20.5 Active
+020060080 Maturata 30241 20.5 Active
+020060090 Ragala 61765 20.5 Active
+020060100 Nawatispane 40605 20.5 Active
+020060110 Kotagala 58698 20.5 Active
+020060120 Bogawanthalawa 56488 20.5 Active
+020060130 MC Nuwara Eliya 30079 20.5 Active
+070210010 Dimbulagala 81655 18.6 Active
+070210020 Elahera 44899 18.6 Active
+070210030 Hingurakgoda 65735 18.6 Active
+070210040 Lankapura 36972 18.6 Active
+070210050 Medirigiriya 67444 18.6 Active
+070210060 Thamankaduwa 85248 18.6 Active
+070210070 Welikanda 34462 18.6 Active
+060190010 Anamaduwa 50035 21.1 Active
+060190020 Arachchikattuwa 42171 21.1 Active
+060190030 Chilaw 114212 21.1 Active
+060190040 Dankotuwa 62196 21.1 Active
+060190050 Kalpitiya 89042 21.1 Active
+060190060 Karuwalagaswewa 39138 21.1 Active
+060190070 Marawila - Inactive
+060190080 Puttalam 102938 21.1 Active
+060190090 Mundel 63458 21.1 Active
+060190100 Wennappuwa 70446 21.1 Active
+060190110 Mahawewa 52411 21.1 Active
+060190120 Nattandiya 64286 21.1 Active
+060190130 Pallama 33948 21.1 Active
+090240010 Balangoda 84061 18.5 Active
+090240020 Eheliyagoda 73479 18.5 Active
+090240030 Embilipitiya 139069 18.5 Active
+090240040 Godakawela 78784 18.5 Active
+090240050 Kalawana 52902 18.5 Active
+090240060 Kuruwita 98902 18.5 Active
+090240070 Nivithigala 62265 18.5 Active
+090240080 Pelmadulla 92810 18.5 Active
+090240090 PS Ratnapura 75391 18.5 Active
+090240100 Imbulpe 61483 18.5 Active
+090240110 Kolonna 47440 18.5 Active
+090240120 Opanayake 27256 18.5 Active
+090240130 Ayagama 31860 18.5 Active
+090240140 Elapatha 38937 18.5 Active
+090240150 Kiriella 33714 18.5 Active
+090240160 Kahawatte 44667 18.5 Active
+090240170 MC Ratnapura 47807 18.5 Active
+090240180 Weligepola 31953 18.5 Active
+050170010 Trincomalee 49141 20.8 Active
+050170020 Kantale 48810 20.8 Active
+050170030 Kinniya 67107 20.8 Active
+050170040 Padavisripura 12364 20.8 Active
+050170050 Mutur 58758 20.8 Active
+050170060 Seruwila 14125 20.8 Active
+050170070 Thamapalakamam 29577 20.8 Active
+050170080 Gomarankadawala 15938 20.8 Active
+050170090 Kuchchavely 34525 20.8 Active
+050170100 Eachchilampatthu 11816 20.8 Active
+050170110 Uppuveli 51961 20.8 Active
+050170120 Trincomale(naval base) 20 20.8 Active
+040130010 Vavuniya 121802 20.3 Active
+040130020 Vavuniya south 13591 20.3 Active
+040130030 Cheddikulam 30945 20.3 Active
+040130040 Vavuniya north 11975 20.3 Active

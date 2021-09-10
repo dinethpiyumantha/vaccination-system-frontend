@@ -1,17 +1,13 @@
 <template>
   <div>
-    <h3>Registered People</h3>
+    <h3>Deleted People</h3>
     <div class="row px-3 my-4">
-      <!-- Search input and Filter dropdowns -->
-      <!-- Search -->
       <a-input-search
         placeholder="Search a person"
         style="width: 320px; margin: 0 10px 0 0"
         v-model="search"
         @search="onSearch"
       />
-
-      <!-- Filter by district -->
       <a-select
         show-search
         placeholder="Select a district"
@@ -50,16 +46,12 @@
         <a-select-option v-for="area in gnArea" :key="area" :value="area"> {{area.toLowerCase()}} </a-select-option>
       </a-select>
 
-      <!-- Filter b vaccine -->
       <a-select
         show-search
-        placeholder="By vaccine"
+        placeholder="By vacciene"
         option-filter-prop="children"
         style="width: 150px; margin: 0 10px 0 0"
         :filter-option="filterOption"
-        @focus="handleFocus"
-        @blur="handleBlur"
-        @change="handleChange"
       >
         <a-select-option value="jack" > Jack </a-select-option>
         <a-select-option value="lucy"> Lucy </a-select-option>
@@ -81,10 +73,10 @@
     </a-table>
     <!-- View Model -->
     <div>
-      <a-modal v-model="visible" :title="'Person Details'" on-ok="handleOk" :centered="true" width="700px">
+      <a-modal v-model="visible" title="Person Details" on-ok="handleOk" :centered="true" width="700px">
         <template slot="footer">
           
-          <a-button
+          <!-- <a-button
             key="submit"
             type="primary"
             :loading="loading"
@@ -99,7 +91,7 @@
             @click="handleDelete"
           >
             Delete
-          </a-button>
+          </a-button> -->
           <a-button key="back" @click="handleCancel"> Close </a-button>
         </template>
         
@@ -118,9 +110,7 @@
             <div class="row"><div class="col-4"><b>Important</b></div><div class="col-8"><p>{{model.important}}</p></div></div>
           </div>
           <div class="col-4">
-            <div class="card p-2">
-              <h6>Vaccination</h6>
-            </div>
+            
           </div>
         </div>      
       </a-modal>
@@ -248,7 +238,6 @@ export default {
      * Data attributes
      */
     return {
-      hello: 'Hello',
       data: [],
       columns,
       loading: false,
@@ -280,7 +269,7 @@ export default {
      * Get all persons from database
      * using API request
      */
-    axios.get("http://127.0.0.1:8000/api/person/all").then((response) => {
+    axios.get("http://127.0.0.1:8000/api/person/all/deleted").then((response) => {
       this.data = response.data.results;
       console.log(this.data);
     });
@@ -374,16 +363,16 @@ export default {
     
     showConfirm() {
       this.$confirm({
-        title: 'Are you sure?',
-        content: 'Do you really want to delete this record ('+this.model.serialno+')? This process cannot be undone.',
+        title: 'Do you want to delete these items?' + this.model.serialno + '('+this.model.id+')',
+        content: 'When clicked the OK button, this dialog will be closed after 1 second',
         onOk: () => {
-          this.$http.delete("http://127.0.0.1:8000/api/person/delete" + this.model.id).then(
+          this.$http.delete("http://127.0.0.1:8000/api/person/delete/" + this.model.id).then(
             function(response) {
-              this.openNotificationSuccess('Successfull !', 'Person '+ this.model.serialno +' record deleted successfully.')
+              this.openNotificationSuccess('Successfully Deleted', 'Person'+ this.model.serialno +' record deleted.')
               this.data.splice((this.data.findIndex((e) => e === this.model)), 1);
               console.log(response);
             }, (error) => {
-              this.openNotificationUnsuccess("Server Error !", "Cannot delete this record. Please try again. Error : " + error.status + " " + error.statusText);
+              this.openNotificationUnsuccess('Error', 'Person'+ this.model.serialno +' record cannot delete. Operation occured an error !');
               console.log(error);
             }
           );
