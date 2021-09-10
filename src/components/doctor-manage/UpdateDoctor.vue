@@ -74,7 +74,9 @@
 
 <script>
 
-
+        /**
+         * Phone number validatoion
+         */
 export default {
   data() {
 
@@ -119,6 +121,9 @@ export default {
 
     };
   },
+        /**
+         * Submit method
+         */
   methods: {
     onSubmit() {
        this.$refs.ruleForm.validate(valid => {

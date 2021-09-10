@@ -1,7 +1,7 @@
 <template>
 <div>
   <h4 class="mb-4">Register a New Doctor</h4>
-
+  
   <a-form-model ref="ruleForm" :model="form" :label-col="labelCol" :wrapper-col="wrapperCol" :rules="rules">
     
     <a-form-model-item label="Full Name" ref="nameFull" prop="nameFull">
