@@ -12,6 +12,12 @@ import UpdatePerson from '../components/person-manage/UpdatePerson.vue';
 import DeletedPersons from '../components/person-manage/PersonsViewDeleted.vue';
 import Vaccinate from '../components/person-manage/Vaccinate.vue';
 
+import AddDoctors from '../components/doctor-manage/AddDoctors.vue';
+import DoctorsReport from '../components/doctor-manage/DoctorsReport.vue';
+import DoctorsView from '../components/doctor-manage/DoctorsView.vue';
+import AppointmentChanges from '../components/doctor-manage/AppointmentChanges.vue';
+import UpdateDoctor from '../components/doctor-manage/UpdateDoctor.vue';
+
 //import components related to Nurse-management
 import NursesList from '../components/nurse-manage/ViewNursesList';
 import AddNurse from '../components/nurse-manage/AddNurse'; // import AddNurse from '../components/nurse-manage/AddNurse';
@@ -61,6 +67,30 @@ export default new Router({
         name: 'Vaccinate',
         component: Vaccinate,
       },
+      {
+        path: '/add-doctors',
+        name: 'Add Doctors',
+        component: AddDoctors
+      },
+      {
+        path: '/view-doctors',
+        name: 'Doctors View',
+        component: DoctorsView
+      },
+      {
+        path: '/report-doctors',
+        name: 'Doctors Report',
+        component: DoctorsReport
+      },
+      {
+        path: '/appointment-doctors',
+        name: 'Appiontment Changes',
+        component: AppointmentChanges
+      },
+      {
+        path: '/update-doctor/:id',
+        name: 'Update Doctor',
+        component: UpdateDoctor
 
       //routes of nurse-manage
       {
