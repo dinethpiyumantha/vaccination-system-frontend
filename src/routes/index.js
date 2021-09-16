@@ -14,7 +14,7 @@ import Vaccinate from '../components/person-manage/Vaccinate.vue';
 //import components related to Nurse-management
 import NursesList from '../components/nurse-manage/ViewNursesList';
 import AddNurse from '../components/nurse-manage/AddNurse'; // import AddNurse from '../components/nurse-manage/AddNurse';
-import UpdateNurse from '../components/nurse-manage/UpdateNurse';
+import UpdateNurse from '../components/nurse-manage/updateNurse';
 
 //import login component
 import Login from '../components/Login'; 
