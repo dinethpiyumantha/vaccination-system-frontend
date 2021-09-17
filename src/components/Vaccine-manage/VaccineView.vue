@@ -221,8 +221,20 @@ export default {
         columns,
         loading: false,
         visible: false,
+        search: '',
         model:{
-          search: '',
+           stockno: 'N/A',
+        name: '',
+        country: undefined,
+        agent: undefined,
+        quantity: '',
+        arr_date:undefined,
+        mfd:undefined,
+        exp:undefined,
+        lab: undefined,
+        lab_contact: '',    
+        description: ''
+         
         }
     }
   },
@@ -244,7 +256,20 @@ export default {
           console.log(e);
         },
 
-          handleUpdate() {
+   handleDelete() {
+      /**
+       * Call to delete a person by 
+       * mouse event
+       */
+      this.loading = true;
+      setTimeout(() => {
+        this.visible = false;
+        this.loading = false;
+        this.showConfirm(); // for confirm delete operation, then delete
+      }, 500);
+    },
+
+     handleUpdate() {
       
       this.loading = true;
       setTimeout(() => {
@@ -252,6 +277,10 @@ export default {
       this.loading = false;
       this.$router.push({ path: `/update-vaccine/`+this.model.id});
       }, 500);
+    },
+
+       handleCancel() {
+      this.visible = false;
     },
 
         customRow(record) {
@@ -269,11 +298,68 @@ export default {
                 }
               };
             },
+
+
+             openNotificationSuccess(message, description) {
+      /**
+       * Notification toast success
+       */
+      this.$notification.open({
+        message: message,
+        duration: 5,
+        icon: <a-icon type="like" theme="filled" style="color: #27ae60"/>,
+        description:
+          description,
+        onClick: () => {
+          console.log('Notification Clicked!');
+        },
+      });
+    },
+    openNotificationUnsuccess(message, description) {
+      /**
+       * Notification toast unsuccess
+       */
+      this.$notification.open({
+        message: message,
+        duration: 8,
+        icon: <a-icon type="dislike" theme="filled" style="color: #c0392b"/>,
+        description:
+          description,
+        onClick: () => {
+          console.log('Notification Clicked!');
+        },
+      });
+    },
+
+
+
+      showConfirm() {
+      this.$confirm({
+        title: 'Do you want to delete this ' + this.model.stockno + '('+this.model.id+')' +' vaccine stock details?',
+        content: 'Press OK button to Confirm',
+        onOk: () => {
+          this.$http.delete("http://127.0.0.1:8000/api/vaccine/delete/" + this.model.id).then(
+            function(response) {
+              this.openNotificationSuccess('Successfully Deleted', 'Vaccine'+ this.model.stockno +' record deleted.')
+              this.data.splice((this.data.findIndex((e) => e === this.model)), 1);
+              console.log(response);
+            }, (error) => {
+              this.openNotificationUnsuccess('Error', 'Vaccine'+ this.model.stockno +' record cannot delete. Operation occured an error !');
+              console.log(error);
+            }
+          );
+          console.log('OK')
+        },
+        onCancel() {
+          console.log('Cancel')
+        },
+      });
+    },
   },
+  }
 
-}
+
 </script>
-
-<style>
+<style >
 
 </style>
