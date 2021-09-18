@@ -4,7 +4,7 @@
     <h4 class="mb-4">Update Vaccine</h4>
 
     <!-- Data Insert form -->
-    <a-form-model ref="ruleForm" :model="form" :label-col="labelCol" :wrapper-col="wrapperCol" :rules="rules" :onFieldsChange="whenFieldChanged()">
+    <a-form-model ref="ruleForm" :model="form" :label-col="labelCol" :wrapper-col="wrapperCol" :rules="rules">
       
 
 
@@ -16,12 +16,12 @@
 
       <!-- Vaccine Name Input -->
       <a-form-model-item label="Vaccine Name" ref="name" prop="name">
-        <a-input v-model="form.name" placeholder="Enter vaccine name"/>
+        <a-input v-model="form.name" placeholder="Enter vaccine name" :disabled="true"/>
       </a-form-model-item>
 
       <!-- Made Country Selection Input -->
       <a-form-model-item label="Made Country"  ref="country" prop="country">
-        <a-select v-model="form.country" placeholder="Please select the vaccine origin">
+        <a-select v-model="form.country" placeholder="Please select the vaccine origin" :disabled="true">
           <a-select-option v-for="country in countries" :key="country">
             {{ country }}
           </a-select-option>
@@ -30,7 +30,7 @@
 
       <!-- Delivered Agent Input -->
       <a-form-model-item label="Delivered Agent"  ref="agent" prop="agent">
-        <a-select v-model="form.agent" placeholder="Please select the vaccine delivered agent">
+        <a-select v-model="form.agent" placeholder="Please select the vaccine delivered agent" :disabled="true">
           <a-select-option v-for="agent in agents" :key="agent">
             {{ agent }}
           </a-select-option>
@@ -40,7 +40,7 @@
 
        <!-- Quantity Input -->
       <a-form-model-item label="Stock Quantity"  ref="quantity" prop="quantity">
-        <a-input v-model="form.quantity" placeholder="Enter stock amount in digits" type="number">
+        <a-input v-model="form.quantity" placeholder="Enter stock amount in digits" type="number" :disabled="true">
          <a-tooltip slot="suffix" title="Insert only a positive whole number">
           <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
         </a-tooltip>
@@ -51,12 +51,13 @@
     <!--Arrival Date input -->
     
 
-    <a-form-model-item label="Vaccine Stock Arrival Date" required prop="arr_date">
+    <a-form-model-item label="Vaccine Stock Arrival Date" required prop="arr_date" >
       <a-date-picker
         v-model="form.arr_date"
         type="date"
         valueFormat="YYYY-MM-DD"
         placeholder="Pick vaccine stock arrival date"
+        :disabled="true"
         style="width: 100%;"
       />
     </a-form-model-item>
@@ -69,6 +70,7 @@
         type="date"
         valueFormat="YYYY-MM-DD"
         placeholder="Pick manufactured date"
+        :disabled="true"
         style="width: 100%;"
       />
     </a-form-model-item>
@@ -114,16 +116,16 @@
         </a-input>
       </a-form-model-item>
 
-      <!-- Buttons -->
-      <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
-        <a-button type="primary" @click="onSubmit()">
-          Update
-        </a-button>
-        <a-button style="margin-left: 10px;" @click="clearForm()">
-          Clear
-        </a-button>
-      </a-form-model-item>
-    </a-form-model>
+     <!-- Buttons -->
+    <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
+      <a-button type="primary" @click="onSubmit()">
+        Update
+      </a-button>
+      <a-button style="margin-left: 10px;" @click="redirectToView()">
+        Cancel
+      </a-button>
+    </a-form-model-item>
+  </a-form-model>
   </div>
 </template>
 
@@ -132,6 +134,7 @@
 <script>
 // Import local data files
 import LocalData from '../../assets/vaccineData.json';
+import 'vue-resource';
 
 /**
  * - all data attributes in the form attribute are use for post data
@@ -193,6 +196,13 @@ export default {
       }
     };
   },
+
+   created() {
+    this.$http.get('http://127.0.0.1:8000/api/vaccine/get/'+this.$route.params.id).then(function (response) {
+      this.form = response.data.vaccine;
+      console.log(response.data.vaccine);
+    });
+  },
   methods: {
     onSubmit() {
       /**
@@ -200,30 +210,35 @@ export default {
        * first validate all the fields and post with API request,
        * accoding to the response show notification
        */
-        this.$refs.ruleForm.validate(valid => {
-        if (valid) {
-          this.$http.post('http://localhost:8000/api/vaccine/add', this.form).then(function (response) { 
-        this.openNotificationSuccess("Successfully Added !", "Vaccine Details Added");
-        console.log(response);
-      }, (error) => {
-        this.openNotificationUnsuccess("Data Insertion Unsuccessful !", error.status + error.statusText);
-        console.log(error);
-      });
-        } else {
-          this.openNotificationUnsuccess("Unsuccessful Attempt !", "Please fill the empty columns");
-          console.log('error submit!!');
-          return false;
-        }
+    this.$confirm({
+        title: 'Are you sure?',
+        content: 'Do you really want to update this vaccine stock\'s details?',
+        onOk: () => {
+          this.$refs.ruleForm.validate(valid => {
+            if (valid) {
+              this.$http.put('http://localhost:8000/api/vaccine/update/'+this.$route.params.id, this.form).then(function (response) { 
+                this.openNotificationSuccess("Successful !", " Vaccines Stock-No : "+ this.form.stockno +" Record Updated Successfully.");
+                this.$router.push({ path: `/vaccine`});
+                console.log(response);
+              }, (error) => {
+                this.openNotificationUnsuccess("Server Error !", error.status + " " + error.statusText);
+                console.log(error);
+              });
+            } else {
+              this.openNotificationUnsuccess("Unsuccess !", "Please fill all required fields with valid details..");
+              console.log('error submit!');
+              return false;
+            }
+          });
+          console.log('OK')
+        },
+        onCancel() {
+          console.log('Cancel')
+        },
       });
     },
-    whenFieldChanged() {
-      if(this.form.name == '' || this.form.quantity == '') {
-        console.log('No vaccine name or quantity');
-      }
-      else {
-        this.serialNoGenerate();
-        console.log('Have vaccine name or quantity');
-      }
+    redirectToView() {
+      this.$router.push({ path: `/vaccine`});
     },
     openNotificationSuccess(message, description) {
       /**
