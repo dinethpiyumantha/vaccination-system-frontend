@@ -15,8 +15,9 @@
      
 </div>
       <a-table
+      
         :columns="columns"
-        :data-source="data"
+        :data-source="searchResult"
         @change="onChange"
         style="padding: 0px"
         :customRow="customRow"
@@ -217,13 +218,14 @@ export default {
 
   data(){
     return{
+        hello: 'Hello',
         data: [],
         columns,
         loading: false,
         visible: false,
         search: '',
         model:{
-           stockno: 'N/A',
+        stockno: 'N/A',
         name: '',
         country: undefined,
         agent: undefined,
@@ -356,6 +358,17 @@ export default {
       });
     },
   },
+
+  computed: {
+    searchResult: function() {
+      return this.data.filter((item)=> {
+          return (item.stockno.toLowerCase().match(this.search.toLowerCase()) || item.name.toLowerCase().match(this.search.toLowerCase())
+          ||item.country.toLowerCase().match(this.search.toLowerCase()) ||item.lab.toLowerCase().match(this.search.toLowerCase())
+           || item.arr_date.toLowerCase().match(this.search.toLowerCase())|| item.exp.toLowerCase().match(this.search.toLowerCase())
+           ||item.quantity.toString().match(this.search.toString()));
+      });
+    },
+  }
   }
 
 
