@@ -58,7 +58,7 @@
                             <h3>Nurses Report</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, placeat quibusdam commodi itaque eaque id qui aliquam autem. Veritatis est illo corporis voluptatem. Praesentium, suscipit.</p>
                         <div class="row px-3">
-                        <a-button type="primary" icon="download" @click="getNurseReport" :size="large"> Generate Full Report </a-button>
+                        <a-button type="primary" icon="download"  :href="`http://127.0.0.1:8001/api/nurses/report/pdf`" :size="large" :loading="loading"> Generate Full Report </a-button>
                     </div>
                         </div>
                     </div>
@@ -72,7 +72,8 @@
 export default {
     data() {
         return {
-            loading: false,
+            //loading: false,
+
         }
     },
     methods: {
@@ -91,18 +92,21 @@ export default {
             
         },
         getNurseReport: function() {
-            this.loading = true;
+           this.loading = true;
             setTimeout(() => {
 
-            this.$http.get('http://127.0.0.1:8001/api/nurses/report/pdf')
-            .then(function (response) {
-                console.log(response);
-            });
+            // this.$http.get('http://127.0.0.1:8001/api/nurses/report/pdf')
+            // .then(function (response) {
+            //     //response.loading = true;
+            //     console.log(response);
+            // });
+            this.$router.push({
+                path: '/reports'
+            })
 
-            this.loading = false;
+            this.loading = false; //loading will stop in 2seconds
             }, 2000);
-            
-        }
+        },
     }
 }
 </script>
