@@ -4,6 +4,7 @@ Vue.use(Router)
 
 import Dashboad from '../components/Dashboad.vue';
 import Reports from '../components/reports/Reports.vue';
+import Signup from '../components/Signup.vue';
 
 import Persons from '../components/person-manage/PersonsView.vue';
 import AddPersons from '../components/person-manage/AddPersons.vue';
@@ -18,6 +19,9 @@ import UpdateNurse from '../components/nurse-manage/updateNurse';
 
 //import login component
 import Login from '../components/Login'; 
+import VaccineView from '../components/Vaccine-manage/VaccineView.vue';
+import AddVaccines from '../components/Vaccine-manage/AddVaccines.vue';
+import UpdateVaccine from '../components/Vaccine-manage/UpdateVaccine.vue';
 
 export default new Router({
     mode: 'history',
@@ -81,5 +85,27 @@ export default new Router({
         name: 'Administrator Login',
         component: Login,
       },
-    ] 
+
+      {
+        path: '/vaccine',
+        name: 'vaccine',
+        component: VaccineView,
+      },
+
+      {
+        path: '/add-vaccine',
+        name: 'Add Vaccines',
+        component: AddVaccines,
+      },
+      {
+        path: '/update-vaccine/:id',
+        name: 'Update Vaccines',
+        component: UpdateVaccine,
+      },
+      {
+        path: '/Signup',
+        name: 'Signup',
+        component: Signup
+      },
+    ]
 });
