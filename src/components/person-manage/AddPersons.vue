@@ -6,6 +6,11 @@
     <!-- Registration form -->
     <a-form-model ref="ruleForm" :model="form" :label-col="labelCol" :wrapper-col="wrapperCol" :rules="rules" :onFieldsChange="whenFieldChanged()">
       
+      <!-- Serial No Input -->
+      <a-form-model-item label="Serial No">
+        <a-input v-model="form.serialno" placeholder="Searial no in the register" :disabled="true"/>
+      </a-form-model-item>
+
       <!-- Name Input -->
       <a-form-model-item label="Name" ref="name" prop="name">
         <a-input v-model="form.name"/>
@@ -78,10 +83,7 @@
         </a-select>
       </a-form-model-item>
 
-      <!-- Serial No Input -->
-      <a-form-model-item label="Serial No">
-        <a-input v-model="form.serialno" placeholder="Searial no in the register" :disabled="true"/>
-      </a-form-model-item>
+      
 
       <!-- Important Details Input Text Area -->
       <a-form-model-item label="Important">
@@ -271,7 +273,7 @@ export default {
         tempSerial = 'P19'+this.form.nic.slice(0, 2) + this.form.gender.slice(0,1) + this.form.nic.slice(2, 5);
       }
       else if (this.form.nic.length == 12) {
-        tempSerial = 'P'+this.form.nic.slice(0, 4) + this.form.gender.slice(0,1) + this.form.nic.slice(0, 7);
+        tempSerial = 'P'+this.form.nic.slice(0, 4) + this.form.gender.slice(0,1) + this.form.nic.slice(4, 7);
       }
       this.form.serialno = tempSerial.toUpperCase();
     },

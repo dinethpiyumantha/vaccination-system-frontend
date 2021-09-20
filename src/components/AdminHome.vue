@@ -106,7 +106,7 @@
     </a-layout-sider>
 
     <a-layout>
-      <a-layout-header style="background: #fff;" class="px-3">
+      <a-layout-header style="background: #fff;" class="px-3"> 
         <a-popover title="Title">
           <template slot="content">
             <p>Content</p>
@@ -117,9 +117,9 @@
             shape="circle"
             v-bind="serial"
             v-on:click="openPersonView()"
-            style="padding-top: 0px"
+            style="padding-top: 0px; float: right; margin-top: 25px;"
           >
-            <a-icon type="setting" />
+            <a-icon type="setting" style="padding-bottom: 5px" />
           </a-button>
         </a-popover>
       </a-layout-header>
@@ -144,7 +144,7 @@
         DevAlgo
 
         <div>
-          <router-link to="/vaccine">Vaccines All</router-link>
+          <router-link to="/vaccine">Contact</router-link>
         </div>
       </a-layout-footer>
     </a-layout>
