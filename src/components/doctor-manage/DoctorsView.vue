@@ -1,0 +1,345 @@
+<template>
+  <div>
+    <h3>Registered Doctors</h3>
+    <div class="row px-3 my-4">
+      <a-input-search
+        placeholder="Search a doctor"
+        style="width: 320px; margin: 0 10px 0 0"
+        @search="onSearch"
+      />
+      <a-select
+        show-search
+        placeholder="Select a hospital"
+        option-filter-prop="children"
+        style="width: 200px; margin: 0 10px 0 0"
+        :filter-option="filterOption"
+        @focus="handleFocus"
+        @blur="handleBlur"
+        @change="handleChange"
+      >
+        <a-select-option value="jack"> Jack </a-select-option>
+        <a-select-option value="lucy"> Lucy </a-select-option>
+        <a-select-option value="tom"> Tom </a-select-option>
+      </a-select>
+
+      <a-select
+        show-search
+        placeholder="Select a appointment date"
+        option-filter-prop="children"
+        style="width: 200px; margin: 0 10px 0 0"
+        :filter-option="filterOption"
+        @focus="handleFocus"
+        @blur="handleBlur"
+        @change="handleChange"
+      >
+        <a-select-option value="jack"> Jack </a-select-option>
+        <a-select-option value="lucy"> Lucy </a-select-option>
+        <a-select-option value="tom"> Tom </a-select-option>
+      </a-select>
+
+      <a-select
+        show-search
+        placeholder="Select a venue"
+        option-filter-prop="children"
+        style="width: 200px; margin: 0 10px 0 0"
+        :filter-option="filterOption"
+        @focus="handleFocus"
+        @blur="handleBlur"
+        @change="handleChange"
+      >
+        <a-select-option value="jack"> Jack </a-select-option>
+        <a-select-option value="lucy"> Lucy </a-select-option>
+        <a-select-option value="tom"> Tom </a-select-option>
+      </a-select>
+
+      <a-select
+        show-search
+        placeholder="By gender"
+        option-filter-prop="children"
+        style="width: 150px; margin: 0 10px 0 0"
+        :filter-option="filterOption"
+        @focus="handleFocus"
+        @blur="handleBlur"
+        @change="handleChange"
+      >
+        <a-select-option value="jack" > Jack </a-select-option>
+        <a-select-option value="lucy"> Lucy </a-select-option>
+        <a-select-option value="tom"> Tom </a-select-option>
+      </a-select>
+    </div>
+
+    <!-- Table View -->
+    <a-table
+      :columns="columns"
+      :data-source="data"
+      @change="onChange"
+      style="padding: 0px"
+      :customRow="customRow"
+    >
+      <a-button slot="action" type="primary" shape="circle" @click="showModal"
+        ><a-icon type="right" style="padding-bottom: 5px"
+      /></a-button>
+    </a-table>
+    <!-- View Model -->
+    <div>
+      <a-modal v-model="visible" title="Doctor Details" on-ok="handleOk" :centered="true" width="700px">
+        <template slot="footer">
+          
+          <a-button
+            key="submit"
+            type="primary"
+            :loading="loading"
+            @click="handleUpdate"
+          >
+            Edit
+          </a-button>
+          <a-button
+            key="submit"
+            type="danger"
+            :loading="loading"
+            @click="handleDelete"
+          >
+            Delete
+          </a-button>
+          <a-button key="back" @click="handleCancel"> Close </a-button>
+        </template>
+        
+        <div class="row">
+          <div class="col-8">
+            <div class="row"><div class="col-4"><b>Full name</b></div><div class="col-8"><p>{{model.nameFull}}</p></div></div>
+            <div class="row"><div class="col-4"><b>SLMC No</b></div><div class="col-8"><p>{{model.slmcNo}}</p></div></div>
+            <div class="row"><div class="col-4"><b>Hospital</b></div><div class="col-8"><p>{{model.hospital}}</p></div></div>
+            <div class="row"><div class="col-4"><b>Address</b></div><div class="col-8"><p>{{model.address}}</p></div></div>
+            <div class="row"><div class="col-4"><b>Gender</b></div><div class="col-8"><p>{{model.gender}}</p></div></div>
+            <div class="row"><div class="col-4"><b>Phone No</b></div><div class="col-8"><p>{{model.phoneNo}}</p></div></div>
+            <div class="row"><div class="col-4"><b>Marital Status</b></div><div class="col-8"><p>{{model.maritalStatus}}</p></div></div>
+            <div class="row"><div class="col-4"><b>Date</b></div><div class="col-8"><p>{{model.date}}</p></div></div>
+            <div class="row"><div class="col-4"><b>Venue</b></div><div class="col-8"><p>{{model.venue}}</p></div></div>
+          </div>
+          <div class="col-4">
+            <div class="card p-2">
+              <h6>Vaccination</h6>
+            </div>
+          </div>
+        </div>      
+      </a-modal>
+    </div>
+  </div>
+</template>
+
+<script>
+// Import libraries
+import axios from "axios";
+import 'vue-resource';
+
+/**
+ * Table Columns
+ * with sort methods and filters
+ */
+const columns = [
+  {
+    title: "Full name",
+    dataIndex: "nameFull",
+    key: 'nameFull',
+    sorter: (a, b) => {
+      let nameA = a.name.toUpperCase();
+      let nameB = b.name.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    },
+    sortDirections: ["descend", "ascend"],
+  },
+  {
+    title: "SLMC No",
+    dataIndex: "slmcNo",
+    key: 'slmcNo',
+    sorter: (a, b) => a.age - b.age,
+    sortDirections: ["descend", "ascend"],
+  },
+   {
+    title: "Address",
+    dataIndex: "address",
+    key: 'address',
+    sorter: (a, b) => {
+      let addressA = a.address.toUpperCase();
+      let addressB = b.address.toUpperCase();
+      if (addressA < addressB) {
+        return -1;
+      }
+      if (addressA > addressB) {
+        return 1;
+      }
+      return 0;
+    },
+    sortDirections: ["descend", "ascend"],
+  },
+  {
+    title: "Gender",
+    dataIndex: "gender",
+    key: 'gender',
+    filters: [
+      { text: "Male", value: "male" },
+      { text: "Female", value: "female" },
+    ],
+    onFilter: (value, record) => record.gender.indexOf(value) === 0,
+  },
+  {
+    title: "",
+    key: "id",
+    fixed: "right",
+    width: 100,
+    scopedSlots: { customRender: "action" },
+  },
+];
+function onChange(pagination, filters, sorter) {
+  console.log("params", pagination, filters, sorter);
+}
+export default {
+  data() {
+    /**
+     * Data attributes
+     */
+    return {
+      data: [],
+      columns,
+      loading: false,
+      visible: false,
+      model: {
+        nameFull: '',
+        slmcNo: '',
+        hospital: '',
+        address: '',
+        gender: undefined,
+        phoneNo: '',
+        maritalStatus: undefined,
+        date: undefined,
+        venue: ''
+      }
+    };
+  },
+  created() {
+    /**
+     * Get all persons from database
+     * using API request
+     */
+    axios.get("http://127.0.0.1:8000/api/doctor/all").then((response) => {
+      this.data = response.data.results;
+      console.log(this.data);
+    });
+  },
+  methods: {
+    onChange,
+    showModal(e) {
+      this.visible = true;
+      console.log(e);
+    },
+    handleOk() {
+      this.loading = true;
+      setTimeout(() => {
+        this.visible = false;
+        this.loading = false;
+      }, 2000);
+      
+    },
+    handleDelete() {
+      /**
+       * Call to delete a person by 
+       * mouse event
+       */
+      this.loading = true;
+      setTimeout(() => {
+        this.visible = false;
+        this.loading = false;
+        this.showConfirm(); // for confirm delete operation, then delete
+      }, 500);
+    },
+    handleUpdate() {
+      
+      this.loading = true;
+      setTimeout(() => {
+      this.visible = false;
+      this.loading = false;
+      this.$router.push({ path: `/update-doctor/`+this.model.id});
+      }, 500);
+    },
+    handleCancel() {
+      this.visible = false;
+    },
+    
+    customRow(record) {
+      return {
+        on: {
+          click: event => {
+            /**
+             * Can use event and record
+             */
+            this.model = record;
+            this.showModal();
+            console.log(event);
+            console.log(this.model);
+          }
+        }
+      };
+    },
+    
+    openNotificationSuccess(message, description) {
+      /**
+       * Notification toast success
+       */
+      this.$notification.open({
+        message: message,
+        duration: 5,
+        icon: <a-icon type="like" theme="filled" style="color: #27ae60"/>,
+        description:
+          description,
+        onClick: () => {
+          console.log('Notification Clicked!');
+        },
+      });
+    },
+    openNotificationUnsuccess(message, description) {
+      /**
+       * Notification toast unsuccess
+       */
+      this.$notification.open({
+        message: message,
+        duration: 8,
+        icon: <a-icon type="dislike" theme="filled" style="color: #c0392b"/>,
+        description:
+          description,
+        onClick: () => {
+          console.log('Notification Clicked!');
+        },
+      });
+    },
+    
+    showConfirm() {
+      this.$confirm({
+        title: 'Do you want to delete these items?' + this.model.serialno + '('+this.model.id+')',
+        content: 'When clicked the OK button, this dialog will be closed after 1 second',
+        onOk: () => {
+          this.$http.delete("http://127.0.0.1:8000/api/doctor/delete/" + this.model.id).then(
+            function(response) {
+              this.openNotificationSuccess('Successfully Deleted', 'Doctor'+ this.model.serialno +' record deleted.')
+              this.data.splice((this.data.findIndex((e) => e === this.model)), 1);
+              console.log(response);
+            }, (error) => {
+              this.openNotificationUnsuccess('Error', 'Doctor'+ this.model.serialno +' record cannot delete. Operation occured an error !');
+              console.log(error);
+            }
+          );
+          console.log('OK')
+        },
+        onCancel() {
+          console.log('Cancel')
+        },
+      });
+    },
+  },
+};
+</script>

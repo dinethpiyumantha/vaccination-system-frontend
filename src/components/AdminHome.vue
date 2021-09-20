@@ -53,11 +53,11 @@
           </span>
           <!-- View All Vaccines -->
           <a-menu-item key="5">
-            <router-link to="/persons"> View All Vaccines</router-link>
+            <router-link to="/vaccine"> View All Vaccines</router-link>
           </a-menu-item>
           <!-- Add New Vaccine -->
           <a-menu-item key="6">
-            <router-link to="/add-person">Add New Vaccine</router-link>
+            <router-link to="/add-vaccine">Add New Vaccine</router-link>
           </a-menu-item>
         </a-sub-menu>
 
@@ -67,14 +67,10 @@
             <a-icon type="user" />
             <span>Doctors</span>
           </span>
-          <!-- View All Doctors -->
-          <a-menu-item key="7">
-            <router-link to="/persons"> View All Doctors</router-link>
-          </a-menu-item>
-          <!-- Add New Doctor -->
-          <a-menu-item key="8">
-            <router-link to="/add-person">Add New Doctor</router-link>
-          </a-menu-item>
+          <a-menu-item key="7"> <router-link to="/add-doctors"> Add doctors </router-link></a-menu-item>
+          <a-menu-item key="8"> <router-link to="/view-doctors"> View doctors </router-link></a-menu-item>
+          <a-menu-item key="9"> <router-link to="/report-doctors"> doctors' reports </router-link></a-menu-item>
+           <a-menu-item key="10"> <router-link to="/appointment-doctors"> Changing appointment </router-link></a-menu-item>
         </a-sub-menu>
 
 
@@ -85,17 +81,18 @@
             <span>Nurses</span>
           </span>
           <!-- View All Nurses -->
-          <a-menu-item key="9">
-            <router-link to="/persons"> View All Nurses</router-link>
+          
+          <a-menu-item key="11">
+            <router-link to="/nurses"> View All Nurses</router-link>
           </a-menu-item>
           <!-- Add New Nurse -->
-          <a-menu-item key="10">
-            <router-link to="/add-person">Add New Nurse</router-link>
+          <a-menu-item key="12">
+            <router-link to="/add-nurse">Add New Nurse</router-link>
           </a-menu-item>
         </a-sub-menu>
 
         <!-- Reports -->
-        <a-menu-item key="11">
+        <a-menu-item key="13">
           <router-link to="/reports">
             <a-icon type="file" />
             <span>Reports</span>
@@ -122,7 +119,7 @@
             <a-icon type="setting" style="padding-bottom: 5px" />
           </a-button>
         </a-popover>
-      </a-layout-header>
+     </a-layout-header>
       <a-layout-content style="margin: 0">
         <a-breadcrumb style="background: #fff; padding: 10px 24px">
           
@@ -132,6 +129,8 @@
             </router-link>
           </a-breadcrumb-item>
         </a-breadcrumb>
+
+
         <div
           :style="{ padding: '24px', background: '#fff', minHeight: '70vh' }"
         >
@@ -145,7 +144,16 @@
 
         <div>
           <router-link to="/vaccine">Contact</router-link>
+        <!--login button at the top of the carousel-->
+        <div >
+          <router-link to="/login">
+            SignIn
+          </router-link>
         </div>
+        
+       
+        <br> <router-link to="/SignUp">Sign Up</router-link> <br>
+
       </a-layout-footer>
     </a-layout>
   </a-layout>
@@ -157,7 +165,7 @@ export default {
   data() {
     return {
       collapsed: false,
-      items: []
+      items: [],
     };
   },
   watch: {
@@ -169,7 +177,7 @@ export default {
     getRoute() {
       this.items = this.$route.matched;
       console.log(this.$route);
-    }
+    },
   }
 };
 </script>
@@ -179,5 +187,9 @@ export default {
   height: 32px;
   background: rgba(255, 255, 255, 0.2);
   margin: 16px;
+}
+
+.loginBtn{
+  border: none;
 }
 </style>
