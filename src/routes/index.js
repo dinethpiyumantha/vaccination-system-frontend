@@ -14,7 +14,9 @@ import Vaccinate from '../components/person-manage/Vaccinate.vue';
 import AddDoctors from '../components/doctor-manage/AddDoctors.vue';
 import DoctorsView from '../components/doctor-manage/DoctorsView.vue';
 import AppointmentChanges from '../components/doctor-manage/AppointmentChanges.vue';
+import AppointmentView from '../components/doctor-manage/AppointmentView.vue';
 import UpdateDoctor from '../components/doctor-manage/UpdateDoctor.vue';
+import UpdateAppointment from '../components/doctor-manage/UpdateAppointment.vue';
 
 export default new Router({
     mode: 'history',
@@ -66,13 +68,23 @@ export default new Router({
       },
       {
         path: '/appointment-doctors',
-        name: 'Appiontment Changes',
+        name: 'Appointment Changes',
         component: AppointmentChanges
+      },
+      {
+        path: '/appointmentView-doctors',
+        name: 'Appointments',
+        component: AppointmentView
       },
       {
         path: '/update-doctor/:id',
         name: 'Update Doctor',
         component: UpdateDoctor
+      },
+      {
+        path: '/update-appointment/:id',
+        name: 'Update Appointment',
+        component: UpdateAppointment
       },
     ]
 });
