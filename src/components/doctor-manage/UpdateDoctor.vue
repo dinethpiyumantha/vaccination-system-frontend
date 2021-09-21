@@ -22,7 +22,7 @@
     </a-form-model-item>
 
     <a-form-model-item label="Gender" ref="gender" prop="gender">
-      <a-select v-model="form.gender" :disabled="!updatable" placeholder="Please select gender">
+      <a-select v-model="form.gender" >
         <a-select-option value="male">
           Male
         </a-select-option>
@@ -41,7 +41,7 @@
     </a-form-model-item>
 
     <a-form-model-item label="Marital Status"  ref="maritalStatus" prop="maritalStatus">
-      <a-select v-model="form.maritalStatus" :disabled="!updatable" placeholder="Please select marital status">
+      <a-select v-model="form.maritalStatus">
         <a-select-option value="married">
           Married
         </a-select-option>
@@ -73,13 +73,11 @@
 
 
 <script>
-
         /**
          * Phone number validatoion
          */
 export default {
   data() {
-
     let SLPhoneValidator = (rule, value, callback) => {
       const regex = /^(?:0|94|\+94)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|912)(0|2|3|4|5|7|9)|7(0|1|2|4|5|6|7|8)\d)\d{6}$/;
       let result = regex.test(value);
@@ -91,7 +89,6 @@ export default {
         callback();
       }
     }
-
     return {
       labelCol: { span: 4 },
       wrapperCol: { span: 14 },
@@ -103,11 +100,11 @@ export default {
         address: '',
         gender: undefined,
         phoneNo: '',
-        maritalStatus: undefined,
+        maritalStatus: '',
         date: undefined,
         venue: ''
       },
-
+      
       rules: {
         nameFull: [{required: true, message: 'Please insert person name', trigger: 'blur',},],
         slmcNo: [{required: true, message: 'Please insert SLMC number', trigger: 'blur',},],
@@ -118,31 +115,54 @@ export default {
         date: [{required: true, message: 'Please insert the date of registering', trigger: 'blur',},],
         venue: [{required: true, message: 'Please insert appointed vaccination place', trigger: 'blur',},],
       }
-
     };
+  },
+  created() {
+    this.$http.get('http://127.0.0.1:8000/api/doctor/get/'+this.$route.params.id).then(function (response) {
+      this.form = response.data.doctor;
+      console.log(response.data.doctor);
+    });
   },
         /**
          * Submit method
          */
   methods: {
     onSubmit() {
-       this.$refs.ruleForm.validate(valid => {
-        if (valid) {
-          this.$http.post('http://localhost:8000/api/doctor/update', this.form).then(function (response) { 
-        this.openNotificationSuccess("Successfully Added !", "Entry added");
-        console.log(response);
-      }, (error) => {
-        this.openNotificationUnsuccess("Unsuccess !", "Server error : "+ error.status + "  " + error.statusText);
-        console.log(error);
-      });
-        } else {
-          this.openNotificationUnsuccess("Unsuccess !", "Validation Error");
-          console.log('error submit!!');
-          return false;
-        }
+      /**
+       * post form data into the database
+       * first validate all the fields and post with API request,
+       * accoding to the response show notification
+       */
+      this.$confirm({
+        title: 'Are you sure?',
+        content: 'Do you really want to update these item?',
+        onOk: () => {
+          this.$refs.ruleForm.validate(valid => {
+            if (valid) {
+              this.$http.put('http://localhost:8000/api/doctor/update/' +this.$route.params.id, this.form).then(function (response) { 
+                this.openNotificationSuccess("Successfull !", "SLMC No : "+ this.form.serialno +" Record updated successfully.");
+                this.$router.push({ path: `/doctors`});
+                console.log(response);
+              }, (error) => {
+                this.openNotificationUnsuccess("Server Error !", error.status + " " + error.statusText);
+                console.log(error);
+              });
+            } else {
+              this.openNotificationUnsuccess("Unsuccess !", "Please fill all required fields with valid details..");
+              console.log('error submit!');
+              return false;
+            }
+          });
+          console.log('OK')
+        },
+        onCancel() {
+          console.log('Cancel')
+        },
       });
     },
-
+    redirectToView() {
+      this.$router.push({ path: `/doctors`});
+    },
     openNotificationSuccess(message, description) {
       /**
        * Notification toast success

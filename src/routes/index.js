@@ -12,7 +12,6 @@ import DeletedPersons from '../components/person-manage/PersonsViewDeleted.vue';
 import Vaccinate from '../components/person-manage/Vaccinate.vue';
 
 import AddDoctors from '../components/doctor-manage/AddDoctors.vue';
-import DoctorsReport from '../components/doctor-manage/DoctorsReport.vue';
 import DoctorsView from '../components/doctor-manage/DoctorsView.vue';
 import AppointmentChanges from '../components/doctor-manage/AppointmentChanges.vue';
 import UpdateDoctor from '../components/doctor-manage/UpdateDoctor.vue';
@@ -64,11 +63,6 @@ export default new Router({
         path: '/view-doctors',
         name: 'Doctors View',
         component: DoctorsView
-      },
-      {
-        path: '/report-doctors',
-        name: 'Doctors Report',
-        component: DoctorsReport
       },
       {
         path: '/appointment-doctors',
