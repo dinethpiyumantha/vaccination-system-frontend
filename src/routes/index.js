@@ -16,6 +16,7 @@ import VaccineView from '../components/Vaccine-manage/VaccineView.vue';
 import AddVaccines from '../components/Vaccine-manage/AddVaccines.vue';
 import UpdateVaccine from '../components/Vaccine-manage/UpdateVaccine.vue';
 
+
 export default new Router({
     mode: 'history',
     routes: [
@@ -76,9 +77,9 @@ export default new Router({
 
 
       {
-        path: '/Signup',
+        path: '/SignUp',
         name: 'Signup',
-        component: Signup
+        component: Signup,
       },
  
     ]

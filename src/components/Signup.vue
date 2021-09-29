@@ -48,34 +48,44 @@
 
 
             <!-- Role Selection Input -->
-      <a-form-model-item label="Role" ref="Role" prop="Role">
-        <a-select v-model="form.Role" placeholder="Please select the role">
-          <a-select-option value="male">
-            Male
+      <a-form-model-item label="Role" ref="role" prop="role">
+        <a-select v-model="form.role" placeholder="Please select the role">
+          <a-select-option value="Doctor">
+            Doctor
           </a-select-option>
-          <a-select-option value="female">
-            Female
+          <a-select-option value="Nurse">
+            Nurse
+          </a-select-option>
+           <a-select-option value="Medical-Officer">
+            Medical-Officer
           </a-select-option>
         </a-select>
       </a-form-model-item>
 
       
       <!-- User ID -->
-      <a-form-model-item label="User ID">
-        <a-input v-model="form.userId" placeholder="User ID" :disabled="true"/>
+      <a-form-model-item label="User Name">
+        <a-input v-model="form.userId" placeholder="userId" :disabled="true"/>
       </a-form-model-item>
 
 
             <!-- password Input -->
-      <a-form-model-item label="password" ref="password" prop="password">
-        <a-input v-model="form.password"/>
+      <a-form-model-item label="Password" has-feedback ref="pwd1" prop="pwd1">
+        <a-input-password v-model="form.pwd1">
+           <a-tooltip slot="suffix" title="Minimum eight characters, at least one letter, one number and one special character:">
+          <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
+        </a-tooltip>
+        </a-input-password>
       </a-form-model-item>
 
        <!-- Retype password Input -->
-      <a-form-model-item label="Re-enter the password" ref="password" prop="password">
-        <a-input v-model="form.password"/>
+      <a-form-model-item label="Re-Enter Password" has-feedback ref="pwd2" prop="pwd2">
+        <a-input-password v-model="form.pwd2">
+           <a-tooltip slot="suffix" title="Enter previously entered password">
+          <a-icon type="info-circle" style="color: rgba(0,0,0,.45)" />
+        </a-tooltip>
+        </a-input-password>
       </a-form-model-item>
-
 
 
 
@@ -126,6 +136,31 @@ export default {
       } else {
         callback();
       }
+    };
+     let passwordValidator = (rule, value, callback) => {
+      const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+      let result = regex.test(value);
+      if (!result) {
+        callback(new Error('Please input a valid password with minimum eight characters, at least one letter, one number and one special character:'));
+      } else if (value === ''){
+        callback();
+      } else {
+        callback();
+      }
+    };
+
+    let pwdCompare = (rule, value, callback) => {
+      const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+      let result = regex.test(value);
+      if (!result) {
+        callback(new Error('Please retype the same password'));
+      } else if (value === ''){
+        callback();
+      } else if(!(this.form.pwd1===this.form.pwd2)){
+         callback(new Error('Please retype the same password'));
+      }else {
+        callback();
+      }
     }
 
     // Data attributes/models
@@ -137,15 +172,13 @@ export default {
       form: {
         name: '',
         nic: '',
-        age: '',
         gender: undefined,
+        age: '',
         phone: '',
-        address: '',
-        district: undefined,
-        moh: undefined,
-        gn: undefined,
+        role: undefined,
         userId: 'N/A',
-        important: ''
+        pwd1:'',
+        pwd2:''
       },
       /**
        * Validation rules assign to props
@@ -154,17 +187,19 @@ export default {
         name: [{required: true, message: 'Please insert person name', trigger: 'blur',},],
         nic: [{required: true, message: 'Please insert national ID card number', trigger: 'blur',},
               {validator: SLNICValidator, trigger: 'change'}],
-        age: [{required: true, message: 'Please insert age (This will automatically calculate with NIC)', trigger: 'blur',},],
         gender: [{required: true, message: 'Please select gender', trigger: 'blur',},],
+        age: [{required: true, message: 'Please insert age (This will automatically calculate with NIC)', trigger: 'blur',},],
         phone: [{validator: SLPhoneValidator, trigger: 'change'}],
-        address: [{required: true, message: 'Please insert address', trigger: 'blur',},],
-        district: [{required: true, message: 'Please select district', trigger: 'blur',},],
-        moh: [{required: true, message: 'Please select MOH area', trigger: 'blur',},],
-        gn: [{required: true, message: 'Please select grama niladhari (GN) area', trigger: 'blur',},],
+        role: [{required: true, message: 'Please select the role', trigger: 'blur',},],
+        pwd1: [{required: true,validator: passwordValidator, trigger: 'change',},],
+        pwd2: [{required: true,validator: pwdCompare, trigger: 'change',},],
+       
       }
     };
   },
   methods: {
+
+   
     onSubmit() {
       /**
        * post form data into the database
@@ -173,15 +208,15 @@ export default {
        */
       this.$refs.ruleForm.validate(valid => {
         if (valid) {
-          this.$http.post('http://localhost:8000/api/person/add', this.form).then(function (response) { 
+          this.$http.post('http://localhost:8000/api/admin/add', this.form).then(function (response) { 
         this.openNotificationSuccess("Successfully Added !", "Entry added");
         console.log(response);
       }, (error) => {
-        this.openNotificationUnsuccess("Unsuccess !", "Entry added");
+        this.openNotificationUnsuccess("Unsuccess !", "Entry added1");
         console.log(error);
       });
         } else {
-          this.openNotificationUnsuccess("Unsuccess !", "Entry added");
+          this.openNotificationUnsuccess("Unsuccess !", "Entry added2");
           console.log('error submit!!');
           return false;
         }
@@ -251,15 +286,17 @@ export default {
       /**
        * Genarate a serial no
        */
-      let tempSerial = 'N/A';
+      let userId = 'N/A';
       if (this.form.nic.length == 10) {
-        tempSerial = 'P19'+this.form.nic.slice(0, 2) + this.form.gender.slice(0,1) + this.form.nic.slice(2, 5);
+        userId = 'User'+this.form.nic.slice(0, 11);
       }
       else if (this.form.nic.length == 12) {
-        tempSerial = 'P'+this.form.nic.slice(0, 4) + this.form.gender.slice(0,1) + this.form.nic.slice(0, 7);
+        userId = 'User'+this.form.nic.slice(0, 13);
       }
-      this.form.serialno = tempSerial.toUpperCase();
+      this.form.userId = userId.toUpperCase();
     },
+
+    
   },
   computed: {
     
