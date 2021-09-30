@@ -150,6 +150,7 @@
         <div>
           <router-link to="/vaccine">Contact</router-link>
         <!--login button at the top of the carousel-->
+        </div>
         <div >
           <router-link to="/login">
             SignIn
