@@ -108,7 +108,7 @@
     </a-layout-sider>
 
     <a-layout>
-      <a-layout-header style="background: #fff;" class="px-3">
+      <a-layout-header style="background: #fff;" class="px-3"> 
         <a-popover title="Title">
           <template slot="content">
             <p>Content</p>
@@ -119,9 +119,9 @@
             shape="circle"
             v-bind="serial"
             v-on:click="openPersonView()"
-            style="padding-top: 0px"
+            style="padding-top: 0px; float: right; margin-top: 25px;"
           >
-            <a-icon type="setting" />
+            <a-icon type="setting" style="padding-bottom: 5px" />
           </a-button>
         </a-popover>
      </a-layout-header>
@@ -147,6 +147,8 @@
         Vaccination System © {{ new Date().getFullYear() }} Created by Team
         DevAlgo
 
+        <div>
+          <router-link to="/vaccine">Contact</router-link>
         <!--login button at the top of the carousel-->
         <div >
           <router-link to="/login">

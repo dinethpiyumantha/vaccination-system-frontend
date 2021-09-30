@@ -377,8 +377,9 @@ export default {
         title: 'Are you sure?',
         content: 'Do you really want to delete this record ('+this.model.serialno+')? This process cannot be undone.',
         onOk: () => {
-          this.$http.delete("http://127.0.0.1:8000/api/person/delete" + this.model.id).then(
+          this.$http.delete("http://127.0.0.1:8000/api/person/delete/" + this.model.id).then(
             function(response) {
+              console.log(this.model.id);
               this.openNotificationSuccess('Successfull !', 'Person '+ this.model.serialno +' record deleted successfully.')
               this.data.splice((this.data.findIndex((e) => e === this.model)), 1);
               console.log(response);
