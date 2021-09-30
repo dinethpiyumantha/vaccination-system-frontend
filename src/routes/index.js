@@ -13,10 +13,11 @@ import DeletedPersons from '../components/person-manage/PersonsViewDeleted.vue';
 import Vaccinate from '../components/person-manage/Vaccinate.vue';
 
 import AddDoctors from '../components/doctor-manage/AddDoctors.vue';
-import DoctorsReport from '../components/doctor-manage/DoctorsReport.vue';
 import DoctorsView from '../components/doctor-manage/DoctorsView.vue';
 import AppointmentChanges from '../components/doctor-manage/AppointmentChanges.vue';
+import AppointmentView from '../components/doctor-manage/AppointmentView.vue';
 import UpdateDoctor from '../components/doctor-manage/UpdateDoctor.vue';
+import UpdateAppointment from '../components/doctor-manage/UpdateAppointment.vue';
 
 //import components related to Nurse-management
 import NursesList from '../components/nurse-manage/ViewNursesList';
@@ -79,14 +80,14 @@ export default new Router({
         component: DoctorsView
       },
       {
-        path: '/report-doctors',
-        name: 'Doctors Report',
-        component: DoctorsReport
+        path: '/appointment-doctors',
+        name: 'Appointment Changes',
+        component: AppointmentChanges
       },
       {
-        path: '/appointment-doctors',
-        name: 'Appiontment Changes',
-        component: AppointmentChanges
+        path: '/appointmentView-doctors',
+        name: 'Appointments',
+        component: AppointmentView
       },
       {
         path: '/update-doctor/:id',
@@ -137,6 +138,11 @@ export default new Router({
         path: '/SignUp',
         name: 'Signup',
         component: Signup,
+      },
+      {
+        path: '/update-appointment/:id',
+        name: 'Update Appointment',
+        component: UpdateAppointment
       },
     ]
 });

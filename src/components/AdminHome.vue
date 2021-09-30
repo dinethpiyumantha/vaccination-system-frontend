@@ -67,10 +67,15 @@
             <a-icon type="user" />
             <span>Doctors</span>
           </span>
+
+          <!--Register new doctor-->
           <a-menu-item key="7"> <router-link to="/add-doctors"> Add doctors </router-link></a-menu-item>
+          <!--View doctors' list-->
           <a-menu-item key="8"> <router-link to="/view-doctors"> View doctors </router-link></a-menu-item>
-          <a-menu-item key="9"> <router-link to="/report-doctors"> doctors' reports </router-link></a-menu-item>
-           <a-menu-item key="10"> <router-link to="/appointment-doctors"> Changing appointment </router-link></a-menu-item>
+          <!--appointments of the doctors-->
+           <a-menu-item key="10A"> <router-link to="/appointment-doctors"> Add Appointments </router-link></a-menu-item>
+           <!--view appointments of the doctors-->
+           <a-menu-item key="10B"> <router-link to="/appointmentView-doctors"> Appointments </router-link></a-menu-item>
         </a-sub-menu>
 
 

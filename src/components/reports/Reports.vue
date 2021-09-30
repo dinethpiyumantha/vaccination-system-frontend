@@ -26,7 +26,7 @@
                             <h3>Doctors Report</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, placeat quibusdam commodi itaque eaque id qui aliquam autem. Veritatis est illo corporis voluptatem. Praesentium, suscipit.</p>
                         <div class="row px-3">
-                        <a-button type="primary" icon="download" :size="large"> Generate Full Report </a-button>
+                        <a-button type="primary" icon="download" @click="getDoctorReport" :size="large"> Generate Full Report </a-button>
                     </div>
                         </div>
                     </div>
@@ -91,9 +91,8 @@ export default {
 
             this.loading = false;
             }, 2000);
-            
         },
-            getVaccineReport: function() {
+        getVaccineReport: function() {
             this.loading = true;
             setTimeout(() => {
 
@@ -104,7 +103,18 @@ export default {
 
             this.loading = false;
             }, 2000);
-            
+        },
+        getDoctorReport: function() {
+            this.loading = true;
+            setTimeout(() => {
+
+            this.$http.get('http://127.0.0.1:8000/api/doctor/report/pdf')
+            .then(function (response) {
+                console.log(response);
+            });
+
+            this.loading = false;
+            }, 2000);
         }, 
         getNurseReport: function() {
            this.loading = true;

@@ -1,19 +1,20 @@
 <template>
   <div>
-    <h3>Registered Doctors</h3>
+    <h3>Appointments</h3>
     <div class="row px-3 my-4">
       <a-input-search
         placeholder="Search"
         style="width: 320px; margin: 0 10px 0 0"
-        @search="onSearch"
+         @search="onSearch"
         v-model="search"
       />
+
     </div>
 
     <!-- Table View -->
     <a-table
       :columns="columns"
-      :data-source="searchResult"
+      :data-source="data"
       @change="onChange"
       style="padding: 0px"
       :customRow="customRow"
@@ -51,12 +52,10 @@
             <div class="row"><div class="col-4"><b>Full name</b></div><div class="col-8"><p>{{model.nameFull}}</p></div></div>
             <div class="row"><div class="col-4"><b>SLMC No</b></div><div class="col-8"><p>{{model.slmcNo}}</p></div></div>
             <div class="row"><div class="col-4"><b>Hospital</b></div><div class="col-8"><p>{{model.hospital}}</p></div></div>
-            <div class="row"><div class="col-4"><b>Address</b></div><div class="col-8"><p>{{model.address}}</p></div></div>
-            <div class="row"><div class="col-4"><b>Gender</b></div><div class="col-8"><p>{{model.gender}}</p></div></div>
             <div class="row"><div class="col-4"><b>Phone No</b></div><div class="col-8"><p>{{model.phoneNo}}</p></div></div>
-            <div class="row"><div class="col-4"><b>Marital Status</b></div><div class="col-8"><p>{{model.maritalStatus}}</p></div></div>
-            <div class="row"><div class="col-4"><b>Date</b></div><div class="col-8"><p>{{model.date}}</p></div></div>
+            <div class="row"><div class="col-4"><b>Appointed Date</b></div><div class="col-8"><p>{{model.Appointeddate}}</p></div></div>
             <div class="row"><div class="col-4"><b>Venue</b></div><div class="col-8"><p>{{model.venue}}</p></div></div>
+            <div class="row"><div class="col-4"><b>Reason for changes of appointment</b></div><div class="col-8"><p>{{model.reaon}}</p></div></div>
           </div>
           <div class="col-4">
             <div class="card p-2">
@@ -120,17 +119,17 @@ const columns = [
     },
     sortDirections: ["descend", "ascend"],
   },
-   {
-    title: "Address",
-    dataIndex: "address",
-    key: 'address',
+  {
+    title: "Venue",
+    dataIndex: "venue",
+    key: 'venue',
     sorter: (a, b) => {
-      let addressA = a.address.toUpperCase();
-      let addressB = b.address.toUpperCase();
-      if (addressA < addressB) {
+      let venueA = a.venue.toUpperCase();
+      let venueB = b.venue.toUpperCase();
+      if (venueA < venueB) {
         return -1;
       }
-      if (addressA > addressB) {
+      if (venueA > venueB) {
         return 1;
       }
       return 0;
@@ -138,15 +137,40 @@ const columns = [
     sortDirections: ["descend", "ascend"],
   },
   {
-    title: "Gender",
-    dataIndex: "gender",
-    key: 'gender',
-    filters: [
-      { text: "Male", value: "male" },
-      { text: "Female", value: "female" },
-    ],
-    onFilter: (value, record) => record.gender.indexOf(value) === 0,
+    title: "Appointed Date",
+    dataIndex: "Appointeddate",
+    key: 'Appointeddate',
+    sorter: (a, b) => {
+      let AppointeddateA = a.Appointeddate.toUpperCase();
+      let AppointeddateB = b.Appointeddate.toUpperCase();
+      if (AppointeddateA < AppointeddateB) {
+        return -1;
+      }
+      if (AppointeddateA > AppointeddateB) {
+        return 1;
+      }
+      return 0;
+    },
+    sortDirections: ["descend", "ascend"],
   },
+  {
+    title: "Reason",
+    dataIndex: "reason",
+    key: 'reason',
+    sorter: (a, b) => {
+      let reasonA = a.reason.toUpperCase();
+      let reasonB = b.reason.toUpperCase();
+      if (reasonA < reasonB) {
+        return -1;
+      }
+      if (reasonA > reasonB) {
+        return 1;
+      }
+      return 0;
+    },
+    sortDirections: ["descend", "ascend"],
+  },
+
   {
     title: "",
     key: "id",
@@ -158,7 +182,6 @@ const columns = [
 function onChange(pagination, filters, sorter) {
   console.log("params", pagination, filters, sorter);
 }
-
 export default {
   data() {
     /**
@@ -169,17 +192,15 @@ export default {
       columns,
       loading: false,
       visible: false,
-      search: '',
       model: {
         nameFull: '',
         slmcNo: '',
         hospital: '',
-        address: '',
-        gender: undefined,
         phoneNo: '',
         maritalStatus: undefined,
-        date: undefined,
-        venue: ''
+        Appointeddate: undefined,
+        venue: '',
+        reason: ''
       }
     };
   },
@@ -188,7 +209,7 @@ export default {
      * Get all persons from database
      * using API request
      */
-    axios.get("http://127.0.0.1:8000/api/doctor/all").then((response) => {
+    axios.get("http://127.0.0.1:8000/api/appointment/all").then((response) => {
       this.data = response.data.results;
       console.log(this.data);
     });
@@ -225,7 +246,7 @@ export default {
       setTimeout(() => {
       this.visible = false;
       this.loading = false;
-      this.$router.push({ path: `/update-doctor/`+this.model.id});
+      this.$router.push({ path: `/update-appointment/`+this.model.id});
       }, 500);
     },
     handleCancel() {
@@ -284,13 +305,13 @@ export default {
         title: 'Do you want to delete these items?' + this.model.serialno + '('+this.model.id+')',
         content: 'When clicked the OK button, this dialog will be closed after 1 second',
         onOk: () => {
-          this.$http.delete("http://127.0.0.1:8000/api/doctor/delete/" + this.model.id).then(
+          this.$http.delete("http://127.0.0.1:8000/api/appointment/delete/" + this.model.id).then(
             function(response) {
-              this.openNotificationSuccess('Successfully Deleted', 'Doctor'+ this.model.serialno +' record deleted.')
+              this.openNotificationSuccess('Successfully Deleted', 'Appointment'+ this.model.serialno +' record deleted.')
               this.data.splice((this.data.findIndex((e) => e === this.model)), 1);
               console.log(response);
             }, (error) => {
-              this.openNotificationUnsuccess('Error', 'Doctor'+ this.model.serialno +' record cannot delete. Operation occured an error !');
+              this.openNotificationUnsuccess('Error', 'Appointment'+ this.model.serialno +' record cannot delete. Operation occured an error !');
               console.log(error);
             }
           );
@@ -302,10 +323,11 @@ export default {
       });
     },
   },
+
   computed: {
     searchResult: function() {
       return this.data.filter((item)=> {
-          return (item.slmcNo.toLowerCase().match(this.search.toLowerCase()) || item.nameFull.toLowerCase().match(this.search.toLowerCase()) || item.hospital.toLowerCase().match(this.search.toLowerCase()));
+          return (item.slmcNo.toLowerCase().match(this.search.toLowerCase()) || item.nameFull.toLowerCase().match(this.search.toLowerCase()) || item.hospital.toLowerCase().match(this.search.toLowerCase()) || item.venue.toLowerCase().match(this.search.toLowerCase()) || item.reason.toLowerCase().match(this.search.toLowerCase()));
       });
     },
   }
