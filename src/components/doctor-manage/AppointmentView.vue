@@ -3,54 +3,11 @@
     <h3>Appointments</h3>
     <div class="row px-3 my-4">
       <a-input-search
-        placeholder="Search a doctor"
+        placeholder="Search"
         style="width: 320px; margin: 0 10px 0 0"
-        @search="onSearch"
+         @search="onSearch"
+        v-model="search"
       />
-      <a-select
-        show-search
-        placeholder="Select a hospital"
-        option-filter-prop="children"
-        style="width: 200px; margin: 0 10px 0 0"
-        :filter-option="filterOption"
-        @focus="handleFocus"
-        @blur="handleBlur"
-        @change="handleChange"
-      >
-        <a-select-option value="jack"> Jack </a-select-option>
-        <a-select-option value="lucy"> Lucy </a-select-option>
-        <a-select-option value="tom"> Tom </a-select-option>
-      </a-select>
-
-      <a-select
-        show-search
-        placeholder="Select an appointed date "
-        option-filter-prop="children"
-        style="width: 200px; margin: 0 10px 0 0"
-        :filter-option="filterOption"
-        @focus="handleFocus"
-        @blur="handleBlur"
-        @change="handleChange"
-      >
-        <a-select-option value="jack"> Jack </a-select-option>
-        <a-select-option value="lucy"> Lucy </a-select-option>
-        <a-select-option value="tom"> Tom </a-select-option>
-      </a-select>
-
-      <a-select
-        show-search
-        placeholder="Select a venue"
-        option-filter-prop="children"
-        style="width: 200px; margin: 0 10px 0 0"
-        :filter-option="filterOption"
-        @focus="handleFocus"
-        @blur="handleBlur"
-        @change="handleChange"
-      >
-        <a-select-option value="jack"> Jack </a-select-option>
-        <a-select-option value="lucy"> Lucy </a-select-option>
-        <a-select-option value="tom"> Tom </a-select-option>
-      </a-select>
 
     </div>
 
@@ -126,8 +83,8 @@ const columns = [
     dataIndex: "nameFull",
     key: 'nameFull',
     sorter: (a, b) => {
-      let nameA = a.name.toUpperCase();
-      let nameB = b.name.toUpperCase();
+      let nameA = a.nameFull.toUpperCase();
+      let nameB = b.nameFull.toUpperCase();
       if (nameA < nameB) {
         return -1;
       }
@@ -142,7 +99,7 @@ const columns = [
     title: "SLMC No",
     dataIndex: "slmcNo",
     key: 'slmcNo',
-    sorter: (a, b) => a.age - b.age,
+    sorter: (a, b) => a.slmcNo - b.slmcNo,
     sortDirections: ["descend", "ascend"],
   },
    {
@@ -366,5 +323,13 @@ export default {
       });
     },
   },
+
+  computed: {
+    searchResult: function() {
+      return this.data.filter((item)=> {
+          return (item.slmcNo.toLowerCase().match(this.search.toLowerCase()) || item.nameFull.toLowerCase().match(this.search.toLowerCase()) || item.hospital.toLowerCase().match(this.search.toLowerCase()) || item.venue.toLowerCase().match(this.search.toLowerCase()) || item.reason.toLowerCase().match(this.search.toLowerCase()));
+      });
+    },
+  }
 };
 </script>
