@@ -1,6 +1,6 @@
 <template>
   <a-layout id="components-layout-demo-side" style="min-height: 100vh">
-    <a-layout-sider v-model="collapsed" collapsible>
+    <a-layout-sider v-if="loginCheck" v-model="collapsed" collapsible>
 
       <!-- Logo -->
       <img
@@ -151,15 +151,6 @@
           <router-link to="/vaccine">Contact</router-link>
         <!--login button at the top of the carousel-->
         </div>
-        <div >
-          <router-link to="/login">
-            SignIn
-          </router-link>
-        </div>
-        
-       
-        <br> <router-link to="/SignUp">Sign Up</router-link> <br>
-
       </a-layout-footer>
     </a-layout>
   </a-layout>
@@ -174,6 +165,9 @@ export default {
       items: [],
     };
   },
+  created() {
+    this.loginCheck();
+  },
   watch: {
     $route() {
       this.getRoute();
@@ -184,6 +178,11 @@ export default {
       this.items = this.$route.matched;
       console.log(this.$route);
     },
+  },
+  computed:{
+    loginCheck() {
+      return (document.cookie == '') ? false : true;
+    }
   }
 };
 </script>

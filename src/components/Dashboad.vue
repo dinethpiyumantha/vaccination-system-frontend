@@ -103,6 +103,9 @@ export default {
     Carousel,
   },
   created() {
+    if(document.cookie == '') {
+      this.$router.push('/login');
+    }
     this.$http.get('http://127.0.0.1:8000/api/person/count').then(function (response) {
       this.count = response.data;
       console.log(response.data);

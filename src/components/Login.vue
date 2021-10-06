@@ -24,6 +24,7 @@
                 { rules: [{ required: true, message: 'Please input your username!' }] },
                 ]"
                 placeholder="Username"
+                v-model="login.username"
             >
                 <a-icon slot="prefix" type="user" style="color:rgba(0,0,0,.25)" />
             </a-input>
@@ -39,6 +40,7 @@
                 ]"
                 type="password"
                 placeholder="Password"
+                v-model="login.password"
             >
                 <a-icon slot="prefix" type="lock" style="color:rgba(0,0,0,.25) padding-bottom: 9px;" />
             </a-input>
@@ -51,7 +53,9 @@
             </a-form-item><br>
 
             <a-form-item>
-                <a-button type="link" style="style: none; border: none; margin-left: 49px; color: black">Forgot your password?</a-button>
+                <router-link to="/">Forgot your password?</router-link>
+                <br/>
+                <router-link to="/SignUp">Create an account</router-link>
             </a-form-item>
         </a-form>
     </div>
@@ -67,6 +71,10 @@ export default {
     return {
       hasErrors,
       form: this.$form.createForm(this, { name: 'horizontal_login' }),
+      login: {
+        username: '',
+        password: ''
+      }
     };
   },
   mounted() {
@@ -90,6 +98,18 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
+          this.$http.post('http://127.0.0.1:8000/api/uservalidate', this.login).then(function (response) { 
+            console.log(response);
+            if(response.bodyText == '[]') {
+              alert('Error');
+            } else {
+              document.cookie = response.bodyText;
+              this.$router.push('/');
+              location.reload();
+            }
+          }, (error) => {
+            console.log(error);
+          });
           console.log('Received values of form: ', values);
         }
       });
