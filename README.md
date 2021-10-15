@@ -9,12 +9,12 @@ Covid-19 Vaccination Management System is the project that we decided to develop
 
 ***
 
-| Developer     | Responsible Function      |
-| ------------- |:-------------------------:|
-| Dineth        | Person Management System  |
-| Sandani       | Doctor Management System  |
-| Venura        | Vaccine Management System |
-| Imashi        | Nurse Management System   |
+| Registration No | Developer     | Responsible Function      |
+| --------------- | ------------- |:-------------------------:|
+| IT19955650      | Dineth        | Person Management System  |
+| IT19190280      | Sandani       | Doctor Management System  |
+| IT19974910      | Venura        | Vaccine Management System |
+| IT19961422      | Imashi        | Nurse Management System   |
 
 ***
 
